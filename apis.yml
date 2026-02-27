@@ -1,0 +1,111 @@
+name: Microsoft Word API
+description: APIs for Microsoft Word document creation, manipulation, and automation
+image: https://example.com/microsoft-word-logo.png
+tags:
+- documents
+- word processing
+- office
+- productivity
+created: '2024'
+modified: '2024'
+url: https://www.microsoft.com/microsoft-365/word
+specificationVersion: '0.18'
+apis:
+- name: Microsoft Graph Word API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive
+  image: https://example.com/graph-api-logo.png
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/word
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - documents
+  - cloud
+  - rest
+  - microsoft-graph
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/word
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  contact:
+  - FN: Microsoft Graph Support
+    email: graphsdksupport@microsoft.com
+    url: https://developer.microsoft.com/en-us/graph/support
+- name: Office JavaScript API for Word
+  description: JavaScript API for building Word add-ins and automating Word tasks
+  image: https://example.com/office-js-logo.png
+  humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview
+  baseURL: https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+  tags:
+  - javascript
+  - add-ins
+  - automation
+  - client-side
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: Getting Started
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: Code Samples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: API Reference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  contact:
+  - FN: Office Developer Support
+    url: https://developer.microsoft.com/en-us/office
+- name: Word Automation Services (SharePoint)
+  description: Server-side document conversion and automation for SharePoint
+  image: https://example.com/sharepoint-logo.png
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+  baseURL: https://yourserver.sharepoint.com/_vti_bin/
+  tags:
+  - server-side
+  - sharepoint
+  - conversion
+  - enterprise
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+  - type: PowerShell Reference
+    url: https://learn.microsoft.com/en-us/powershell/module/sharepoint-server/
+  contact:
+  - FN: SharePoint Support
+    url: https://support.microsoft.com/sharepoint
+- name: Open XML SDK for Word
+  description: .NET library for programmatically creating and manipulating Word documents
+  image: https://example.com/openxml-logo.png
+  humanURL: https://github.com/OfficeDev/Open-XML-SDK
+  baseURL: https://www.nuget.org/packages/DocumentFormat.OpenXml/
+  tags:
+  - dotnet
+  - openxml
+  - library
+  - offline
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/word-processing
+  - type: GitHub Repository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: NuGet Package
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml/
+  - type: Code Examples
+    url: https://learn.microsoft.com/en-us/office/open-xml/how-to-create-a-word-processing-document
+  contact:
+  - FN: Open XML SDK Team
+    url: https://github.com/OfficeDev/Open-XML-SDK/issues
+maintainers:
+- FN: Microsoft Corporation
+  email: support@microsoft.com
+  url: https://www.microsoft.com
+common:
+- type: Developer Portal
+  url: https://developer.microsoft.com/
+- type: Terms of Service
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/
+- type: Support
+  url: https://support.microsoft.com/
+- type: Blog
+  url: https://developer.microsoft.com/en-us/microsoft-365/blogs/
