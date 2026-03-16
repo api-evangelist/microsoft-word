@@ -1,5 +1,5 @@
 aid: microsoft-word
-name: Microsoft Word API
+name: Microsoft Word
 description: APIs for Microsoft Word document creation, manipulation, and automation
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
