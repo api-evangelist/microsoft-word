@@ -1,0 +1,15 @@
+{
+  "id": "500123",
+  "roles": ["write"],
+  "link": {
+    "type": "edit",
+    "webUrl": "https://contoso-my.sharepoint.com/:w:/p/jsmith/EX1a2b3c4d5e6f",
+    "scope": "organization"
+  },
+  "grantedTo": {
+    "user": {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "displayName": "John Doe"
+    }
+  }
+}

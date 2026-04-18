@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-schema/javascript-api-content-control-schema.json",
+  "title": "ContentControl",
+  "description": "Represents a content control in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the content control."
+    },
+    "tag": {
+      "type": "string",
+      "description": "Tag to identify the content control."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the content control."
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of content control.",
+      "enum": ["RichText", "PlainText", "Picture", "CheckBox", "DropDownList", "ComboBox", "DatePicker"]
+    },
+    "text": {
+      "type": "string",
+      "description": "Text content of the content control."
+    },
+    "appearance": {
+      "type": "string",
+      "description": "Visual appearance.",
+      "enum": ["BoundingBox", "Tags", "Hidden"]
+    },
+    "cannotDelete": {
+      "type": "boolean",
+      "description": "Whether the content control can be deleted."
+    },
+    "cannotEdit": {
+      "type": "boolean",
+      "description": "Whether the content control can be edited."
+    }
+  }
+}

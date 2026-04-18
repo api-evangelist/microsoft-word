@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-schema/graph-api-permission-schema.json",
+  "title": "Permission",
+  "description": "Represents a sharing permission on a drive item.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the permission."
+    },
+    "roles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The type of permission (read, write, owner)."
+    },
+    "link": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "description": "The type of sharing link." },
+        "webUrl": { "type": "string", "format": "uri", "description": "The URL of the sharing link." },
+        "scope": { "type": "string", "description": "The scope of the link." }
+      }
+    },
+    "grantedTo": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "displayName": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

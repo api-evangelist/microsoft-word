@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-structure/graph-api-drive-item-structure.json",
+  "name": "DriveItem",
+  "description": "Represents a file, folder, or other item stored in a drive.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "The unique identifier of the item within the drive." },
+    "name": { "type": "string", "description": "The name of the item (filename and extension)." },
+    "description": { "type": "string", "description": "A user-visible description of the item." },
+    "size": { "type": "int64", "description": "Size of the item in bytes." },
+    "webUrl": { "type": "uri", "description": "URL that displays the resource in the browser." },
+    "webDavUrl": { "type": "uri", "description": "WebDAV compatible URL for the item." },
+    "createdDateTime": { "type": "datetime", "description": "Date and time of item creation." },
+    "lastModifiedDateTime": { "type": "datetime", "description": "Date and time the item was last modified." },
+    "eTag": { "type": "string", "description": "ETag for the entire item." },
+    "cTag": { "type": "string", "description": "ETag for the content of the item." }
+  }
+}

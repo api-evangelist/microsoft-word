@@ -1,0 +1,410 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Microsoft Word Document Management"
+  description: "Unified workflow for Word document creation, editing, collaboration, conversion, and lifecycle management. Combines Microsoft Graph for cloud storage and sharing, JavaScript API for content manipulation, and Open XML SDK for server-side processing. Used by document authors, content managers, and automation engineers."
+  tags:
+    - Microsoft Word
+    - Document Management
+    - Collaboration
+    - Automation
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      MICROSOFT_GRAPH_TOKEN: MICROSOFT_GRAPH_TOKEN
+      OFFICE_ADDIN_TOKEN: OFFICE_ADDIN_TOKEN
+      OPENXML_API_KEY: OPENXML_API_KEY
+
+capability:
+  consumes:
+    - import: graph-api
+      location: ./shared/graph-api.yaml
+    - import: javascript-api
+      location: ./shared/javascript-api.yaml
+    - import: open-xml-sdk
+      location: ./shared/open-xml-sdk.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: word-document-mgmt-api
+      description: "Unified REST API for Microsoft Word document management across cloud, add-in, and server-side processing."
+      resources:
+        - path: /v1/documents
+          name: documents
+          description: "Document lifecycle operations."
+          operations:
+            - method: POST
+              name: create-document
+              description: "Create a new Word document."
+              call: "open-xml-sdk.create-document"
+              with:
+                filename: "rest.filename"
+                title: "rest.title"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}
+          name: document-detail
+          description: "Individual document operations."
+          operations:
+            - method: GET
+              name: get-document
+              description: "Get document metadata."
+              call: "graph-api.get-drive-item"
+              with:
+                item-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-document
+              description: "Delete a document."
+              call: "graph-api.delete-drive-item"
+              with:
+                item-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/content
+          name: content
+          description: "Document content operations."
+          operations:
+            - method: GET
+              name: get-content
+              description: "Get document body content."
+              call: "javascript-api.get-body"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/paragraphs
+          name: paragraphs
+          description: "Paragraph operations."
+          operations:
+            - method: GET
+              name: list-paragraphs
+              description: "List paragraphs."
+              call: "javascript-api.list-paragraphs"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/tables
+          name: tables
+          description: "Table operations."
+          operations:
+            - method: GET
+              name: list-tables
+              description: "List tables."
+              call: "javascript-api.list-tables"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/comments
+          name: comments
+          description: "Comment operations."
+          operations:
+            - method: GET
+              name: list-comments
+              description: "List comments."
+              call: "javascript-api.list-comments"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/permissions
+          name: permissions
+          description: "Permission and sharing operations."
+          operations:
+            - method: GET
+              name: list-permissions
+              description: "List permissions."
+              call: "graph-api.list-permissions"
+              with:
+                item-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/versions
+          name: versions
+          description: "Version history operations."
+          operations:
+            - method: GET
+              name: list-versions
+              description: "List version history."
+              call: "graph-api.list-versions"
+              with:
+                item-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/documents/{document-id}/convert
+          name: convert
+          description: "Document format conversion."
+          operations:
+            - method: POST
+              name: convert-document
+              description: "Convert to another format."
+              call: "open-xml-sdk.convert-document"
+              with:
+                document-id: "rest.document-id"
+                targetFormat: "rest.targetFormat"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          description: "Document search."
+          operations:
+            - method: GET
+              name: search-documents
+              description: "Search for documents."
+              call: "graph-api.search-drive-items"
+              with:
+                search-text: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: word-document-mgmt-mcp
+      transport: http
+      description: "MCP server for AI-assisted Word document management, combining cloud, add-in, and server-side capabilities."
+      tools:
+        - name: graph-get-document
+          description: "Get metadata for a Word document stored in OneDrive/SharePoint."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.get-drive-item"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-list-files
+          description: "List files and folders in a OneDrive directory."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-children"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-search-documents
+          description: "Search for Word documents in OneDrive/SharePoint."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.search-drive-items"
+          with:
+            search-text: "tools.search-text"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-create-folder
+          description: "Create a new folder in OneDrive."
+          hints:
+            readOnly: false
+          call: "graph-api.create-folder"
+          with:
+            item-id: "tools.item-id"
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-share-document
+          description: "Create a sharing link for a document."
+          hints:
+            readOnly: false
+          call: "graph-api.create-sharing-link"
+          with:
+            item-id: "tools.item-id"
+            type: "tools.type"
+            scope: "tools.scope"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-list-permissions
+          description: "List sharing permissions on a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-permissions"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-list-versions
+          description: "List version history of a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-versions"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: graph-delete-document
+          description: "Delete a document from OneDrive/SharePoint."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "graph-api.delete-drive-item"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-get-body
+          description: "Get the body content of an open Word document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.get-body"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-insert-text
+          description: "Insert text into the document body."
+          hints:
+            readOnly: false
+          call: "javascript-api.insert-text"
+          with:
+            document-id: "tools.document-id"
+            text: "tools.text"
+            location: "tools.location"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-insert-html
+          description: "Insert HTML content into the document."
+          hints:
+            readOnly: false
+          call: "javascript-api.insert-html"
+          with:
+            document-id: "tools.document-id"
+            html: "tools.html"
+            location: "tools.location"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-list-paragraphs
+          description: "List all paragraphs in the document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-paragraphs"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-list-content-controls
+          description: "List content controls in the document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-content-controls"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-list-tables
+          description: "List tables in the document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-tables"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-insert-table
+          description: "Insert a new table into the document."
+          hints:
+            readOnly: false
+          call: "javascript-api.insert-table"
+          with:
+            document-id: "tools.document-id"
+            rowCount: "tools.rowCount"
+            columnCount: "tools.columnCount"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-list-comments
+          description: "List comments in the document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-comments"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: addin-search-text
+          description: "Search for text within the document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.search-document"
+          with:
+            document-id: "tools.document-id"
+            searchText: "tools.searchText"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: openxml-create-document
+          description: "Create a new Word document server-side using Open XML."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.create-document"
+          with:
+            filename: "tools.filename"
+            title: "tools.title"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: openxml-convert-document
+          description: "Convert a Word document to PDF or other format."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.convert-document"
+          with:
+            document-id: "tools.document-id"
+            targetFormat: "tools.targetFormat"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: openxml-add-paragraph
+          description: "Add a paragraph to a document server-side."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.add-paragraph"
+          with:
+            document-id: "tools.document-id"
+            text: "tools.text"
+            styleId: "tools.styleId"
+          outputParameters:
+            - type: object
+              mapping: "$."

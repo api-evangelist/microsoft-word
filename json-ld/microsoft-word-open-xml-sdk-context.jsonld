@@ -1,0 +1,107 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "msword": "https://developer.microsoft.com/schema/word/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "WordDocument": "msword:WordDocument",
+    "OpenXmlDocumentProperties": "msword:OpenXmlDocumentProperties",
+    "OpenXmlParagraph": "msword:OpenXmlParagraph",
+    "OpenXmlTable": "msword:OpenXmlTable",
+
+    "filename": {
+      "@id": "msword:filename",
+      "@type": "xsd:string"
+    },
+    "paragraphCount": {
+      "@id": "msword:paragraph_count",
+      "@type": "xsd:integer"
+    },
+    "tableCount": {
+      "@id": "msword:table_count",
+      "@type": "xsd:integer"
+    },
+    "imageCount": {
+      "@id": "msword:image_count",
+      "@type": "xsd:integer"
+    },
+    "sectionCount": {
+      "@id": "msword:section_count",
+      "@type": "xsd:integer"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "subject": {
+      "@id": "dcterms:subject",
+      "@type": "xsd:string"
+    },
+    "creator": {
+      "@id": "schema:creator",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "keywords": {
+      "@id": "schema:keywords",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "msword:category",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "revision": {
+      "@id": "msword:revision",
+      "@type": "xsd:string"
+    },
+    "application": {
+      "@id": "schema:softwareVersion",
+      "@type": "xsd:string"
+    },
+    "totalTime": {
+      "@id": "msword:total_time",
+      "@type": "xsd:integer"
+    },
+    "pages": {
+      "@id": "schema:numberOfPages",
+      "@type": "xsd:integer"
+    },
+    "words": {
+      "@id": "schema:wordCount",
+      "@type": "xsd:integer"
+    },
+    "characters": {
+      "@id": "msword:characters",
+      "@type": "xsd:integer"
+    },
+    "styleId": {
+      "@id": "msword:style_id",
+      "@type": "xsd:string"
+    },
+    "bold": {
+      "@id": "msword:bold",
+      "@type": "xsd:boolean"
+    },
+    "italic": {
+      "@id": "msword:italic",
+      "@type": "xsd:boolean"
+    },
+    "fontSize": {
+      "@id": "msword:font_size",
+      "@type": "xsd:double"
+    }
+  }
+}

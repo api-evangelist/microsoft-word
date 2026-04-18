@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-structure/javascript-api-table-structure.json",
+  "name": "Table",
+  "description": "Represents a table in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique identifier of the table." },
+    "rowCount": { "type": "int32", "description": "Number of rows in the table." },
+    "columnCount": { "type": "int32", "description": "Number of columns in the table." },
+    "style": { "type": "string", "description": "Style name applied to the table." },
+    "alignment": { "type": "string", "description": "Table alignment.", "enum": ["Left", "Centered", "Right"] },
+    "headerRowCount": { "type": "int32", "description": "Number of header rows." }
+  }
+}

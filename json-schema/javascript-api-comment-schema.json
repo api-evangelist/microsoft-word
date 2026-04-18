@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-schema/javascript-api-comment-schema.json",
+  "title": "Comment",
+  "description": "Represents a comment in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the comment."
+    },
+    "authorName": {
+      "type": "string",
+      "description": "Name of the comment author."
+    },
+    "authorEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Email of the comment author."
+    },
+    "content": {
+      "type": "string",
+      "description": "Text content of the comment."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the comment was created."
+    },
+    "resolved": {
+      "type": "boolean",
+      "description": "Whether the comment has been resolved."
+    }
+  }
+}

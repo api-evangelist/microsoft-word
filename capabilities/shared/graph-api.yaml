@@ -1,0 +1,350 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Microsoft Graph Word API"
+  description: "REST API for managing Word documents via Microsoft Graph including file operations, sharing, versioning, and content management."
+  tags:
+    - Microsoft Graph
+    - Documents
+    - Cloud
+    - REST
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      MICROSOFT_GRAPH_TOKEN: MICROSOFT_GRAPH_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: graph-api
+      baseUri: https://graph.microsoft.com/v1.0
+      description: "Microsoft Graph v1.0 endpoint for Word document operations."
+      authentication:
+        type: bearer
+        token: "{{MICROSOFT_GRAPH_TOKEN}}"
+      resources:
+        - name: drive-items
+          path: /me/drive/items
+          description: "File and folder management operations."
+          operations:
+            - name: get-drive-item
+              method: GET
+              description: "Retrieve metadata for a drive item."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The unique identifier of the drive item."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-drive-item
+              method: PATCH
+              description: "Update metadata for a drive item."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The unique identifier of the drive item."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+            - name: delete-drive-item
+              method: DELETE
+              description: "Delete a drive item."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The unique identifier of the drive item."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-children
+              method: GET
+              description: "List children of a drive item."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The unique identifier of the parent item."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-folder
+              method: POST
+              description: "Create a new folder."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The parent item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  folder: {}
+        - name: content
+          path: /me/drive/items
+          description: "File content upload and download operations."
+          operations:
+            - name: download-content
+              method: GET
+              description: "Download file content."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: upload-content
+              method: PUT
+              description: "Upload file content."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: permissions
+          path: /me/drive/items
+          description: "Sharing and permission management operations."
+          operations:
+            - name: list-permissions
+              method: GET
+              description: "List permissions on a drive item."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: add-permissions
+              method: POST
+              description: "Send sharing invitations."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  recipients: "{{tools.recipients}}"
+                  roles: "{{tools.roles}}"
+            - name: create-sharing-link
+              method: POST
+              description: "Create a sharing link."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  type: "{{tools.type}}"
+                  scope: "{{tools.scope}}"
+        - name: versions
+          path: /me/drive/items
+          description: "Version history operations."
+          operations:
+            - name: list-versions
+              method: GET
+              description: "List previous versions of a file."
+              inputParameters:
+                - name: item-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The drive item ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: search
+          path: /me/drive/root
+          description: "Search operations."
+          operations:
+            - name: search-drive-items
+              method: GET
+              description: "Search for files matching a query."
+              inputParameters:
+                - name: search-text
+                  in: path
+                  type: string
+                  required: true
+                  description: "The search query text."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: graph-word-api
+      resources:
+        - path: /v1/drive-items/{item-id}
+          name: drive-items
+          description: "Drive item operations."
+          operations:
+            - method: GET
+              name: get-drive-item
+              description: "Get a drive item."
+              call: "graph-api.get-drive-item"
+              with:
+                item-id: "rest.item-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: graph-word-mcp
+      transport: http
+      tools:
+        - name: get-drive-item
+          description: "Retrieve metadata for a Word document or file."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.get-drive-item"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-children
+          description: "List files and folders within a directory."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-children"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-folder
+          description: "Create a new folder in OneDrive."
+          hints:
+            readOnly: false
+          call: "graph-api.create-folder"
+          with:
+            item-id: "tools.item-id"
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-drive-items
+          description: "Search for Word documents and files."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.search-drive-items"
+          with:
+            search-text: "tools.search-text"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-permissions
+          description: "List sharing permissions on a file."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-permissions"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-sharing-link
+          description: "Create a sharing link for a document."
+          hints:
+            readOnly: false
+          call: "graph-api.create-sharing-link"
+          with:
+            item-id: "tools.item-id"
+            type: "tools.type"
+            scope: "tools.scope"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-versions
+          description: "List version history of a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "graph-api.list-versions"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-drive-item
+          description: "Delete a file or folder."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "graph-api.delete-drive-item"
+          with:
+            item-id: "tools.item-id"
+          outputParameters:
+            - type: object
+              mapping: "$."

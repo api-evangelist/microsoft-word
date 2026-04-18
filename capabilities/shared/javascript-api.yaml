@@ -1,0 +1,376 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Microsoft Word JavaScript API"
+  description: "JavaScript API for building Word add-ins with document manipulation, content controls, tables, comments, and formatting capabilities."
+  tags:
+    - JavaScript
+    - Add-Ins
+    - Documents
+    - Automation
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      OFFICE_ADDIN_TOKEN: OFFICE_ADDIN_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: javascript-api
+      baseUri: https://word.officeapps.live.com/api/v1
+      description: "Word JavaScript API for document manipulation through Office Add-ins."
+      authentication:
+        type: bearer
+        token: "{{OFFICE_ADDIN_TOKEN}}"
+      resources:
+        - name: documents
+          path: /documents
+          description: "Document lifecycle operations."
+          operations:
+            - name: create-document
+              method: POST
+              description: "Create a new Word document."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-document
+              method: GET
+              description: "Get document properties."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: save-document
+              method: POST
+              description: "Save the document."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: body
+          path: /documents
+          description: "Document body content operations."
+          operations:
+            - name: get-body
+              method: GET
+              description: "Get the document body."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: insert-text
+              method: POST
+              description: "Insert text into the document."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  text: "{{tools.text}}"
+                  location: "{{tools.location}}"
+            - name: insert-html
+              method: POST
+              description: "Insert HTML content."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  html: "{{tools.html}}"
+                  location: "{{tools.location}}"
+            - name: search-document
+              method: POST
+              description: "Search for text in the document."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  searchText: "{{tools.searchText}}"
+        - name: paragraphs
+          path: /documents
+          description: "Paragraph management operations."
+          operations:
+            - name: list-paragraphs
+              method: GET
+              description: "List all paragraphs."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-paragraph
+              method: GET
+              description: "Get a specific paragraph."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+                - name: paragraph-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Paragraph identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: content-controls
+          path: /documents
+          description: "Content control operations."
+          operations:
+            - name: list-content-controls
+              method: GET
+              description: "List all content controls."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: tables
+          path: /documents
+          description: "Table management operations."
+          operations:
+            - name: list-tables
+              method: GET
+              description: "List all tables."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: insert-table
+              method: POST
+              description: "Insert a new table."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  rowCount: "{{tools.rowCount}}"
+                  columnCount: "{{tools.columnCount}}"
+        - name: comments
+          path: /documents
+          description: "Comment management operations."
+          operations:
+            - name: list-comments
+              method: GET
+              description: "List all comments."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: word-addin-api
+      resources:
+        - path: /v1/documents/{document-id}
+          name: documents
+          description: "Document operations."
+          operations:
+            - method: GET
+              name: get-document
+              description: "Get document metadata."
+              call: "javascript-api.get-document"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: word-addin-mcp
+      transport: http
+      tools:
+        - name: create-document
+          description: "Create a new Word document."
+          hints:
+            readOnly: false
+          call: "javascript-api.create-document"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-body
+          description: "Get document body content."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.get-body"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: insert-text
+          description: "Insert text into a document."
+          hints:
+            readOnly: false
+          call: "javascript-api.insert-text"
+          with:
+            document-id: "tools.document-id"
+            text: "tools.text"
+            location: "tools.location"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-paragraphs
+          description: "List paragraphs in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-paragraphs"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-content-controls
+          description: "List content controls in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-content-controls"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tables
+          description: "List tables in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-tables"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: insert-table
+          description: "Insert a table into a document."
+          hints:
+            readOnly: false
+          call: "javascript-api.insert-table"
+          with:
+            document-id: "tools.document-id"
+            rowCount: "tools.rowCount"
+            columnCount: "tools.columnCount"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-comments
+          description: "List comments in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.list-comments"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-document
+          description: "Search for text in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "javascript-api.search-document"
+          with:
+            document-id: "tools.document-id"
+            searchText: "tools.searchText"
+          outputParameters:
+            - type: object
+              mapping: "$."

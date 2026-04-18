@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-schema/javascript-api-paragraph-schema.json",
+  "title": "Paragraph",
+  "description": "Represents a single paragraph in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the paragraph."
+    },
+    "text": {
+      "type": "string",
+      "description": "Plain text content of the paragraph."
+    },
+    "style": {
+      "type": "string",
+      "description": "Style name applied to the paragraph."
+    },
+    "alignment": {
+      "type": "string",
+      "description": "Text alignment (Left, Centered, Right, Justified).",
+      "enum": ["Left", "Centered", "Right", "Justified"]
+    },
+    "firstLineIndent": {
+      "type": "number",
+      "description": "First line indent value in points."
+    },
+    "lineSpacing": {
+      "type": "number",
+      "description": "Line spacing in points."
+    },
+    "outlineLevel": {
+      "type": "integer",
+      "description": "Outline level of the paragraph.",
+      "minimum": 1,
+      "maximum": 9
+    },
+    "isListItem": {
+      "type": "boolean",
+      "description": "Whether the paragraph is part of a list."
+    }
+  }
+}

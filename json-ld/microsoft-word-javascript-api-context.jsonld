@@ -1,0 +1,129 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "msword": "https://developer.microsoft.com/schema/word/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Document": "msword:Document",
+    "Body": "msword:Body",
+    "Paragraph": "msword:Paragraph",
+    "ContentControl": "msword:ContentControl",
+    "Table": "msword:Table",
+    "Comment": "msword:Comment",
+    "Section": "msword:Section",
+    "Style": "msword:Style",
+    "Range": "msword:Range",
+    "DocumentProperties": "msword:DocumentProperties",
+
+    "text": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+    "style": {
+      "@id": "msword:style",
+      "@type": "xsd:string"
+    },
+    "alignment": {
+      "@id": "msword:alignment",
+      "@type": "xsd:string"
+    },
+    "firstLineIndent": {
+      "@id": "msword:first_line_indent",
+      "@type": "xsd:double"
+    },
+    "lineSpacing": {
+      "@id": "msword:line_spacing",
+      "@type": "xsd:double"
+    },
+    "outlineLevel": {
+      "@id": "msword:outline_level",
+      "@type": "xsd:integer"
+    },
+    "isListItem": {
+      "@id": "msword:is_list_item",
+      "@type": "xsd:boolean"
+    },
+    "tag": {
+      "@id": "msword:tag",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "appearance": {
+      "@id": "msword:appearance",
+      "@type": "xsd:string"
+    },
+    "cannotDelete": {
+      "@id": "msword:cannot_delete",
+      "@type": "xsd:boolean"
+    },
+    "cannotEdit": {
+      "@id": "msword:cannot_edit",
+      "@type": "xsd:boolean"
+    },
+    "rowCount": {
+      "@id": "msword:row_count",
+      "@type": "xsd:integer"
+    },
+    "columnCount": {
+      "@id": "msword:column_count",
+      "@type": "xsd:integer"
+    },
+    "headerRowCount": {
+      "@id": "msword:header_row_count",
+      "@type": "xsd:integer"
+    },
+    "authorName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "authorEmail": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "content": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+    "createdDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "resolved": {
+      "@id": "msword:resolved",
+      "@type": "xsd:boolean"
+    },
+    "saved": {
+      "@id": "msword:saved",
+      "@type": "xsd:boolean"
+    },
+    "changeTrackingMode": {
+      "@id": "msword:change_tracking_mode",
+      "@type": "xsd:string"
+    },
+    "subject": {
+      "@id": "dcterms:subject",
+      "@type": "xsd:string"
+    },
+    "author": {
+      "@id": "schema:author",
+      "@type": "xsd:string"
+    },
+    "keywords": {
+      "@id": "schema:keywords",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "msword:category",
+      "@type": "xsd:string"
+    },
+    "revisionNumber": {
+      "@id": "msword:revision_number",
+      "@type": "xsd:string"
+    }
+  }
+}

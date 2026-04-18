@@ -1,0 +1,87 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "msword": "https://developer.microsoft.com/schema/word/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "DriveItem": "msword:DriveItem",
+    "Permission": "msword:Permission",
+    "IdentitySet": "msword:IdentitySet",
+    "ItemReference": "msword:ItemReference",
+    "FileFacet": "msword:FileFacet",
+    "FolderFacet": "msword:FolderFacet",
+    "DriveItemVersion": "msword:DriveItemVersion",
+    "ThumbnailSet": "msword:ThumbnailSet",
+    "UploadSession": "msword:UploadSession",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "webUrl": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "webDavUrl": {
+      "@id": "msword:web_dav_url",
+      "@type": "@id"
+    },
+    "createdDateTime": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "lastModifiedDateTime": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "size": {
+      "@id": "schema:contentSize",
+      "@type": "xsd:integer"
+    },
+    "eTag": {
+      "@id": "msword:e_tag",
+      "@type": "xsd:string"
+    },
+    "cTag": {
+      "@id": "msword:c_tag",
+      "@type": "xsd:string"
+    },
+    "mimeType": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "childCount": {
+      "@id": "msword:child_count",
+      "@type": "xsd:integer"
+    },
+    "roles": {
+      "@id": "msword:roles",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "driveId": {
+      "@id": "msword:drive_id",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "msword:path",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "msword:scope",
+      "@type": "xsd:string"
+    },
+    "uploadUrl": {
+      "@id": "msword:upload_url",
+      "@type": "@id"
+    },
+    "expirationDateTime": {
+      "@id": "msword:expiration_date_time",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

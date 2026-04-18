@@ -1,0 +1,329 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Microsoft Word"
+  description: "Unified taxonomy mapping operational (OpenAPI) and capability (Naftiko) dimensions for Microsoft Word APIs including Microsoft Graph, JavaScript Add-ins, and Open XML SDK."
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+operational:
+  apis:
+    - name: Microsoft Graph Word API
+      namespace: graph-api
+      version: "1.0.0"
+      baseUrl: https://graph.microsoft.com/v1.0
+      status: active
+    - name: Office JavaScript API for Word
+      namespace: javascript-api
+      version: "1.0.0"
+      baseUrl: https://word.officeapps.live.com/api/v1
+      status: active
+    - name: Open XML SDK for Word
+      namespace: open-xml-sdk
+      version: "3.0.0"
+      baseUrl: https://localhost:5000/api/v1
+      status: active
+
+  resources:
+    - name: Drive Items
+      api: graph-api
+      actions: [get, list, create, update, delete, copy, move, search]
+    - name: Content
+      api: graph-api
+      actions: [download, upload, create-upload-session]
+    - name: Permissions
+      api: graph-api
+      actions: [list, add, create-link, delete]
+    - name: Versions
+      api: graph-api
+      actions: [list]
+    - name: Thumbnails
+      api: graph-api
+      actions: [list]
+    - name: Documents
+      api: javascript-api
+      actions: [create, get, save]
+    - name: Body
+      api: javascript-api
+      actions: [get, insert-text, insert-html, search]
+    - name: Paragraphs
+      api: javascript-api
+      actions: [list, get, delete]
+    - name: Content Controls
+      api: javascript-api
+      actions: [list, get]
+    - name: Tables
+      api: javascript-api
+      actions: [list, insert]
+    - name: Comments
+      api: javascript-api
+      actions: [list]
+    - name: Sections
+      api: javascript-api
+      actions: [list]
+    - name: Styles
+      api: javascript-api
+      actions: [list]
+    - name: Properties
+      api: javascript-api
+      actions: [get, update]
+    - name: Open XML Documents
+      api: open-xml-sdk
+      actions: [create, get, delete, convert]
+    - name: Open XML Paragraphs
+      api: open-xml-sdk
+      actions: [list, add]
+    - name: Open XML Tables
+      api: open-xml-sdk
+      actions: [list, add]
+    - name: Open XML Styles
+      api: open-xml-sdk
+      actions: [list]
+    - name: Headers And Footers
+      api: open-xml-sdk
+      actions: [list]
+    - name: Images
+      api: open-xml-sdk
+      actions: [list, add]
+    - name: Open XML Properties
+      api: open-xml-sdk
+      actions: [get, update]
+
+  actions:
+    - name: get
+      methods: [GET]
+      pattern: read
+    - name: list
+      methods: [GET]
+      pattern: read
+    - name: create
+      methods: [POST]
+      pattern: write
+    - name: update
+      methods: [PATCH, PUT]
+      pattern: write
+    - name: delete
+      methods: [DELETE]
+      pattern: destructive
+    - name: search
+      methods: [GET, POST]
+      pattern: query
+    - name: upload
+      methods: [PUT]
+      pattern: write
+    - name: download
+      methods: [GET]
+      pattern: read
+    - name: copy
+      methods: [POST]
+      pattern: write
+    - name: move
+      methods: [PATCH]
+      pattern: write
+    - name: convert
+      methods: [POST]
+      pattern: write
+    - name: insert-text
+      methods: [POST]
+      pattern: write
+    - name: insert-html
+      methods: [POST]
+      pattern: write
+
+  schemas:
+    core:
+      - name: DriveItem
+        api: graph-api
+        properties: [id, name, description, size, webUrl, createdDateTime, lastModifiedDateTime]
+      - name: Permission
+        api: graph-api
+        properties: [id, roles, link, grantedTo]
+      - name: Document
+        api: javascript-api
+        properties: [id, saved, changeTrackingMode]
+      - name: WordDocument
+        api: open-xml-sdk
+        properties: [id, filename, paragraphCount, tableCount, imageCount]
+    content:
+      - name: Paragraph
+        api: javascript-api
+        properties: [id, text, style, alignment, outlineLevel, isListItem]
+      - name: ContentControl
+        api: javascript-api
+        properties: [id, tag, title, type, text, appearance]
+      - name: Table
+        api: javascript-api
+        properties: [id, rowCount, columnCount, style, alignment]
+      - name: Comment
+        api: javascript-api
+        properties: [id, authorName, content, createdDate, resolved]
+    metadata:
+      - name: DocumentProperties
+        api: javascript-api
+        properties: [title, subject, author, keywords, category, creationDate]
+      - name: OpenXmlDocumentProperties
+        api: open-xml-sdk
+        properties: [title, creator, pages, words, characters, totalTime]
+
+  parameters:
+    identifiers:
+      - name: item-id
+        type: string
+        apis: [graph-api]
+      - name: document-id
+        type: string
+        apis: [javascript-api, open-xml-sdk]
+      - name: paragraph-id
+        type: string
+        apis: [javascript-api]
+      - name: control-id
+        type: string
+        apis: [javascript-api]
+    pagination:
+      - name: $top
+        type: integer
+        apis: [graph-api]
+      - name: $skipToken
+        type: string
+        apis: [graph-api]
+    filters:
+      - name: $select
+        type: string
+        apis: [graph-api]
+      - name: $expand
+        type: string
+        apis: [graph-api]
+      - name: $orderby
+        type: string
+        apis: [graph-api]
+
+  enums:
+    alignment:
+      - Left
+      - Centered
+      - Right
+      - Justified
+    content-control-type:
+      - RichText
+      - PlainText
+      - Picture
+      - CheckBox
+      - DropDownList
+      - ComboBox
+      - DatePicker
+    insert-location:
+      - Start
+      - End
+      - Before
+      - After
+      - Replace
+    document-format:
+      - pdf
+      - html
+      - txt
+      - rtf
+
+  authentication:
+    schemes:
+      - type: oauth2
+        apis: [graph-api, javascript-api]
+        flows: [authorization_code]
+        scopes: [Files.Read, Files.ReadWrite, Files.Read.All, Files.ReadWrite.All]
+      - type: apikey
+        apis: [open-xml-sdk]
+        placement: header
+        headerName: X-API-Key
+
+capability:
+  workflows:
+    - name: Document Management
+      file: capabilities/document-management.yaml
+      description: "Unified document lifecycle management combining cloud storage, content manipulation, and server-side processing."
+      apis: [graph-api, javascript-api, open-xml-sdk]
+      tools: 21
+      personas: [Document Author, Content Manager, Automation Engineer]
+      domains: [Document Management, Collaboration, Content Processing]
+
+  personas:
+    - id: document-author
+      name: Document Author
+      description: "Creates and edits Word documents, manages formatting and content."
+      workflows: [Document Management]
+    - id: content-manager
+      name: Content Manager
+      description: "Manages document templates, reviews, and publishing workflows."
+      workflows: [Document Management]
+    - id: automation-engineer
+      name: Automation Engineer
+      description: "Builds automated document generation and processing pipelines."
+      workflows: [Document Management]
+
+  domains:
+    - name: Document Management
+      resources: [Drive Items, Documents, Open XML Documents]
+      workflows: [Document Management]
+    - name: Collaboration
+      resources: [Permissions, Comments, Versions]
+      workflows: [Document Management]
+    - name: Content Processing
+      resources: [Body, Paragraphs, Tables, Content Controls]
+      workflows: [Document Management]
+
+  namespaces:
+    consumed:
+      - namespace: graph-api
+        source: capabilities/shared/graph-api.yaml
+      - namespace: javascript-api
+        source: capabilities/shared/javascript-api.yaml
+      - namespace: open-xml-sdk
+        source: capabilities/shared/open-xml-sdk.yaml
+    rest:
+      - namespace: word-document-mgmt-api
+        port: 8080
+        workflow: Document Management
+    mcp:
+      - namespace: word-document-mgmt-mcp
+        port: 9090
+        workflow: Document Management
+
+  binds:
+    - name: MICROSOFT_GRAPH_TOKEN
+      workflows: [Document Management]
+    - name: OFFICE_ADDIN_TOKEN
+      workflows: [Document Management]
+    - name: OPENXML_API_KEY
+      workflows: [Document Management]
+
+crossReference:
+  - resource: Drive Items
+    operations: [getDriveItem, updateDriveItem, deleteDriveItem, listChildren, createFolder, copyDriveItem, moveDriveItem, searchDriveItems, trackChanges]
+    workflows: [Document Management]
+    personas: [Document Author, Content Manager, Automation Engineer]
+  - resource: Content
+    operations: [downloadContent, uploadContent, createUploadSession]
+    workflows: [Document Management]
+    personas: [Document Author, Automation Engineer]
+  - resource: Permissions
+    operations: [listPermissions, addPermissions, createSharingLink]
+    workflows: [Document Management]
+    personas: [Content Manager]
+  - resource: Paragraphs
+    operations: [listParagraphs, getParagraph, deleteParagraph]
+    workflows: [Document Management]
+    personas: [Document Author, Automation Engineer]
+  - resource: Content Controls
+    operations: [listContentControls, getContentControl]
+    workflows: [Document Management]
+    personas: [Document Author, Automation Engineer]
+  - resource: Tables
+    operations: [listTables, insertTable]
+    workflows: [Document Management]
+    personas: [Document Author, Automation Engineer]
+  - resource: Comments
+    operations: [listComments]
+    workflows: [Document Management]
+    personas: [Document Author, Content Manager]
+  - resource: Versions
+    operations: [listVersions]
+    workflows: [Document Management]
+    personas: [Content Manager]

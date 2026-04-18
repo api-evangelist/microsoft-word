@@ -1,0 +1,837 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Word Open XML SDK
+  description: >-
+    RESTful representation of the Open XML SDK operations for Word document
+    processing. Provides programmatic access to create, read, and manipulate
+    Word documents (.docx) using the ECMA-376 Open XML standard without
+    requiring Microsoft Office installation.
+  version: 3.0.0
+  contact:
+    name: Microsoft Office Open XML Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  license:
+    name: MIT License
+    url: https://github.com/OfficeDev/Open-XML-SDK/blob/main/LICENSE
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+  x-api-type: SDK
+servers:
+  - url: https://localhost:5000/api/v1
+    description: Local Open XML processing service
+tags:
+  - name: Documents
+    description: Operations for creating and managing Word documents
+  - name: Body
+    description: Operations for manipulating the document body
+  - name: Paragraphs
+    description: Operations for managing paragraphs
+  - name: Tables
+    description: Operations for managing tables
+  - name: Styles
+    description: Operations for managing styles and formatting
+  - name: Headers And Footers
+    description: Operations for managing headers and footers
+  - name: Images
+    description: Operations for managing images in documents
+  - name: Properties
+    description: Operations for managing document properties
+paths:
+  /documents:
+    post:
+      operationId: createWordDocument
+      summary: Microsoft Word Create Word Document
+      description: Create a new Word document (.docx) with optional initial content.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocumentRequest'
+      responses:
+        '201':
+          description: Successfully created document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WordDocument'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}:
+    get:
+      operationId: getWordDocument
+      summary: Microsoft Word Get Word Document
+      description: Retrieve document metadata and structure information.
+      tags:
+        - Documents
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WordDocument'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteWordDocument
+      summary: Microsoft Word Delete Word Document
+      description: Delete a Word document from the processing store.
+      tags:
+        - Documents
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '204':
+          description: Successfully deleted document.
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/body:
+    get:
+      operationId: getDocumentBody
+      summary: Microsoft Word Get Document Body
+      description: Get the main body content of the document.
+      tags:
+        - Body
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved body.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentBody'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/paragraphs:
+    get:
+      operationId: listDocumentParagraphs
+      summary: Microsoft Word List Document Paragraphs
+      description: List all paragraphs in the document.
+      tags:
+        - Paragraphs
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved paragraphs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlParagraphCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addParagraph
+      summary: Microsoft Word Add Paragraph
+      description: Add a new paragraph to the document body.
+      tags:
+        - Paragraphs
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddParagraphRequest'
+      responses:
+        '201':
+          description: Successfully added paragraph.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlParagraph'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/tables:
+    get:
+      operationId: listDocumentTables
+      summary: Microsoft Word List Document Tables
+      description: List all tables in the document.
+      tags:
+        - Tables
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved tables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlTableCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addTable
+      summary: Microsoft Word Add Table
+      description: Add a new table to the document.
+      tags:
+        - Tables
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddTableRequest'
+      responses:
+        '201':
+          description: Successfully added table.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlTable'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/styles:
+    get:
+      operationId: listDocumentStyles
+      summary: Microsoft Word List Document Styles
+      description: List all styles defined in the document.
+      tags:
+        - Styles
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved styles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlStyleCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/headers:
+    get:
+      operationId: listHeaders
+      summary: Microsoft Word List Headers
+      description: List all header parts in the document.
+      tags:
+        - Headers And Footers
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved headers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeaderFooterCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/footers:
+    get:
+      operationId: listFooters
+      summary: Microsoft Word List Footers
+      description: List all footer parts in the document.
+      tags:
+        - Headers And Footers
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved footers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeaderFooterCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/images:
+    get:
+      operationId: listImages
+      summary: Microsoft Word List Images
+      description: List all images embedded in the document.
+      tags:
+        - Images
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved images.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addImage
+      summary: Microsoft Word Add Image
+      description: Add an image to the document.
+      tags:
+        - Images
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Image file to add.
+                width:
+                  type: integer
+                  description: Width of the image in EMUs.
+                  example: 914400
+                height:
+                  type: integer
+                  description: Height of the image in EMUs.
+                  example: 685800
+      responses:
+        '201':
+          description: Successfully added image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/properties:
+    get:
+      operationId: getOpenXmlProperties
+      summary: Microsoft Word Get Open XML Properties
+      description: Get the core and extended document properties.
+      tags:
+        - Properties
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlDocumentProperties'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateOpenXmlProperties
+      summary: Microsoft Word Update Open XML Properties
+      description: Update the core and extended document properties.
+      tags:
+        - Properties
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenXmlDocumentPropertiesUpdate'
+      responses:
+        '200':
+          description: Successfully updated properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlDocumentProperties'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/convert:
+    post:
+      operationId: convertDocument
+      summary: Microsoft Word Convert Document
+      description: Convert the document to a different format (PDF, HTML, plain text).
+      tags:
+        - Documents
+      parameters:
+        - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertRequest'
+      responses:
+        '200':
+          description: Successfully converted the document.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+  responses:
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    WordDocument:
+      type: object
+      description: Represents a Word document processed by the Open XML SDK.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the document.
+          example: doc-openxml-a1b2c3
+        filename:
+          type: string
+          description: Original filename of the document.
+          example: quarterly-report.docx
+        paragraphCount:
+          type: integer
+          description: Number of paragraphs in the document.
+          example: 42
+        tableCount:
+          type: integer
+          description: Number of tables in the document.
+          example: 3
+        imageCount:
+          type: integer
+          description: Number of images in the document.
+          example: 5
+        sectionCount:
+          type: integer
+          description: Number of sections in the document.
+          example: 2
+        createdDate:
+          type: string
+          format: date-time
+          description: When the document was created.
+          example: '2025-01-15T10:00:00Z'
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the document was last modified.
+          example: '2025-03-15T14:30:00Z'
+    CreateDocumentRequest:
+      type: object
+      description: Request to create a new document.
+      properties:
+        filename:
+          type: string
+          description: Desired filename for the new document.
+          example: new-document.docx
+        title:
+          type: string
+          description: Document title property.
+          example: My New Document
+        author:
+          type: string
+          description: Document author property.
+          example: Jane Smith
+        initialContent:
+          type: string
+          description: Initial text content for the document body.
+          example: This is the initial content.
+    DocumentBody:
+      type: object
+      description: The main body content of a Word document.
+      properties:
+        elements:
+          type: array
+          description: Ordered list of body elements (paragraphs, tables).
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Type of element (Paragraph, Table).
+                example: Paragraph
+              index:
+                type: integer
+                description: Position index in the body.
+                example: 0
+    OpenXmlParagraph:
+      type: object
+      description: Represents a paragraph in the Open XML document.
+      properties:
+        index:
+          type: integer
+          description: Position index of the paragraph.
+          example: 0
+        text:
+          type: string
+          description: Plain text content of the paragraph.
+          example: This is a paragraph.
+        styleId:
+          type: string
+          description: Style ID applied to the paragraph.
+          example: Heading1
+        alignment:
+          type: string
+          description: Paragraph alignment (Left, Center, Right, Both).
+          example: Left
+        bold:
+          type: boolean
+          description: Whether the text is bold.
+          example: false
+        italic:
+          type: boolean
+          description: Whether the text is italic.
+          example: false
+        fontSize:
+          type: number
+          description: Font size in half-points.
+          example: 24.0
+    OpenXmlParagraphCollection:
+      type: object
+      description: Collection of paragraphs.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenXmlParagraph'
+        count:
+          type: integer
+          description: Total number of paragraphs.
+          example: 42
+    AddParagraphRequest:
+      type: object
+      description: Request to add a paragraph.
+      required:
+        - text
+      properties:
+        text:
+          type: string
+          description: Text content of the paragraph.
+          example: New paragraph content.
+        styleId:
+          type: string
+          description: Style ID to apply.
+          example: Normal
+        alignment:
+          type: string
+          description: Text alignment.
+          example: Left
+        bold:
+          type: boolean
+          description: Whether to bold the text.
+          example: false
+        italic:
+          type: boolean
+          description: Whether to italicize the text.
+          example: false
+        insertAfterIndex:
+          type: integer
+          description: Index after which to insert the paragraph.
+          example: 5
+    OpenXmlTable:
+      type: object
+      description: Represents a table in the Open XML document.
+      properties:
+        index:
+          type: integer
+          description: Position index of the table.
+          example: 0
+        rowCount:
+          type: integer
+          description: Number of rows in the table.
+          example: 5
+        columnCount:
+          type: integer
+          description: Number of columns in the table.
+          example: 3
+        rows:
+          type: array
+          description: Array of table rows with cell data.
+          items:
+            type: object
+            properties:
+              cells:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+                      description: Cell text content.
+                      example: Cell value
+    OpenXmlTableCollection:
+      type: object
+      description: Collection of tables.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenXmlTable'
+        count:
+          type: integer
+          description: Total number of tables.
+          example: 3
+    AddTableRequest:
+      type: object
+      description: Request to add a table.
+      required:
+        - rows
+        - columns
+      properties:
+        rows:
+          type: integer
+          description: Number of rows.
+          example: 3
+        columns:
+          type: integer
+          description: Number of columns.
+          example: 4
+        data:
+          type: array
+          description: 2D array of cell values.
+          items:
+            type: array
+            items:
+              type: string
+        styleId:
+          type: string
+          description: Table style ID.
+          example: TableGrid
+    OpenXmlStyleCollection:
+      type: object
+      description: Collection of document styles.
+      properties:
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              styleId:
+                type: string
+                description: Style identifier.
+                example: Heading1
+              name:
+                type: string
+                description: Display name of the style.
+                example: heading 1
+              type:
+                type: string
+                description: Style type (Paragraph, Character, Table).
+                example: Paragraph
+              basedOn:
+                type: string
+                description: Parent style this style inherits from.
+                example: Normal
+    HeaderFooterCollection:
+      type: object
+      description: Collection of header or footer parts.
+      properties:
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Header/footer type (Default, First, Even).
+                example: Default
+              content:
+                type: string
+                description: Text content.
+                example: Company Confidential
+    ImageInfo:
+      type: object
+      description: Information about an embedded image.
+      properties:
+        relationshipId:
+          type: string
+          description: Relationship ID of the image part.
+          example: rId4
+        contentType:
+          type: string
+          description: MIME type of the image.
+          example: image/png
+        width:
+          type: integer
+          description: Width in EMUs.
+          example: 914400
+        height:
+          type: integer
+          description: Height in EMUs.
+          example: 685800
+    ImageCollection:
+      type: object
+      description: Collection of embedded images.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageInfo'
+        count:
+          type: integer
+          description: Total number of images.
+          example: 5
+    OpenXmlDocumentProperties:
+      type: object
+      description: Core and extended document properties.
+      properties:
+        title:
+          type: string
+          description: Document title.
+          example: Quarterly Report Q4 2025
+        subject:
+          type: string
+          description: Document subject.
+          example: Financial Reports
+        creator:
+          type: string
+          description: Document creator/author.
+          example: Jane Smith
+        description:
+          type: string
+          description: Document description.
+          example: Q4 2025 financial summary
+        keywords:
+          type: string
+          description: Document keywords.
+          example: financial, quarterly, 2025
+        category:
+          type: string
+          description: Document category.
+          example: Reports
+        created:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+          example: '2025-01-15T10:00:00Z'
+        modified:
+          type: string
+          format: date-time
+          description: Last modified timestamp.
+          example: '2025-03-15T14:30:00Z'
+        revision:
+          type: string
+          description: Revision number.
+          example: '12'
+        application:
+          type: string
+          description: Application that created the document.
+          example: Microsoft Office Word
+        totalTime:
+          type: integer
+          description: Total editing time in minutes.
+          example: 120
+        pages:
+          type: integer
+          description: Number of pages.
+          example: 15
+        words:
+          type: integer
+          description: Number of words.
+          example: 5432
+        characters:
+          type: integer
+          description: Number of characters.
+          example: 28765
+    OpenXmlDocumentPropertiesUpdate:
+      type: object
+      description: Properties to update.
+      properties:
+        title:
+          type: string
+          example: Updated Report Title
+        subject:
+          type: string
+          example: Updated Subject
+        creator:
+          type: string
+          example: Jane Smith
+        keywords:
+          type: string
+          example: updated, keywords
+        category:
+          type: string
+          example: Updated Category
+    ConvertRequest:
+      type: object
+      description: Request to convert a document to another format.
+      required:
+        - targetFormat
+      properties:
+        targetFormat:
+          type: string
+          description: Target format (pdf, html, txt, rtf).
+          example: pdf
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.

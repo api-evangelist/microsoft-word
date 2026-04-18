@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-structure/javascript-api-comment-structure.json",
+  "name": "Comment",
+  "description": "Represents a comment in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique identifier of the comment." },
+    "authorName": { "type": "string", "description": "Name of the comment author." },
+    "authorEmail": { "type": "string", "description": "Email of the comment author." },
+    "content": { "type": "string", "description": "Text content of the comment." },
+    "createdDate": { "type": "datetime", "description": "When the comment was created." },
+    "resolved": { "type": "boolean", "description": "Whether the comment has been resolved." }
+  }
+}

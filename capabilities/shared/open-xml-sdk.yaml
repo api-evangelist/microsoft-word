@@ -1,0 +1,260 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Microsoft Word Open XML SDK"
+  description: "Open XML SDK for server-side Word document creation, manipulation, and conversion without Microsoft Office installation."
+  tags:
+    - OpenXML
+    - Dotnet
+    - Documents
+    - Server-Side
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      OPENXML_API_KEY: OPENXML_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: open-xml-sdk
+      baseUri: https://localhost:5000/api/v1
+      description: "Open XML SDK processing service for Word documents."
+      authentication:
+        type: apikey
+        key: X-API-Key
+        value: "{{OPENXML_API_KEY}}"
+        placement: header
+      resources:
+        - name: documents
+          path: /documents
+          description: "Document creation and management operations."
+          operations:
+            - name: create-document
+              method: POST
+              description: "Create a new Word document."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  filename: "{{tools.filename}}"
+                  title: "{{tools.title}}"
+            - name: get-document
+              method: GET
+              description: "Get document metadata."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-document
+              method: DELETE
+              description: "Delete a document."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: convert-document
+              method: POST
+              description: "Convert document to another format."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  targetFormat: "{{tools.targetFormat}}"
+        - name: paragraphs
+          path: /documents
+          description: "Paragraph operations."
+          operations:
+            - name: list-paragraphs
+              method: GET
+              description: "List all paragraphs."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: add-paragraph
+              method: POST
+              description: "Add a paragraph."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  text: "{{tools.text}}"
+                  styleId: "{{tools.styleId}}"
+        - name: tables
+          path: /documents
+          description: "Table operations."
+          operations:
+            - name: list-tables
+              method: GET
+              description: "List all tables."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: add-table
+              method: POST
+              description: "Add a table."
+              inputParameters:
+                - name: document-id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Document identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  rows: "{{tools.rows}}"
+                  columns: "{{tools.columns}}"
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: openxml-word-api
+      resources:
+        - path: /v1/documents/{document-id}
+          name: documents
+          description: "Document operations."
+          operations:
+            - method: GET
+              name: get-document
+              description: "Get document metadata."
+              call: "open-xml-sdk.get-document"
+              with:
+                document-id: "rest.document-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: openxml-word-mcp
+      transport: http
+      tools:
+        - name: create-document
+          description: "Create a new Word document using Open XML."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.create-document"
+          with:
+            filename: "tools.filename"
+            title: "tools.title"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-document
+          description: "Get Word document metadata."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "open-xml-sdk.get-document"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: convert-document
+          description: "Convert a Word document to PDF or other format."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.convert-document"
+          with:
+            document-id: "tools.document-id"
+            targetFormat: "tools.targetFormat"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-paragraphs
+          description: "List paragraphs in a document."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "open-xml-sdk.list-paragraphs"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-paragraph
+          description: "Add a paragraph to a document."
+          hints:
+            readOnly: false
+          call: "open-xml-sdk.add-paragraph"
+          with:
+            document-id: "tools.document-id"
+            text: "tools.text"
+            styleId: "tools.styleId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-document
+          description: "Delete a Word document."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "open-xml-sdk.delete-document"
+          with:
+            document-id: "tools.document-id"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-structure/javascript-api-paragraph-structure.json",
+  "name": "Paragraph",
+  "description": "Represents a single paragraph in a Word document.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique identifier of the paragraph." },
+    "text": { "type": "string", "description": "Plain text content of the paragraph." },
+    "style": { "type": "string", "description": "Style name applied to the paragraph." },
+    "alignment": { "type": "string", "description": "Text alignment.", "enum": ["Left", "Centered", "Right", "Justified"] },
+    "firstLineIndent": { "type": "double", "description": "First line indent value in points." },
+    "lineSpacing": { "type": "double", "description": "Line spacing in points." },
+    "outlineLevel": { "type": "int32", "description": "Outline level of the paragraph.", "minimum": 1, "maximum": 9 },
+    "isListItem": { "type": "boolean", "description": "Whether the paragraph is part of a list." }
+  }
+}

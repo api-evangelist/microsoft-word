@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-structure/open-xml-sdk-document-properties-structure.json",
+  "name": "OpenXmlDocumentProperties",
+  "description": "Core and extended document properties for an Open XML Word document.",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string", "description": "Document title." },
+    "subject": { "type": "string", "description": "Document subject." },
+    "creator": { "type": "string", "description": "Document creator/author." },
+    "description": { "type": "string", "description": "Document description." },
+    "keywords": { "type": "string", "description": "Document keywords." },
+    "category": { "type": "string", "description": "Document category." },
+    "created": { "type": "datetime", "description": "Creation timestamp." },
+    "modified": { "type": "datetime", "description": "Last modified timestamp." },
+    "revision": { "type": "string", "description": "Revision number." },
+    "application": { "type": "string", "description": "Application that created the document." },
+    "totalTime": { "type": "int32", "description": "Total editing time in minutes." },
+    "pages": { "type": "int32", "description": "Number of pages." },
+    "words": { "type": "int32", "description": "Number of words." },
+    "characters": { "type": "int32", "description": "Number of characters." }
+  }
+}

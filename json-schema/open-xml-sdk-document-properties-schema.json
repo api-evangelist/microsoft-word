@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/json-schema/open-xml-sdk-document-properties-schema.json",
+  "title": "OpenXmlDocumentProperties",
+  "description": "Core and extended document properties for an Open XML Word document.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Document title."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Document subject."
+    },
+    "creator": {
+      "type": "string",
+      "description": "Document creator/author."
+    },
+    "description": {
+      "type": "string",
+      "description": "Document description."
+    },
+    "keywords": {
+      "type": "string",
+      "description": "Document keywords."
+    },
+    "category": {
+      "type": "string",
+      "description": "Document category."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp."
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modified timestamp."
+    },
+    "revision": {
+      "type": "string",
+      "description": "Revision number."
+    },
+    "application": {
+      "type": "string",
+      "description": "Application that created the document."
+    },
+    "totalTime": {
+      "type": "integer",
+      "description": "Total editing time in minutes."
+    },
+    "pages": {
+      "type": "integer",
+      "description": "Number of pages."
+    },
+    "words": {
+      "type": "integer",
+      "description": "Number of words."
+    },
+    "characters": {
+      "type": "integer",
+      "description": "Number of characters."
+    }
+  }
+}
