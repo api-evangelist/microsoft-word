@@ -4,161 +4,216 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Word
 providerId: microsoft-word
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Documents
-  - Microsoft 365
-  - Office
   - Productivity
-  - Word Processing
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Documents
+  - Office
+  - Microsoft
+description: Microsoft Word is sold as a component of Microsoft 365 subscriptions rather than as a
+  standalone metered API. A free web tier is available; consumer plans (Personal $99.99/year, Family
+  $129.99/year, Premium $199.99/year) and commercial plans (Apps for Business $8.25, Business Standard
+  $12.50, Business Premium $22.00 per user/month with annual billing) bundle the desktop Word app and
+  1 TB OneDrive. The Word JavaScript API (Office Add-ins) and Microsoft Graph Word endpoints have no
+  separate per-call pricing — they ride on the user's M365 entitlement.
+sources:
+  - https://www.microsoft.com/en-us/microsoft-365/word
 plans:
-  - id: microsoft-word-free
-    name: Free
+  - id: microsoft-word-free-web
+    name: Microsoft Word (Free Web)
     type: freemium
-    description: Free entry tier for the Microsoft Word API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free web-based Word with basic editing and 5 GB OneDrive storage.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Microsoft Graph Word API
-      - name: Office JavaScript API for Word
-      - name: Word Automation Services (SharePoint)
-      - name: Open XML SDK for Word
-  - id: microsoft-word-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft Word. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Per-user
+        name: free_user
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Microsoft Graph Word API
-      - name: Office JavaScript API for Word
-      - name: Word Automation Services (SharePoint)
-      - name: Open XML SDK for Word
-  - id: microsoft-word-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Microsoft Word. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+        unit: 1
+        price: '0.00'
+        userMultiplied: true
+      - label: OneDrive storage
+        name: storage_free
         type: quota
-        metric: requests
+        metric: GB
+        limit: 5
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+    elements:
+      - name: Web-based editing
+      - name: Real-time collaboration
+      - name: Basic spelling and grammar
+  - id: microsoft-word-365-personal
+    name: Microsoft 365 Personal
+    type: subscription
+    description: Single-user consumer plan; desktop apps + 1 TB OneDrive + Copilot.
+    entries:
+      - label: Annual
+        name: personal_annual
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '99.99'
+        userMultiplied: true
+      - label: Monthly
+        name: personal_monthly
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+        geo: global
         unit: 1
-        price: custom
+        price: '9.99'
+        userMultiplied: true
+    elements:
+      - name: Desktop Word, Excel, PowerPoint
+      - name: 1 TB OneDrive
+      - name: Copilot access
+  - id: microsoft-word-365-family
+    name: Microsoft 365 Family
+    type: subscription
+    description: Up to 6 users; 6 TB total OneDrive (1 TB per person).
+    entries:
+      - label: Annual
+        name: family_annual
+        type: subscription
+        metric: seat
+        limit: 6
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '129.99'
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+      - label: Monthly
+        name: family_monthly
+        type: subscription
+        metric: seat
+        limit: 6
+        timeFrame: month
+        geo: global
         unit: 1
-        price: custom
+        price: '12.99'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Microsoft Graph Word API
-      - name: Office JavaScript API for Word
-      - name: Word Automation Services (SharePoint)
-      - name: Open XML SDK for Word
+      - name: 1-6 people
+      - name: 6 TB total storage
+      - name: Desktop apps
+  - id: microsoft-word-365-premium
+    name: Microsoft 365 Premium
+    type: subscription
+    description: Premium consumer plan with extensive Copilot usage.
+    entries:
+      - label: Annual
+        name: premium_annual
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '199.99'
+        userMultiplied: true
+      - label: Monthly
+        name: premium_monthly
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '19.99'
+        userMultiplied: true
+    elements:
+      - name: Extensive Copilot usage
+      - name: Premium features
+  - id: microsoft-word-365-apps-business
+    name: Microsoft 365 Apps for Business
+    type: subscription
+    description: Per-user commercial plan; desktop Office apps without Teams / Exchange.
+    entries:
+      - label: Per-user license (annual commit)
+        name: apps_business
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '8.25'
+        userMultiplied: true
+    elements:
+      - name: Desktop Word, Excel, PowerPoint, Outlook
+      - name: 1 TB OneDrive
+      - name: Up to 300 users
+  - id: microsoft-word-365-business-standard
+    name: Microsoft 365 Business Standard
+    type: subscription
+    description: Per-user commercial plan with Teams included.
+    entries:
+      - label: Per-user license (annual commit, with Teams)
+        name: business_standard
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '12.50'
+        userMultiplied: true
+      - label: Per-user license (annual commit, no Teams)
+        name: business_standard_no_teams
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '9.29'
+        userMultiplied: true
+    elements:
+      - name: Microsoft 365 desktop apps
+      - name: Teams (optional)
+      - name: Custom business email
+      - name: Up to 300 users
+  - id: microsoft-word-365-business-premium
+    name: Microsoft 365 Business Premium
+    type: subscription
+    description: Per-user commercial plan with advanced security and device management.
+    entries:
+      - label: Per-user license (annual commit, with Teams)
+        name: business_premium
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '22.00'
+        userMultiplied: true
+      - label: Per-user license (annual commit, no Teams)
+        name: business_premium_no_teams
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '18.79'
+        userMultiplied: true
+    elements:
+      - name: Advanced security
+      - name: Intune device management
+      - name: Microsoft Defender for Business
+      - name: Up to 300 users
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

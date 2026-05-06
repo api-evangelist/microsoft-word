@@ -4,101 +4,59 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Word
 providerId: microsoft-word
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Documents
-  - Microsoft 365
-  - Office
-  - Productivity
-  - Word Processing
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft Word API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+  - Productivity
+  - Documents
+  - Microsoft
+description: Microsoft Word programmatic surfaces — the Word JavaScript API (Office.js Add-ins) executing
+  in-app, and the Microsoft Graph Word / OneDrive endpoints — inherit Microsoft Graph's per-tenant /
+  per-app throttling. Graph throttling is dynamic (based on resource consumption) rather than a single
+  published per-second number; OneDrive enforces a documented per-user-per-app limit. 429 responses
+  carry Retry-After.
+sources:
+  - https://learn.microsoft.com/en-us/graph/throttling
+  - https://learn.microsoft.com/en-us/graph/throttling-limits
+  - https://learn.microsoft.com/en-us/office/dev/add-ins/develop/application-specific-api-model
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  ratelimitLimit: RateLimit-Limit
+  ratelimitRemaining: RateLimit-Remaining
+  ratelimitReset: RateLimit-Reset
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Microsoft Graph Word API
-      - Office JavaScript API for Word
-      - Word Automation Services (SharePoint)
-      - Open XML SDK for Word
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Microsoft Graph Word API
-      - Office JavaScript API for Word
-      - Word Automation Services (SharePoint)
-      - Open XML SDK for Word
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Microsoft Graph Word API
-      - Office JavaScript API for Word
-      - Word Automation Services (SharePoint)
-      - Open XML SDK for Word
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Microsoft Graph Word API
-      - Office JavaScript API for Word
-      - Word Automation Services (SharePoint)
-      - Open XML SDK for Word
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Microsoft Graph Word API
-      - Office JavaScript API for Word
-      - Word Automation Services (SharePoint)
-      - Open XML SDK for Word
+  - name: Microsoft Graph (per-app, per-tenant)
+    scope: account
+    metric: varies
+    limit: 'Dynamic; see Microsoft Graph throttling-limits page for service-specific numbers'
+  - name: OneDrive / SharePoint (per-app, per-user)
+    scope: account
+    metric: varies
+    limit: '~1,200 / 5,000 requests per minute, varies by endpoint and license tier'
+  - name: Word JavaScript API (Office.js Add-ins)
+    scope: device
+    metric: varies
+    limit: 'In-process; bound by host application performance, not metered as a network API'
+  - name: Word document protocols (WOPI / IRM)
+    scope: account
+    metric: varies
+    limit: 'Subject to OneDrive / SharePoint throttling for the underlying documents'
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Honor Retry-After
+    description: Microsoft Graph and OneDrive return 429 / 503 with Retry-After. Pause for that many
+      seconds, then retry with exponential backoff and jitter.
+  - name: Decorate user-agent
+    description: Use a meaningful User-Agent / x-anchorMailbox header per Graph guidance to reduce
+      throttling impact.
+  - name: Use ChangeNotifications, not polling
+    description: Subscribe to OneDrive change notifications instead of polling /drive/root/delta to
+      avoid hitting per-minute caps.
+  - name: Batch with $batch
+    description: Use Microsoft Graph $batch endpoints (up to 20 requests) to reduce per-call overhead.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
