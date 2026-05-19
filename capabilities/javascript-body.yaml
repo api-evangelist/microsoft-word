@@ -1,0 +1,196 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word JavaScript API — Body
+  description: 'Microsoft Word JavaScript API — Body. 4 operations. Lead operation: Microsoft Word Get Body. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Body
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: javascript-body
+    baseUri: https://word.officeapps.live.com/api/v1
+    description: Microsoft Word JavaScript API — Body business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-body
+      path: /documents/{document-id}/body
+      operations:
+      - name: getbody
+        method: GET
+        description: Microsoft Word Get Body
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents-document-id-body-insertHtml
+      path: /documents/{document-id}/body/insertHtml
+      operations:
+      - name: inserthtml
+        method: POST
+        description: Microsoft Word Insert HTML
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: documents-document-id-body-insertText
+      path: /documents/{document-id}/body/insertText
+      operations:
+      - name: inserttext
+        method: POST
+        description: Microsoft Word Insert Text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: documents-document-id-body-search
+      path: /documents/{document-id}/body/search
+      operations:
+      - name: searchdocument
+        method: POST
+        description: Microsoft Word Search Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: javascript-body-rest
+    port: 8080
+    description: REST adapter for Microsoft Word JavaScript API — Body. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/body
+      name: documents-document-id-body
+      description: REST surface for documents-document-id-body.
+      operations:
+      - method: GET
+        name: getbody
+        description: Microsoft Word Get Body
+        call: javascript-body.getbody
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}/body/inserthtml
+      name: documents-document-id-body-inserthtml
+      description: REST surface for documents-document-id-body-insertHtml.
+      operations:
+      - method: POST
+        name: inserthtml
+        description: Microsoft Word Insert HTML
+        call: javascript-body.inserthtml
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}/body/inserttext
+      name: documents-document-id-body-inserttext
+      description: REST surface for documents-document-id-body-insertText.
+      operations:
+      - method: POST
+        name: inserttext
+        description: Microsoft Word Insert Text
+        call: javascript-body.inserttext
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}/body/search
+      name: documents-document-id-body-search
+      description: REST surface for documents-document-id-body-search.
+      operations:
+      - method: POST
+        name: searchdocument
+        description: Microsoft Word Search Document
+        call: javascript-body.searchdocument
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: javascript-body-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word JavaScript API — Body. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-get-body
+      description: Microsoft Word Get Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: javascript-body.getbody
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-insert-html
+      description: Microsoft Word Insert HTML
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: javascript-body.inserthtml
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-insert-text
+      description: Microsoft Word Insert Text
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: javascript-body.inserttext
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-search-document
+      description: Microsoft Word Search Document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: javascript-body.searchdocument
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

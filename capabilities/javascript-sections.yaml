@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word JavaScript API — Sections
+  description: 'Microsoft Word JavaScript API — Sections. 1 operations. Lead operation: Microsoft Word List Sections. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Sections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: javascript-sections
+    baseUri: https://word.officeapps.live.com/api/v1
+    description: Microsoft Word JavaScript API — Sections business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-sections
+      path: /documents/{document-id}/sections
+      operations:
+      - name: listsections
+        method: GET
+        description: Microsoft Word List Sections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: javascript-sections-rest
+    port: 8080
+    description: REST adapter for Microsoft Word JavaScript API — Sections. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/sections
+      name: documents-document-id-sections
+      description: REST surface for documents-document-id-sections.
+      operations:
+      - method: GET
+        name: listsections
+        description: Microsoft Word List Sections
+        call: javascript-sections.listsections
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: javascript-sections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word JavaScript API — Sections. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-word-list-sections
+      description: Microsoft Word List Sections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: javascript-sections.listsections
+      outputParameters:
+      - type: object
+        mapping: $.

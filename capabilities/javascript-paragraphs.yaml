@@ -1,0 +1,127 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word JavaScript API — Paragraphs
+  description: 'Microsoft Word JavaScript API — Paragraphs. 3 operations. Lead operation: Microsoft Word List Paragraphs.
+    Self-contained Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Paragraphs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: javascript-paragraphs
+    baseUri: https://word.officeapps.live.com/api/v1
+    description: Microsoft Word JavaScript API — Paragraphs business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-paragraphs
+      path: /documents/{document-id}/paragraphs
+      operations:
+      - name: listparagraphs
+        method: GET
+        description: Microsoft Word List Paragraphs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents-document-id-paragraphs-paragraph-id
+      path: /documents/{document-id}/paragraphs/{paragraph-id}
+      operations:
+      - name: getparagraph
+        method: GET
+        description: Microsoft Word Get Paragraph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteparagraph
+        method: DELETE
+        description: Microsoft Word Delete Paragraph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: javascript-paragraphs-rest
+    port: 8080
+    description: REST adapter for Microsoft Word JavaScript API — Paragraphs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/paragraphs
+      name: documents-document-id-paragraphs
+      description: REST surface for documents-document-id-paragraphs.
+      operations:
+      - method: GET
+        name: listparagraphs
+        description: Microsoft Word List Paragraphs
+        call: javascript-paragraphs.listparagraphs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}/paragraphs/{paragraph-id}
+      name: documents-document-id-paragraphs-paragraph-id
+      description: REST surface for documents-document-id-paragraphs-paragraph-id.
+      operations:
+      - method: GET
+        name: getparagraph
+        description: Microsoft Word Get Paragraph
+        call: javascript-paragraphs.getparagraph
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteparagraph
+        description: Microsoft Word Delete Paragraph
+        call: javascript-paragraphs.deleteparagraph
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: javascript-paragraphs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word JavaScript API — Paragraphs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-word-list-paragraphs
+      description: Microsoft Word List Paragraphs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: javascript-paragraphs.listparagraphs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-get-paragraph
+      description: Microsoft Word Get Paragraph
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: javascript-paragraphs.getparagraph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-delete-paragraph
+      description: Microsoft Word Delete Paragraph
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: javascript-paragraphs.deleteparagraph
+      outputParameters:
+      - type: object
+        mapping: $.

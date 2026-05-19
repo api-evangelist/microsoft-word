@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word Open XML SDK — Images
+  description: 'Microsoft Word Open XML SDK — Images. 2 operations. Lead operation: Microsoft Word List Images. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Images
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: open-xml-sdk-images
+    baseUri: https://localhost:5000/api/v1
+    description: Microsoft Word Open XML SDK — Images business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-images
+      path: /documents/{document-id}/images
+      operations:
+      - name: listimages
+        method: GET
+        description: Microsoft Word List Images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addimage
+        method: POST
+        description: Microsoft Word Add Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: open-xml-sdk-images-rest
+    port: 8080
+    description: REST adapter for Microsoft Word Open XML SDK — Images. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/images
+      name: documents-document-id-images
+      description: REST surface for documents-document-id-images.
+      operations:
+      - method: GET
+        name: listimages
+        description: Microsoft Word List Images
+        call: open-xml-sdk-images.listimages
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addimage
+        description: Microsoft Word Add Image
+        call: open-xml-sdk-images.addimage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: open-xml-sdk-images-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word Open XML SDK — Images. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-list-images
+      description: Microsoft Word List Images
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: open-xml-sdk-images.listimages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-add-image
+      description: Microsoft Word Add Image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: open-xml-sdk-images.addimage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

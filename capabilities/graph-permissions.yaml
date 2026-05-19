@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Graph Word API — Permissions
+  description: 'Microsoft Graph Word API — Permissions. 3 operations. Lead operation: Microsoft Word Create Sharing Link.
+    Self-contained Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Permissions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-permissions
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph Word API — Permissions business capability. Self-contained, no shared references.
+    resources:
+    - name: me-drive-items-item-id-createLink
+      path: /me/drive/items/{item-id}/createLink
+      operations:
+      - name: createsharinglink
+        method: POST
+        description: Microsoft Word Create Sharing Link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-drive-items-item-id-invite
+      path: /me/drive/items/{item-id}/invite
+      operations:
+      - name: addpermissions
+        method: POST
+        description: Microsoft Word Add Permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-drive-items-item-id-permissions
+      path: /me/drive/items/{item-id}/permissions
+      operations:
+      - name: listpermissions
+        method: GET
+        description: Microsoft Word List Permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-permissions-rest
+    port: 8080
+    description: REST adapter for Microsoft Graph Word API — Permissions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/me/drive/items/{item-id}/createlink
+      name: me-drive-items-item-id-createlink
+      description: REST surface for me-drive-items-item-id-createLink.
+      operations:
+      - method: POST
+        name: createsharinglink
+        description: Microsoft Word Create Sharing Link
+        call: graph-permissions.createsharinglink
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/drive/items/{item-id}/invite
+      name: me-drive-items-item-id-invite
+      description: REST surface for me-drive-items-item-id-invite.
+      operations:
+      - method: POST
+        name: addpermissions
+        description: Microsoft Word Add Permissions
+        call: graph-permissions.addpermissions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/drive/items/{item-id}/permissions
+      name: me-drive-items-item-id-permissions
+      description: REST surface for me-drive-items-item-id-permissions.
+      operations:
+      - method: GET
+        name: listpermissions
+        description: Microsoft Word List Permissions
+        call: graph-permissions.listpermissions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-permissions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Graph Word API — Permissions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-create-sharing-link
+      description: Microsoft Word Create Sharing Link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-permissions.createsharinglink
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-add-permissions
+      description: Microsoft Word Add Permissions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-permissions.addpermissions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-list-permissions
+      description: Microsoft Word List Permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-permissions.listpermissions
+      outputParameters:
+      - type: object
+        mapping: $.

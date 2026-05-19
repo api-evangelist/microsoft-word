@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word Open XML SDK — Body
+  description: 'Microsoft Word Open XML SDK — Body. 1 operations. Lead operation: Microsoft Word Get Document Body. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Body
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: open-xml-sdk-body
+    baseUri: https://localhost:5000/api/v1
+    description: Microsoft Word Open XML SDK — Body business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-body
+      path: /documents/{document-id}/body
+      operations:
+      - name: getdocumentbody
+        method: GET
+        description: Microsoft Word Get Document Body
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: open-xml-sdk-body-rest
+    port: 8080
+    description: REST adapter for Microsoft Word Open XML SDK — Body. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/body
+      name: documents-document-id-body
+      description: REST surface for documents-document-id-body.
+      operations:
+      - method: GET
+        name: getdocumentbody
+        description: Microsoft Word Get Document Body
+        call: open-xml-sdk-body.getdocumentbody
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: open-xml-sdk-body-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word Open XML SDK — Body. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-get-document-body
+      description: Microsoft Word Get Document Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: open-xml-sdk-body.getdocumentbody
+      outputParameters:
+      - type: object
+        mapping: $.

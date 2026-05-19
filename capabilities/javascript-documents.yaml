@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word JavaScript API — Documents
+  description: 'Microsoft Word JavaScript API — Documents. 3 operations. Lead operation: Microsoft Word Create Document. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Documents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: javascript-documents
+    baseUri: https://word.officeapps.live.com/api/v1
+    description: Microsoft Word JavaScript API — Documents business capability. Self-contained, no shared references.
+    resources:
+    - name: documents
+      path: /documents
+      operations:
+      - name: createdocument
+        method: POST
+        description: Microsoft Word Create Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: documents-document-id
+      path: /documents/{document-id}
+      operations:
+      - name: getdocument
+        method: GET
+        description: Microsoft Word Get Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents-document-id-save
+      path: /documents/{document-id}/save
+      operations:
+      - name: savedocument
+        method: POST
+        description: Microsoft Word Save Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: javascript-documents-rest
+    port: 8080
+    description: REST adapter for Microsoft Word JavaScript API — Documents. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/documents
+      name: documents
+      description: REST surface for documents.
+      operations:
+      - method: POST
+        name: createdocument
+        description: Microsoft Word Create Document
+        call: javascript-documents.createdocument
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}
+      name: documents-document-id
+      description: REST surface for documents-document-id.
+      operations:
+      - method: GET
+        name: getdocument
+        description: Microsoft Word Get Document
+        call: javascript-documents.getdocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/documents/{document-id}/save
+      name: documents-document-id-save
+      description: REST surface for documents-document-id-save.
+      operations:
+      - method: POST
+        name: savedocument
+        description: Microsoft Word Save Document
+        call: javascript-documents.savedocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: javascript-documents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word JavaScript API — Documents. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-word-create-document
+      description: Microsoft Word Create Document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: javascript-documents.createdocument
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-get-document
+      description: Microsoft Word Get Document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: javascript-documents.getdocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-save-document
+      description: Microsoft Word Save Document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: javascript-documents.savedocument
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Word Open XML SDK — Tables
+  description: 'Microsoft Word Open XML SDK — Tables. 2 operations. Lead operation: Microsoft Word List Document Tables. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Tables
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: open-xml-sdk-tables
+    baseUri: https://localhost:5000/api/v1
+    description: Microsoft Word Open XML SDK — Tables business capability. Self-contained, no shared references.
+    resources:
+    - name: documents-document-id-tables
+      path: /documents/{document-id}/tables
+      operations:
+      - name: listdocumenttables
+        method: GET
+        description: Microsoft Word List Document Tables
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addtable
+        method: POST
+        description: Microsoft Word Add Table
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: open-xml-sdk-tables-rest
+    port: 8080
+    description: REST adapter for Microsoft Word Open XML SDK — Tables. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/documents/{document-id}/tables
+      name: documents-document-id-tables
+      description: REST surface for documents-document-id-tables.
+      operations:
+      - method: GET
+        name: listdocumenttables
+        description: Microsoft Word List Document Tables
+        call: open-xml-sdk-tables.listdocumenttables
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addtable
+        description: Microsoft Word Add Table
+        call: open-xml-sdk-tables.addtable
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: open-xml-sdk-tables-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Word Open XML SDK — Tables. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-list-document-tables
+      description: Microsoft Word List Document Tables
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: open-xml-sdk-tables.listdocumenttables
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-word-add-table
+      description: Microsoft Word Add Table
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: open-xml-sdk-tables.addtable
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

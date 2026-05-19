@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Graph Word API — Thumbnails
+  description: 'Microsoft Graph Word API — Thumbnails. 1 operations. Lead operation: Microsoft Word List Thumbnails. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Thumbnails
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-thumbnails
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph Word API — Thumbnails business capability. Self-contained, no shared references.
+    resources:
+    - name: me-drive-items-item-id-thumbnails
+      path: /me/drive/items/{item-id}/thumbnails
+      operations:
+      - name: listthumbnails
+        method: GET
+        description: Microsoft Word List Thumbnails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-thumbnails-rest
+    port: 8080
+    description: REST adapter for Microsoft Graph Word API — Thumbnails. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/me/drive/items/{item-id}/thumbnails
+      name: me-drive-items-item-id-thumbnails
+      description: REST surface for me-drive-items-item-id-thumbnails.
+      operations:
+      - method: GET
+        name: listthumbnails
+        description: Microsoft Word List Thumbnails
+        call: graph-thumbnails.listthumbnails
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-thumbnails-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Graph Word API — Thumbnails. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-list-thumbnails
+      description: Microsoft Word List Thumbnails
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-thumbnails.listthumbnails
+      outputParameters:
+      - type: object
+        mapping: $.

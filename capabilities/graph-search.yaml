@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Graph Word API — Search
+  description: 'Microsoft Graph Word API — Search. 1 operations. Lead operation: Microsoft Word Search Drive Items. Self-contained
+    Naftiko capability covering one Microsoft Word business surface.'
+  tags:
+  - Microsoft Word
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WORD_API_KEY: MICROSOFT_WORD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-search
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph Word API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: me-drive-root-search(q='{search-text}')
+      path: /me/drive/root/search(q='{search-text}')
+      operations:
+      - name: searchdriveitems
+        method: GET
+        description: Microsoft Word Search Drive Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search-text
+          in: path
+          type: string
+          description: The search query text.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_WORD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-search-rest
+    port: 8080
+    description: REST adapter for Microsoft Graph Word API — Search. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/me/drive/root/search-q-search-text
+      name: me-drive-root-search-q-search-text
+      description: REST surface for me-drive-root-search(q='{search-text}').
+      operations:
+      - method: GET
+        name: searchdriveitems
+        description: Microsoft Word Search Drive Items
+        call: graph-search.searchdriveitems
+        with:
+          search-text: rest.search-text
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Graph Word API — Search. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: microsoft-word-search-drive-items
+      description: Microsoft Word Search Drive Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-search.searchdriveitems
+      with:
+        search-text: tools.search-text
+      outputParameters:
+      - type: object
+        mapping: $.
