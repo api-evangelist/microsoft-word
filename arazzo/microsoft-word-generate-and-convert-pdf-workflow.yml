@@ -1,0 +1,130 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Generate Document and Convert to PDF
+  summary: Create a Word document with the Open XML SDK, add a paragraph and a table, then convert it to PDF.
+  description: >-
+    Generating a Word document from scratch and rendering it to PDF using the
+    Open XML SDK processing service. The workflow creates a new .docx with an
+    initial title and author, adds a body paragraph, adds a data table, and then
+    converts the finished document to the requested target format. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openXmlSdk
+  url: ../openapi/microsoft-word-open-xml-sdk.yaml
+  type: openapi
+workflows:
+- workflowId: generate-and-convert
+  summary: Create a document, add a paragraph and table, and convert to PDF.
+  description: >-
+    Creates an Open XML document, adds a paragraph and a table to its body, then
+    converts the document to the requested target format.
+  inputs:
+    type: object
+    required:
+    - filename
+    - paragraphText
+    - tableRows
+    - tableColumns
+    properties:
+      filename:
+        type: string
+        description: The desired filename for the new document.
+      title:
+        type: string
+        description: The document title property.
+        default: Generated Document
+      author:
+        type: string
+        description: The document author property.
+        default: Open XML SDK
+      paragraphText:
+        type: string
+        description: The text content of the paragraph to add.
+      tableRows:
+        type: integer
+        description: The number of rows for the table to add.
+      tableColumns:
+        type: integer
+        description: The number of columns for the table to add.
+      targetFormat:
+        type: string
+        description: The conversion target format (pdf, html, txt, rtf).
+        default: pdf
+  steps:
+  - stepId: createDocument
+    description: >-
+      Create a new Open XML Word document with the supplied filename, title, and
+      author. The service returns 201 with the new document.
+    operationId: createWordDocument
+    requestBody:
+      contentType: application/json
+      payload:
+        filename: $inputs.filename
+        title: $inputs.title
+        author: $inputs.author
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      documentId: $response.body#/id
+  - stepId: addParagraph
+    description: >-
+      Add a paragraph to the document body. The service returns 201 with the
+      created paragraph.
+    operationId: addParagraph
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.createDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        text: $inputs.paragraphText
+        styleId: Normal
+        alignment: Left
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      paragraphIndex: $response.body#/index
+  - stepId: addTable
+    description: >-
+      Add a table with the requested rows and columns to the document. The
+      service returns 201 with the created table.
+    operationId: addTable
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.createDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        rows: $inputs.tableRows
+        columns: $inputs.tableColumns
+        styleId: TableGrid
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      tableIndex: $response.body#/index
+      tableRowCount: $response.body#/rowCount
+  - stepId: convertDocument
+    description: >-
+      Convert the finished document to the requested target format. The service
+      returns 200 with the converted binary content.
+    operationId: convertDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.createDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        targetFormat: $inputs.targetFormat
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $statusCode
+  outputs:
+    documentId: $steps.createDocument.outputs.documentId
+    tableIndex: $steps.addTable.outputs.tableIndex
+    convertStatus: $steps.convertDocument.outputs.status

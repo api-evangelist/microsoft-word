@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Search Body and Tag Document
+  summary: Search a document body for text, update the document properties, and save it.
+  description: >-
+    Locating a phrase inside a Word document and updating its metadata through
+    the Office Word JavaScript API. The workflow searches the document body for
+    matching text, updates the document properties such as title and keywords,
+    and then saves the document so the metadata change persists. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordJsApi
+  url: ../openapi/microsoft-word-javascript-api.yaml
+  type: openapi
+workflows:
+- workflowId: search-and-tag
+  summary: Search a document, update its properties, and save.
+  description: >-
+    Searches the document body for text, updates document properties such as
+    title and keywords, and saves the document.
+  inputs:
+    type: object
+    required:
+    - documentId
+    - searchText
+    - title
+    - keywords
+    properties:
+      documentId:
+        type: string
+        description: The identifier of the document to search and tag.
+      searchText:
+        type: string
+        description: The text to search for in the document body.
+      title:
+        type: string
+        description: The new title to set on the document.
+      keywords:
+        type: string
+        description: The keywords to set on the document.
+  steps:
+  - stepId: searchBody
+    description: >-
+      Search the document body for the supplied text, ignoring punctuation and
+      whitespace. The JavaScript API returns 200 with the matching ranges.
+    operationId: searchDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        searchText: $inputs.searchText
+        ignorePunct: true
+        ignoreSpace: true
+        matchCase: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matches: $response.body#/value
+  - stepId: updateProperties
+    description: >-
+      Update the document title and keywords. The JavaScript API returns 200
+      with the updated document properties.
+    operationId: updateDocumentProperties
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.title
+        keywords: $inputs.keywords
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      title: $response.body#/title
+      keywords: $response.body#/keywords
+  - stepId: saveDocument
+    description: >-
+      Save the document to persist the updated properties. The JavaScript API
+      returns 204 with no content on success.
+    operationId: saveDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      status: $statusCode
+  outputs:
+    matches: $steps.searchBody.outputs.matches
+    title: $steps.updateProperties.outputs.title

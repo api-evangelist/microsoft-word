@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Author Document from HTML
+  summary: Create a blank Word document, insert HTML content into its body, and save it.
+  description: >-
+    Authoring a new Word document programmatically through the Office Word
+    JavaScript API. The workflow creates a blank document, inserts a block of
+    HTML content at the end of the document body, and then saves the document so
+    the content is persisted. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordJsApi
+  url: ../openapi/microsoft-word-javascript-api.yaml
+  type: openapi
+workflows:
+- workflowId: author-document
+  summary: Create a document, insert HTML, and save it.
+  description: >-
+    Creates a blank Word document, inserts HTML content into the body, and saves
+    the document.
+  inputs:
+    type: object
+    required:
+    - html
+    properties:
+      html:
+        type: string
+        description: The HTML content to insert into the document body.
+      location:
+        type: string
+        description: Where to insert the HTML (Start, End, Before, After, Replace).
+        default: End
+  steps:
+  - stepId: createDocument
+    description: >-
+      Create a new blank Word document. The JavaScript API returns 201 with the
+      new document object.
+    operationId: createDocument
+    requestBody:
+      contentType: application/json
+      payload: {}
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      documentId: $response.body#/id
+  - stepId: insertHtml
+    description: >-
+      Insert the HTML content into the document body at the requested location.
+      The JavaScript API returns 200 with the affected range.
+    operationId: insertHtml
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.createDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        html: $inputs.html
+        location: $inputs.location
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rangeText: $response.body#/text
+  - stepId: saveDocument
+    description: >-
+      Save the document to persist the inserted content. The JavaScript API
+      returns 204 with no content on success.
+    operationId: saveDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.createDocument.outputs.documentId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      status: $statusCode
+  outputs:
+    documentId: $steps.createDocument.outputs.documentId
+    rangeText: $steps.insertHtml.outputs.rangeText

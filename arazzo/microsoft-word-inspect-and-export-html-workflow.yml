@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Inspect Document and Export HTML
+  summary: Read an Open XML document's structure, update its properties, list its paragraphs, and export it to HTML.
+  description: >-
+    Inspecting an existing Word document and exporting it for the web using the
+    Open XML SDK processing service. The workflow retrieves the document metadata
+    and structure, updates the core document properties, lists the paragraphs to
+    capture the text content, and converts the document to HTML. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: openXmlSdk
+  url: ../openapi/microsoft-word-open-xml-sdk.yaml
+  type: openapi
+workflows:
+- workflowId: inspect-and-export-html
+  summary: Inspect a document, update properties, and export to HTML.
+  description: >-
+    Reads an Open XML document's structure, updates its properties, lists its
+    paragraphs, and converts the document to HTML.
+  inputs:
+    type: object
+    required:
+    - documentId
+    - title
+    properties:
+      documentId:
+        type: string
+        description: The identifier of the Open XML document to inspect and export.
+      title:
+        type: string
+        description: The new title to set on the document properties.
+      keywords:
+        type: string
+        description: The keywords to set on the document properties.
+        default: exported, html
+  steps:
+  - stepId: getDocument
+    description: >-
+      Retrieve the document metadata and structure counts. The service returns
+      200 with the document.
+    operationId: getWordDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      documentId: $response.body#/id
+      paragraphCount: $response.body#/paragraphCount
+      tableCount: $response.body#/tableCount
+  - stepId: updateProperties
+    description: >-
+      Update the document title and keywords. The service returns 200 with the
+      updated properties.
+    operationId: updateOpenXmlProperties
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.getDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.title
+        keywords: $inputs.keywords
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      title: $response.body#/title
+  - stepId: listParagraphs
+    description: >-
+      List the document paragraphs to capture their text content before export.
+      The service returns 200 with the paragraph collection.
+    operationId: listDocumentParagraphs
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.getDocument.outputs.documentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      paragraphs: $response.body#/value
+      paragraphTotal: $response.body#/count
+  - stepId: exportHtml
+    description: >-
+      Convert the document to HTML for web publishing. The service returns 200
+      with the converted binary content.
+    operationId: convertDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $steps.getDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        targetFormat: html
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $statusCode
+  outputs:
+    documentId: $steps.getDocument.outputs.documentId
+    title: $steps.updateProperties.outputs.title
+    exportStatus: $steps.exportHtml.outputs.status

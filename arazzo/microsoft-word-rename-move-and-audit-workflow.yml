@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Rename Move and Audit Document
+  summary: Rename a Word document, move it to a new folder, and list its version history.
+  description: >-
+    A document housekeeping flow for OneDrive using Microsoft Graph. The workflow
+    renames a drive item by updating its metadata, moves it into a different
+    parent folder, and then lists the version history so the relocation can be
+    audited. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: rename-move-audit
+  summary: Rename a document, relocate it, and review its versions.
+  description: >-
+    Updates a drive item's name, moves it under a new parent folder, and lists
+    the resulting version history.
+  inputs:
+    type: object
+    required:
+    - itemId
+    - newName
+    - targetFolderId
+    properties:
+      itemId:
+        type: string
+        description: The drive item identifier of the document.
+      newName:
+        type: string
+        description: The new name to apply to the document.
+      targetFolderId:
+        type: string
+        description: The identifier of the destination parent folder.
+  steps:
+  - stepId: renameItem
+    description: >-
+      Rename the document by updating its name metadata. Graph returns 200 with
+      the updated drive item.
+    operationId: updateDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.newName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/id
+      name: $response.body#/name
+  - stepId: moveItem
+    description: >-
+      Move the document into the destination folder by updating its parent
+      reference. Graph returns 200 with the moved drive item.
+    operationId: moveDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.renameItem.outputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        parentReference:
+          id: $inputs.targetFolderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/id
+      parentId: $response.body#/parentReference/id
+  - stepId: listVersions
+    description: >-
+      List the version history of the relocated document so the change can be
+      audited. Graph returns 200 with the collection of versions.
+    operationId: listVersions
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.moveItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      versions: $response.body#/value
+      latestVersionId: $response.body#/value/0/id
+  outputs:
+    itemId: $steps.moveItem.outputs.itemId
+    name: $steps.renameItem.outputs.name
+    latestVersionId: $steps.listVersions.outputs.latestVersionId

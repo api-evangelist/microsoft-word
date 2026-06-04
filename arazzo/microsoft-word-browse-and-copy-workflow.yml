@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Browse Folder and Copy Document
+  summary: List the documents in a folder and branch to copy the first item or report an empty folder.
+  description: >-
+    Browsing a OneDrive folder and acting on its contents with Microsoft Graph.
+    The workflow lists the children of a folder, then branches: when at least one
+    document is present it asynchronously copies the first item under a new name,
+    and when the folder is empty it ends without copying. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: browse-and-copy
+  summary: List a folder's children and copy the first document when present.
+  description: >-
+    Lists drive items in a folder and, when the folder contains at least one
+    item, starts an asynchronous copy of the first item with a new name.
+  inputs:
+    type: object
+    required:
+    - folderItemId
+    - copyName
+    properties:
+      folderItemId:
+        type: string
+        description: The drive item identifier of the folder to browse.
+      copyName:
+        type: string
+        description: The name to give the copied document.
+      top:
+        type: integer
+        description: The maximum number of children to return.
+        default: 25
+  steps:
+  - stepId: listChildren
+    description: >-
+      List the documents contained in the folder, ordered by name, and capture
+      the first item's identifier when present.
+    operationId: listChildren
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.folderItemId
+    - name: $top
+      in: query
+      value: $inputs.top
+    - name: $orderby
+      in: query
+      value: name asc
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstItemId: $response.body#/value/0/id
+      items: $response.body#/value
+    onSuccess:
+    - name: hasItems
+      type: goto
+      stepId: copyFirst
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: emptyFolder
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: copyFirst
+    description: >-
+      Asynchronously copy the first document in the folder under a new name.
+      Graph returns 202 Accepted while the copy operation runs in the background.
+    operationId: copyDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.listChildren.outputs.firstItemId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.copyName
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      status: $statusCode
+  outputs:
+    firstItemId: $steps.listChildren.outputs.firstItemId
+    copyStatus: $steps.copyFirst.outputs.status

@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Upload and Share Document
+  summary: Upload a Word document to OneDrive, confirm its metadata, and generate an organization sharing link.
+  description: >-
+    A common Microsoft Graph pattern for getting a Word document into OneDrive
+    and immediately making it shareable. The workflow uploads the .docx bytes to
+    a drive item, reads back the stored item metadata to confirm name and size,
+    and then creates an edit sharing link scoped to the organization. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: upload-and-share-document
+  summary: Upload a Word document and produce a shareable edit link.
+  description: >-
+    Uploads file content to a drive item, retrieves the resulting metadata, and
+    creates an organization-scoped edit link for the uploaded document.
+  inputs:
+    type: object
+    required:
+    - itemId
+    - fileContent
+    properties:
+      itemId:
+        type: string
+        description: The drive item identifier to upload content into.
+      fileContent:
+        type: string
+        description: The binary .docx content to upload (octet-stream body).
+      linkType:
+        type: string
+        description: The type of sharing link to create (view, edit, embed).
+        default: edit
+      linkScope:
+        type: string
+        description: The scope of the sharing link (anonymous, organization).
+        default: organization
+  steps:
+  - stepId: uploadDocument
+    description: >-
+      Upload the Word document bytes into the target drive item. Graph returns
+      200 when replacing existing content or 201 when creating a new file.
+    operationId: uploadContent
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    requestBody:
+      contentType: application/octet-stream
+      payload: $inputs.fileContent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      uploadedItemId: $response.body#/id
+      uploadedName: $response.body#/name
+  - stepId: getItem
+    description: >-
+      Read back the stored drive item to confirm the upload landed with the
+      expected name, size, and file facet.
+    operationId: getDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.uploadDocument.outputs.uploadedItemId
+    - name: $select
+      in: query
+      value: id,name,size,file,webUrl
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/id
+      name: $response.body#/name
+      size: $response.body#/size
+      webUrl: $response.body#/webUrl
+  - stepId: createLink
+    description: >-
+      Create an organization-scoped edit sharing link for the uploaded document.
+      Graph returns 201 when a new link is created.
+    operationId: createSharingLink
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.getItem.outputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.linkType
+        scope: $inputs.linkScope
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      permissionId: $response.body#/id
+      shareUrl: $response.body#/link/webUrl
+  outputs:
+    itemId: $steps.getItem.outputs.itemId
+    name: $steps.getItem.outputs.name
+    shareUrl: $steps.createLink.outputs.shareUrl

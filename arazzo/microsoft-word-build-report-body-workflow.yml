@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Build Report Body
+  summary: Insert a heading, add a data table, list the resulting paragraphs, and save the document.
+  description: >-
+    Assembling structured report content in an existing Word document through the
+    Office Word JavaScript API. The workflow inserts a heading paragraph at the
+    end of the body, inserts a table with the supplied dimensions, lists the
+    paragraphs to verify the new structure, and saves the document. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordJsApi
+  url: ../openapi/microsoft-word-javascript-api.yaml
+  type: openapi
+workflows:
+- workflowId: build-report-body
+  summary: Insert a heading and table, verify paragraphs, and save.
+  description: >-
+    Inserts text and a table into a document body, lists the paragraphs to
+    confirm the structure, and saves the document.
+  inputs:
+    type: object
+    required:
+    - documentId
+    - headingText
+    - rowCount
+    - columnCount
+    properties:
+      documentId:
+        type: string
+        description: The identifier of the document to build content into.
+      headingText:
+        type: string
+        description: The heading text to insert.
+      rowCount:
+        type: integer
+        description: The number of rows for the inserted table.
+      columnCount:
+        type: integer
+        description: The number of columns for the inserted table.
+  steps:
+  - stepId: insertHeading
+    description: >-
+      Insert the heading text at the end of the document body. The JavaScript
+      API returns 200 with the affected range.
+    operationId: insertText
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        text: $inputs.headingText
+        location: End
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      headingText: $response.body#/text
+  - stepId: insertTable
+    description: >-
+      Insert a table with the requested rows and columns at the end of the body.
+      The JavaScript API returns 201 with the created table.
+    operationId: insertTable
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        rowCount: $inputs.rowCount
+        columnCount: $inputs.columnCount
+        insertLocation: End
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      tableId: $response.body#/id
+      tableRowCount: $response.body#/rowCount
+  - stepId: listParagraphs
+    description: >-
+      List the document paragraphs to confirm the heading and table content were
+      added. The JavaScript API returns 200 with the paragraph collection.
+    operationId: listParagraphs
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      paragraphs: $response.body#/value
+  - stepId: saveDocument
+    description: >-
+      Save the document to persist the inserted heading and table. The
+      JavaScript API returns 204 with no content on success.
+    operationId: saveDocument
+    parameters:
+    - name: document-id
+      in: path
+      value: $inputs.documentId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      status: $statusCode
+  outputs:
+    tableId: $steps.insertTable.outputs.tableId
+    paragraphs: $steps.listParagraphs.outputs.paragraphs

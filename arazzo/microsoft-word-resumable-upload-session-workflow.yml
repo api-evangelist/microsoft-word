@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Resumable Upload Session
+  summary: Open a resumable upload session for a large Word document and confirm the stored item afterward.
+  description: >-
+    Preparing to upload a large Word document in resumable chunks with Microsoft
+    Graph. The workflow creates an upload session for the target drive item with
+    a rename-on-conflict behavior, then reads back the drive item metadata and
+    lists its versions to confirm the document is in place. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: resumable-upload-session
+  summary: Create an upload session and confirm the stored document.
+  description: >-
+    Creates a resumable upload session for a large document, then reads the drive
+    item and its versions to confirm the stored result.
+  inputs:
+    type: object
+    required:
+    - itemId
+    - fileName
+    properties:
+      itemId:
+        type: string
+        description: The drive item identifier to create the upload session against.
+      fileName:
+        type: string
+        description: The name of the file being uploaded in the session.
+  steps:
+  - stepId: createSession
+    description: >-
+      Create a resumable upload session for the large document, renaming on
+      conflict. Graph returns 200 with the upload session details.
+    operationId: createUploadSession
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        item:
+          '@microsoft.graph.conflictBehavior': rename
+          name: $inputs.fileName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      uploadUrl: $response.body#/uploadUrl
+      expirationDateTime: $response.body#/expirationDateTime
+      nextExpectedRanges: $response.body#/nextExpectedRanges
+  - stepId: getItem
+    description: >-
+      Read the drive item metadata to confirm the document name and size after
+      the upload session is established. Graph returns 200 with the item.
+    operationId: getDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    - name: $select
+      in: query
+      value: id,name,size,file
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/id
+      name: $response.body#/name
+      size: $response.body#/size
+  - stepId: listVersions
+    description: >-
+      List the version history of the item to confirm the uploaded content is
+      tracked. Graph returns 200 with the version collection.
+    operationId: listVersions
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.getItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      versions: $response.body#/value
+  outputs:
+    uploadUrl: $steps.createSession.outputs.uploadUrl
+    itemId: $steps.getItem.outputs.itemId
+    versions: $steps.listVersions.outputs.versions

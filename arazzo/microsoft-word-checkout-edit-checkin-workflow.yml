@@ -1,0 +1,89 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Checkout Edit and Check In Document
+  summary: Lock a Word document for editing, upload revised content, and check it back in with a comment.
+  description: >-
+    The safe collaborative editing cycle for a Word document stored in OneDrive
+    or SharePoint via Microsoft Graph. The workflow checks the document out so no
+    one else can edit it, uploads the revised .docx content, and then checks the
+    document back in with a version comment so the new version becomes available
+    to others. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: checkout-edit-checkin
+  summary: Check out a document, replace its content, and check it back in.
+  description: >-
+    Locks the drive item via checkout, uploads new file content, then checks the
+    item back in with a comment to publish the new version.
+  inputs:
+    type: object
+    required:
+    - itemId
+    - fileContent
+    properties:
+      itemId:
+        type: string
+        description: The drive item identifier of the document to edit.
+      fileContent:
+        type: string
+        description: The revised binary .docx content to upload.
+      checkinComment:
+        type: string
+        description: The check-in comment recorded against the new version.
+        default: Updated document content
+  steps:
+  - stepId: checkoutDocument
+    description: >-
+      Check the document out to prevent others from editing it. Graph returns
+      204 with no content on success.
+    operationId: checkoutDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      status: $statusCode
+  - stepId: uploadRevision
+    description: >-
+      Upload the revised document content into the checked-out item. Graph
+      returns 200 when the existing content is replaced.
+    operationId: uploadContent
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.itemId
+    requestBody:
+      contentType: application/octet-stream
+      payload: $inputs.fileContent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/id
+      lastModified: $response.body#/lastModifiedDateTime
+  - stepId: checkinDocument
+    description: >-
+      Check the document back in with a version comment, making the new version
+      available to other users. Graph returns 204 with no content on success.
+    operationId: checkinDriveItem
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.uploadRevision.outputs.itemId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.checkinComment
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      status: $statusCode
+  outputs:
+    itemId: $steps.uploadRevision.outputs.itemId
+    lastModified: $steps.uploadRevision.outputs.lastModified

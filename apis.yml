@@ -231,6 +231,45 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/microsoft-word-author-document-workflow.yml
+    name: Microsoft Word Author Document from HTML
+    summary: Create a blank Word document, insert HTML content into its body, and save it.
+  - url: arazzo/microsoft-word-browse-and-copy-workflow.yml
+    name: Microsoft Word Browse Folder and Copy Document
+    summary: List the documents in a folder and branch to copy the first item or report an empty folder.
+  - url: arazzo/microsoft-word-build-report-body-workflow.yml
+    name: Microsoft Word Build Report Body
+    summary: Insert a heading, add a data table, list the resulting paragraphs, and save the document.
+  - url: arazzo/microsoft-word-checkout-edit-checkin-workflow.yml
+    name: Microsoft Word Checkout Edit and Check In Document
+    summary: Lock a Word document for editing, upload revised content, and check it back in with a comment.
+  - url: arazzo/microsoft-word-generate-and-convert-pdf-workflow.yml
+    name: Microsoft Word Generate Document and Convert to PDF
+    summary: Create a Word document with the Open XML SDK, add a paragraph and a table, then convert it to PDF.
+  - url: arazzo/microsoft-word-inspect-and-export-html-workflow.yml
+    name: Microsoft Word Inspect Document and Export HTML
+    summary: Read an Open XML document's structure, update its properties, list its paragraphs, and export it to HTML.
+  - url: arazzo/microsoft-word-organize-and-invite-workflow.yml
+    name: Microsoft Word Organize Folder and Invite Reviewers
+    summary: Create a project folder, upload a Word document into it, and invite reviewers with edit access.
+  - url: arazzo/microsoft-word-rename-move-and-audit-workflow.yml
+    name: Microsoft Word Rename Move and Audit Document
+    summary: Rename a Word document, move it to a new folder, and list its version history.
+  - url: arazzo/microsoft-word-resumable-upload-session-workflow.yml
+    name: Microsoft Word Resumable Upload Session
+    summary: Open a resumable upload session for a large Word document and confirm the stored item afterward.
+  - url: arazzo/microsoft-word-search-and-download-workflow.yml
+    name: Microsoft Word Search and Download Document
+    summary: Search OneDrive for a Word document by name, confirm its metadata, and download its content.
+  - url: arazzo/microsoft-word-search-and-tag-workflow.yml
+    name: Microsoft Word Search Body and Tag Document
+    summary: Search a document body for text, update the document properties, and save it.
+  - url: arazzo/microsoft-word-upload-and-share-workflow.yml
+    name: Microsoft Word Upload and Share Document
+    summary: Upload a Word document to OneDrive, confirm its metadata, and generate an organization sharing link.
 - type: LinkedIn
   url: https://www.linkedin.com/showcase/microsoft-word-online-training
 - type: Portal

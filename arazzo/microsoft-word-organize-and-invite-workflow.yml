@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Word Organize Folder and Invite Reviewers
+  summary: Create a project folder, upload a Word document into it, and invite reviewers with edit access.
+  description: >-
+    Setting up a shared review space for a Word document with Microsoft Graph.
+    The workflow creates a new folder under a parent item, uploads the .docx
+    content into a target item, and then sends a sharing invitation granting the
+    named recipients write access with a notification message. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-word-graph-api.yaml
+  type: openapi
+workflows:
+- workflowId: organize-and-invite
+  summary: Create a folder, add a document, and invite reviewers.
+  description: >-
+    Creates a folder, uploads a document, and sends a sharing invitation that
+    grants write access to the supplied recipients.
+  inputs:
+    type: object
+    required:
+    - parentItemId
+    - folderName
+    - documentItemId
+    - fileContent
+    - recipientEmail
+    properties:
+      parentItemId:
+        type: string
+        description: The drive item identifier of the parent under which to create the folder.
+      folderName:
+        type: string
+        description: The name of the new folder to create.
+      documentItemId:
+        type: string
+        description: The drive item identifier to upload the document content into.
+      fileContent:
+        type: string
+        description: The binary .docx content to upload.
+      recipientEmail:
+        type: string
+        description: The email address of the reviewer to invite.
+      inviteMessage:
+        type: string
+        description: The message included in the sharing invitation.
+        default: Please review this document.
+  steps:
+  - stepId: createFolder
+    description: >-
+      Create the project folder under the parent item, renaming on conflict.
+      Graph returns 201 with the created folder drive item.
+    operationId: createFolder
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.parentItemId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.folderName
+        folder: {}
+        '@microsoft.graph.conflictBehavior': rename
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      folderId: $response.body#/id
+      folderName: $response.body#/name
+  - stepId: uploadDocument
+    description: >-
+      Upload the Word document content into the target item. Graph returns 200
+      when replacing content or 201 when creating a new file.
+    operationId: uploadContent
+    parameters:
+    - name: item-id
+      in: path
+      value: $inputs.documentItemId
+    requestBody:
+      contentType: application/octet-stream
+      payload: $inputs.fileContent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      documentId: $response.body#/id
+      documentName: $response.body#/name
+  - stepId: inviteReviewer
+    description: >-
+      Send a sharing invitation granting the recipient write access with a
+      notification. Graph returns 200 with the granted permissions.
+    operationId: addPermissions
+    parameters:
+    - name: item-id
+      in: path
+      value: $steps.uploadDocument.outputs.documentId
+    requestBody:
+      contentType: application/json
+      payload:
+        recipients:
+        - email: $inputs.recipientEmail
+        roles:
+        - write
+        requireSignIn: true
+        sendInvitation: true
+        message: $inputs.inviteMessage
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      permissions: $response.body#/value
+  outputs:
+    folderId: $steps.createFolder.outputs.folderId
+    documentId: $steps.uploadDocument.outputs.documentId
+    permissions: $steps.inviteReviewer.outputs.permissions
