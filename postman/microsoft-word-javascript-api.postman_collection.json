@@ -1,0 +1,3091 @@
+{
+  "info": {
+    "_postman_id": "34785ddd-3058-45b4-a334-2b6499dce1a0",
+    "name": "Microsoft Word JavaScript API",
+    "description": "RESTful representation of the Office JavaScript API for Word add-ins. This API provides strongly-typed objects for document manipulation, content controls, tables, formatting, comments, collaboration, and shapes within Word documents through the Office Add-ins platform.\n\nContact Support:\n Name: Microsoft Office Add-ins Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:23.000Z",
+    "updatedAt": "2026-06-05T15:12:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34785ddd-3058-45b4-a334-2b6499dce1a0"
+  },
+  "item": [
+    {
+      "name": "documents",
+      "item": [
+        {
+          "name": "{document-id}",
+          "item": [
+            {
+              "name": "body",
+              "item": [
+                {
+                  "name": "insertText",
+                  "item": [
+                    {
+                      "name": "Microsoft Word Insert Text",
+                      "id": "1a5ea672-588e-4cef-95fb-c4d39bcd013c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"text\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/body/insertText",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "body",
+                            "insertText"
+                          ],
+                          "variable": [
+                            {
+                              "id": "58614ebc-8255-4add-a9e1-4b0202847763",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            }
+                          ]
+                        },
+                        "description": "Insert text at the specified location in the document body."
+                      },
+                      "response": [
+                        {
+                          "id": "a10ce29f-87b4-4213-82fd-80a94d026423",
+                          "name": "Successfully inserted text.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"text\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/insertText",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "insertText"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"text\": \"<string>\",\n  \"style\": \"<string>\",\n  \"isEmpty\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-a10ce29f-87b4-4213-82fd-80a94d026423"
+                        },
+                        {
+                          "id": "86cfbde7-313d-401b-aee2-c091fa78375a",
+                          "name": "Invalid request parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"text\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/insertText",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "insertText"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-86cfbde7-313d-401b-aee2-c091fa78375a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-1a5ea672-588e-4cef-95fb-c4d39bcd013c"
+                    }
+                  ],
+                  "id": "571d5578-7364-4627-a88c-c28b6e62a7f7",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-571d5578-7364-4627-a88c-c28b6e62a7f7"
+                },
+                {
+                  "name": "insertHtml",
+                  "item": [
+                    {
+                      "name": "Microsoft Word Insert HTML",
+                      "id": "8c8725b1-5a95-4e80-9535-78128e13584b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"html\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/body/insertHtml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "body",
+                            "insertHtml"
+                          ],
+                          "variable": [
+                            {
+                              "id": "af8c5c36-834f-4c6f-9323-31387ff78995",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            }
+                          ]
+                        },
+                        "description": "Insert HTML content at the specified location in the document body."
+                      },
+                      "response": [
+                        {
+                          "id": "ed1db8b0-e6df-4cb9-8ae1-5802f4ec8fdd",
+                          "name": "Successfully inserted HTML.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"html\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/insertHtml",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "insertHtml"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"text\": \"<string>\",\n  \"style\": \"<string>\",\n  \"isEmpty\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-ed1db8b0-e6df-4cb9-8ae1-5802f4ec8fdd"
+                        },
+                        {
+                          "id": "60856629-5fdd-4930-b653-91c081b0e660",
+                          "name": "Invalid request parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"html\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/insertHtml",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "insertHtml"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-60856629-5fdd-4930-b653-91c081b0e660"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-8c8725b1-5a95-4e80-9535-78128e13584b"
+                    }
+                  ],
+                  "id": "be36ab10-3b6f-4548-8418-92ea08805d44",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-be36ab10-3b6f-4548-8418-92ea08805d44"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Microsoft Word Search Document",
+                      "id": "17724330-02b1-4765-97e2-6c62417c89f0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"searchText\": \"<string>\",\n  \"ignorePunct\": \"<boolean>\",\n  \"ignoreSpace\": \"<boolean>\",\n  \"matchCase\": \"<boolean>\",\n  \"matchWholeWord\": \"<boolean>\",\n  \"matchWildcards\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/body/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "body",
+                            "search"
+                          ],
+                          "variable": [
+                            {
+                              "id": "096a3224-fcd4-4fe7-954a-31a3370c052b",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            }
+                          ]
+                        },
+                        "description": "Search the document body for text matching the specified criteria."
+                      },
+                      "response": [
+                        {
+                          "id": "d7c265c6-034d-4b9e-aba9-7a4de9e81b59",
+                          "name": "Successfully completed search.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"searchText\": \"<string>\",\n  \"ignorePunct\": \"<boolean>\",\n  \"ignoreSpace\": \"<boolean>\",\n  \"matchCase\": \"<boolean>\",\n  \"matchWholeWord\": \"<boolean>\",\n  \"matchWildcards\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "search"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": [\n    {\n      \"text\": \"<string>\",\n      \"style\": \"<string>\",\n      \"isEmpty\": \"<boolean>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"style\": \"<string>\",\n      \"isEmpty\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-d7c265c6-034d-4b9e-aba9-7a4de9e81b59"
+                        },
+                        {
+                          "id": "56de3c48-6474-4367-9e9e-dc9e3322514d",
+                          "name": "Invalid request parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"searchText\": \"<string>\",\n  \"ignorePunct\": \"<boolean>\",\n  \"ignoreSpace\": \"<boolean>\",\n  \"matchCase\": \"<boolean>\",\n  \"matchWholeWord\": \"<boolean>\",\n  \"matchWildcards\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/body/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "body",
+                                "search"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-56de3c48-6474-4367-9e9e-dc9e3322514d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-17724330-02b1-4765-97e2-6c62417c89f0"
+                    }
+                  ],
+                  "id": "44fd8f2e-c3e6-442d-a1ee-f52b8cc4d31e",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-44fd8f2e-c3e6-442d-a1ee-f52b8cc4d31e"
+                },
+                {
+                  "name": "Microsoft Word Get Body",
+                  "id": "e34149a7-5bc1-4d1b-b649-5502121a42a5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/body",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "body"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c295c358-3fd8-4393-b138-37c3b7adb993",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the body object of the document containing the main content."
+                  },
+                  "response": [
+                    {
+                      "id": "a6937cc5-e441-49d0-9e02-d6ab376d49eb",
+                      "name": "Successfully retrieved document body.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/body",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "body"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"text\": \"<string>\",\n  \"type\": \"<string>\",\n  \"style\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-a6937cc5-e441-49d0-9e02-d6ab376d49eb"
+                    },
+                    {
+                      "id": "b64269ee-9335-4452-85c2-55bdce7d4fa6",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/body",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "body"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-b64269ee-9335-4452-85c2-55bdce7d4fa6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-e34149a7-5bc1-4d1b-b649-5502121a42a5"
+                }
+              ],
+              "id": "58465d04-49db-417f-b26a-fda0a183e6e1",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-58465d04-49db-417f-b26a-fda0a183e6e1"
+            },
+            {
+              "name": "paragraphs",
+              "item": [
+                {
+                  "name": "{paragraph-id}",
+                  "item": [
+                    {
+                      "name": "Microsoft Word Get Paragraph",
+                      "id": "0ae7ecf1-da57-47f8-a7eb-4e3a349b5574",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "paragraphs",
+                            ":paragraph-id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "812a8c19-04f0-42ba-9b37-2262726d23d3",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            },
+                            {
+                              "id": "ffd5028d-3ea2-4212-aa87-63a1ed782c55",
+                              "key": "paragraph-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the paragraph."
+                            }
+                          ]
+                        },
+                        "description": "Get a specific paragraph by its ID."
+                      },
+                      "response": [
+                        {
+                          "id": "8b40fc31-c97c-42d0-9aee-cb01a13d2f6e",
+                          "name": "Successfully retrieved paragraph.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "paragraphs",
+                                ":paragraph-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "paragraph-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"text\": \"<string>\",\n  \"style\": \"<string>\",\n  \"alignment\": \"<string>\",\n  \"firstLineIndent\": \"<number>\",\n  \"lineSpacing\": \"<number>\",\n  \"outlineLevel\": \"<integer>\",\n  \"isListItem\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-8b40fc31-c97c-42d0-9aee-cb01a13d2f6e"
+                        },
+                        {
+                          "id": "f56ea1df-98b0-4841-8126-1c404db66c11",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "paragraphs",
+                                ":paragraph-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "paragraph-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-f56ea1df-98b0-4841-8126-1c404db66c11"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-0ae7ecf1-da57-47f8-a7eb-4e3a349b5574"
+                    },
+                    {
+                      "name": "Microsoft Word Delete Paragraph",
+                      "id": "231b93aa-c6bb-479d-8bf6-c88ab54957ad",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "paragraphs",
+                            ":paragraph-id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "75175bfd-40c2-474a-9049-e75d6f8607f9",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            },
+                            {
+                              "id": "69bd9ca7-622a-4411-915e-79182a5b4647",
+                              "key": "paragraph-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the paragraph."
+                            }
+                          ]
+                        },
+                        "description": "Delete a paragraph from the document."
+                      },
+                      "response": [
+                        {
+                          "id": "940f7c95-8145-4693-a405-9d6625a66571",
+                          "name": "Successfully deleted the paragraph.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "paragraphs",
+                                ":paragraph-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "paragraph-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-940f7c95-8145-4693-a405-9d6625a66571"
+                        },
+                        {
+                          "id": "c074cb27-a917-4f7b-a0c9-7a9faa967cb8",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/paragraphs/:paragraph-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "paragraphs",
+                                ":paragraph-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "paragraph-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-c074cb27-a917-4f7b-a0c9-7a9faa967cb8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-231b93aa-c6bb-479d-8bf6-c88ab54957ad"
+                    }
+                  ],
+                  "id": "2bf019d5-f1c2-4a63-96fa-c584690f23d7",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-2bf019d5-f1c2-4a63-96fa-c584690f23d7"
+                },
+                {
+                  "name": "Microsoft Word List Paragraphs",
+                  "id": "8564e8e1-00c2-40e0-9d60-e70e8cfb93bf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/paragraphs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "paragraphs"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a3f8309a-a513-4c97-a31b-293fc2c53fd7",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of paragraph objects in the document body."
+                  },
+                  "response": [
+                    {
+                      "id": "2611c04d-6c8e-445c-801c-776700d89427",
+                      "name": "Successfully retrieved paragraphs.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/paragraphs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "paragraphs"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"style\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"firstLineIndent\": \"<number>\",\n      \"lineSpacing\": \"<number>\",\n      \"outlineLevel\": \"<integer>\",\n      \"isListItem\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"style\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"firstLineIndent\": \"<number>\",\n      \"lineSpacing\": \"<number>\",\n      \"outlineLevel\": \"<integer>\",\n      \"isListItem\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-2611c04d-6c8e-445c-801c-776700d89427"
+                    },
+                    {
+                      "id": "f75bb258-ee59-4d56-82ba-0f84ce516994",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/paragraphs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "paragraphs"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-f75bb258-ee59-4d56-82ba-0f84ce516994"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-8564e8e1-00c2-40e0-9d60-e70e8cfb93bf"
+                }
+              ],
+              "id": "3c5b3317-9b4c-4d78-9b4b-cbe8811af77c",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-3c5b3317-9b4c-4d78-9b4b-cbe8811af77c"
+            },
+            {
+              "name": "contentControls",
+              "item": [
+                {
+                  "name": "{control-id}",
+                  "item": [
+                    {
+                      "name": "Microsoft Word Get Content Control",
+                      "id": "43e2a36e-ecf1-4da0-923e-48eded2221a0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/contentControls/:control-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "contentControls",
+                            ":control-id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d3277403-9fe3-4eba-98bc-72cfb9a5365a",
+                              "key": "document-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Word document."
+                            },
+                            {
+                              "id": "bebfa6b9-f7f0-4b2c-9ebe-a136604fb56e",
+                              "key": "control-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the content control."
+                            }
+                          ]
+                        },
+                        "description": "Get a specific content control by its ID."
+                      },
+                      "response": [
+                        {
+                          "id": "2e4588cc-1701-4f5c-9c4c-232e19d23b60",
+                          "name": "Successfully retrieved content control.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/contentControls/:control-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "contentControls",
+                                ":control-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "control-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"text\": \"<string>\",\n  \"appearance\": \"<string>\",\n  \"cannotDelete\": \"<boolean>\",\n  \"cannotEdit\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-2e4588cc-1701-4f5c-9c4c-232e19d23b60"
+                        },
+                        {
+                          "id": "aec61feb-1429-44a7-a071-9054701a636c",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/documents/:document-id/contentControls/:control-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "documents",
+                                ":document-id",
+                                "contentControls",
+                                ":control-id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "document-id"
+                                },
+                                {
+                                  "key": "control-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:24.000Z",
+                          "updatedAt": "2026-06-05T15:12:24.000Z",
+                          "uid": "35240-aec61feb-1429-44a7-a071-9054701a636c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-43e2a36e-ecf1-4da0-923e-48eded2221a0"
+                    }
+                  ],
+                  "id": "49a340fc-a1a2-4f8b-95c5-2dee8a70e46b",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-49a340fc-a1a2-4f8b-95c5-2dee8a70e46b"
+                },
+                {
+                  "name": "Microsoft Word List Content Controls",
+                  "id": "bde529a3-5cac-4467-9aab-d0f197ad10e7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/contentControls",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "contentControls"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ff98f4f8-d042-4f1e-b9b9-ffa2727ac725",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of content control objects in the document."
+                  },
+                  "response": [
+                    {
+                      "id": "30185a16-da2a-431c-947c-a106f09f3041",
+                      "name": "Successfully retrieved content controls.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/contentControls",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "contentControls"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"appearance\": \"<string>\",\n      \"cannotDelete\": \"<boolean>\",\n      \"cannotEdit\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"appearance\": \"<string>\",\n      \"cannotDelete\": \"<boolean>\",\n      \"cannotEdit\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-30185a16-da2a-431c-947c-a106f09f3041"
+                    },
+                    {
+                      "id": "da348abb-69df-43d7-9b07-31822593a1c0",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/contentControls",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "contentControls"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-da348abb-69df-43d7-9b07-31822593a1c0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-bde529a3-5cac-4467-9aab-d0f197ad10e7"
+                }
+              ],
+              "id": "9f16d572-be0c-478e-a90f-3d34e48f7106",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-9f16d572-be0c-478e-a90f-3d34e48f7106"
+            },
+            {
+              "name": "tables",
+              "item": [
+                {
+                  "name": "Microsoft Word List Tables",
+                  "id": "d6fcd3d2-bfab-4c2f-b631-ad1fb6d27998",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/tables",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "tables"
+                      ],
+                      "variable": [
+                        {
+                          "id": "37332e47-5987-42a2-9b27-5e90f3f3d073",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of table objects in the document body."
+                  },
+                  "response": [
+                    {
+                      "id": "81ffe61b-4400-452b-a304-ab0c15b2af8d",
+                      "name": "Successfully retrieved tables.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/tables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "tables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"rowCount\": \"<integer>\",\n      \"columnCount\": \"<integer>\",\n      \"style\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"headerRowCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"rowCount\": \"<integer>\",\n      \"columnCount\": \"<integer>\",\n      \"style\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"headerRowCount\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-81ffe61b-4400-452b-a304-ab0c15b2af8d"
+                    },
+                    {
+                      "id": "602c4547-9647-4945-ba2d-56a75cf13c9f",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/tables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "tables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-602c4547-9647-4945-ba2d-56a75cf13c9f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-d6fcd3d2-bfab-4c2f-b631-ad1fb6d27998"
+                },
+                {
+                  "name": "Microsoft Word Insert Table",
+                  "id": "225e3d17-d067-4fb4-bd85-ebc2a814b742",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"rowCount\": \"<integer>\",\n  \"columnCount\": \"<integer>\",\n  \"insertLocation\": \"<string>\",\n  \"values\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/tables",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "tables"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b356662-23cb-4bc5-9700-fc1df1aec072",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Insert a table with the specified number of rows and columns."
+                  },
+                  "response": [
+                    {
+                      "id": "54518024-4d8a-4ed7-8c63-e24dc279b279",
+                      "name": "Successfully created the table.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"rowCount\": \"<integer>\",\n  \"columnCount\": \"<integer>\",\n  \"insertLocation\": \"<string>\",\n  \"values\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/tables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "tables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"rowCount\": \"<integer>\",\n  \"columnCount\": \"<integer>\",\n  \"style\": \"<string>\",\n  \"alignment\": \"<string>\",\n  \"headerRowCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-54518024-4d8a-4ed7-8c63-e24dc279b279"
+                    },
+                    {
+                      "id": "155e793c-f4c1-4e6f-a56a-7d6f3529fdaa",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"rowCount\": \"<integer>\",\n  \"columnCount\": \"<integer>\",\n  \"insertLocation\": \"<string>\",\n  \"values\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/tables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "tables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-155e793c-f4c1-4e6f-a56a-7d6f3529fdaa"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-225e3d17-d067-4fb4-bd85-ebc2a814b742"
+                }
+              ],
+              "id": "a09e10e0-93af-4a28-9fc8-545b3f892d4e",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-a09e10e0-93af-4a28-9fc8-545b3f892d4e"
+            },
+            {
+              "name": "comments",
+              "item": [
+                {
+                  "name": "Microsoft Word List Comments",
+                  "id": "1bb7e5f5-0bd5-4ea2-b677-9e86aebdaead",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/comments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "comments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e90e9ce0-4512-4b5a-9abe-6d17524e179e",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of comments in the document."
+                  },
+                  "response": [
+                    {
+                      "id": "f35c4c31-a83e-412e-91ed-d40a1063d803",
+                      "name": "Successfully retrieved comments.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/comments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "comments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"authorName\": \"<string>\",\n      \"authorEmail\": \"<string>\",\n      \"content\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"resolved\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"authorName\": \"<string>\",\n      \"authorEmail\": \"<string>\",\n      \"content\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"resolved\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-f35c4c31-a83e-412e-91ed-d40a1063d803"
+                    },
+                    {
+                      "id": "5c6e40ee-bc04-4c0c-86af-c735a83ff0ea",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/comments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "comments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-5c6e40ee-bc04-4c0c-86af-c735a83ff0ea"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-1bb7e5f5-0bd5-4ea2-b677-9e86aebdaead"
+                }
+              ],
+              "id": "07f279c4-7fd1-4a37-a2c8-9caacfe4154e",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-07f279c4-7fd1-4a37-a2c8-9caacfe4154e"
+            },
+            {
+              "name": "sections",
+              "item": [
+                {
+                  "name": "Microsoft Word List Sections",
+                  "id": "b12e2c91-02c5-4502-be12-399eaf00798e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/sections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "sections"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f9be22e0-849f-40d6-a76b-68032cbd0152",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of section objects in the document."
+                  },
+                  "response": [
+                    {
+                      "id": "cbde53bc-3a4b-4a78-8e6f-d063b54c42cd",
+                      "name": "Successfully retrieved sections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/sections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "sections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-cbde53bc-3a4b-4a78-8e6f-d063b54c42cd"
+                    },
+                    {
+                      "id": "6945c31a-2d49-4fb5-b7a1-80ba7c2e609d",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/sections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "sections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-6945c31a-2d49-4fb5-b7a1-80ba7c2e609d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-b12e2c91-02c5-4502-be12-399eaf00798e"
+                }
+              ],
+              "id": "ac080f9b-e8b6-48a1-b2a5-8d98e29ec6f0",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-ac080f9b-e8b6-48a1-b2a5-8d98e29ec6f0"
+            },
+            {
+              "name": "properties",
+              "item": [
+                {
+                  "name": "Microsoft Word Get Document Properties",
+                  "id": "72af1e38-4a0b-4f72-8d19-399417c3e3b5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/properties",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "properties"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2a2772a9-6cc2-4c9b-b6d0-c83cb4d28211",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the document properties including title, subject, author, and custom properties."
+                  },
+                  "response": [
+                    {
+                      "id": "9a2f3f08-480d-466f-a25f-e652f77bf838",
+                      "name": "Successfully retrieved document properties.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/properties",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "properties"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"title\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"author\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"company\": \"<string>\",\n  \"category\": \"<string>\",\n  \"keywords\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"creationDate\": \"<dateTime>\",\n  \"lastSaveTime\": \"<dateTime>\",\n  \"revisionNumber\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-9a2f3f08-480d-466f-a25f-e652f77bf838"
+                    },
+                    {
+                      "id": "9a3838e6-8e98-4642-866f-d62755e8b3f4",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/properties",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "properties"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-9a3838e6-8e98-4642-866f-d62755e8b3f4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-72af1e38-4a0b-4f72-8d19-399417c3e3b5"
+                },
+                {
+                  "name": "Microsoft Word Update Document Properties",
+                  "id": "cca94b90-7f14-406c-a1e7-d70cf0ab44ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"author\": \"<string>\",\n  \"keywords\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/properties",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "properties"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b77b2c98-b8e3-4315-9b47-b8aa89cd6f4f",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Update the document properties such as title, subject, and author."
+                  },
+                  "response": [
+                    {
+                      "id": "436079eb-bd97-4363-ad3c-8c182807c1dd",
+                      "name": "Successfully updated document properties.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"author\": \"<string>\",\n  \"keywords\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/properties",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "properties"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"title\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"author\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"company\": \"<string>\",\n  \"category\": \"<string>\",\n  \"keywords\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"creationDate\": \"<dateTime>\",\n  \"lastSaveTime\": \"<dateTime>\",\n  \"revisionNumber\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-436079eb-bd97-4363-ad3c-8c182807c1dd"
+                    },
+                    {
+                      "id": "b367eac0-08f8-4cd1-9222-a4695a6e3925",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"author\": \"<string>\",\n  \"keywords\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/properties",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "properties"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-b367eac0-08f8-4cd1-9222-a4695a6e3925"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-cca94b90-7f14-406c-a1e7-d70cf0ab44ef"
+                }
+              ],
+              "id": "9a4fd7eb-a4b6-4d66-9191-1a0603afabbc",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-9a4fd7eb-a4b6-4d66-9191-1a0603afabbc"
+            },
+            {
+              "name": "styles",
+              "item": [
+                {
+                  "name": "Microsoft Word List Styles",
+                  "id": "6af15651-bf98-41ee-b4e6-504af3c32055",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/styles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "styles"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd10694d-0d83-4c42-b869-da220fa7021c",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Get the collection of style objects in the document."
+                  },
+                  "response": [
+                    {
+                      "id": "18157457-9200-47aa-ade0-efc5f1acb08a",
+                      "name": "Successfully retrieved styles.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/styles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "styles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"builtIn\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"builtIn\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-18157457-9200-47aa-ade0-efc5f1acb08a"
+                    },
+                    {
+                      "id": "280c8027-a6ac-4f19-bd61-37bd79822199",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/styles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "styles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-280c8027-a6ac-4f19-bd61-37bd79822199"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-6af15651-bf98-41ee-b4e6-504af3c32055"
+                }
+              ],
+              "id": "5507a4c1-03cc-4a07-bf55-1260df1091bf",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-5507a4c1-03cc-4a07-bf55-1260df1091bf"
+            },
+            {
+              "name": "save",
+              "item": [
+                {
+                  "name": "Microsoft Word Save Document",
+                  "id": "e58332fb-da59-40ab-b15e-6dcdc0986187",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id/save",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id",
+                        "save"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d8330060-d23c-4c8f-a272-42d4d15ea9f8",
+                          "key": "document-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the Word document."
+                        }
+                      ]
+                    },
+                    "description": "Save the document. This persists the file using the Word file format."
+                  },
+                  "response": [
+                    {
+                      "id": "9dd6d0ef-b999-4577-9f8f-4ca39756dcdd",
+                      "name": "Successfully saved the document.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/save",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "save"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-9dd6d0ef-b999-4577-9f8f-4ca39756dcdd"
+                    },
+                    {
+                      "id": "d189429e-b7f8-408f-88e0-d0d461a19520",
+                      "name": "Authentication required.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:document-id/save",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":document-id",
+                            "save"
+                          ],
+                          "variable": [
+                            {
+                              "key": "document-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:24.000Z",
+                      "updatedAt": "2026-06-05T15:12:24.000Z",
+                      "uid": "35240-d189429e-b7f8-408f-88e0-d0d461a19520"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-e58332fb-da59-40ab-b15e-6dcdc0986187"
+                }
+              ],
+              "id": "7207e59a-af21-4655-a770-dd82ea14d38f",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-7207e59a-af21-4655-a770-dd82ea14d38f"
+            },
+            {
+              "name": "Microsoft Word Get Document",
+              "id": "3f59c09f-1901-407a-8082-e72626b4e0a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/documents/:document-id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents",
+                    ":document-id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cfb4977f-9fb8-4cb5-ad07-9db5ce1afed3",
+                      "key": "document-id",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the Word document."
+                    }
+                  ]
+                },
+                "description": "Get the properties and metadata of a Word document."
+              },
+              "response": [
+                {
+                  "id": "bcd06725-42b1-4d32-a8a4-13e04720dcf9",
+                  "name": "Successfully retrieved document.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "document-id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"saved\": \"<boolean>\",\n  \"changeTrackingMode\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-bcd06725-42b1-4d32-a8a4-13e04720dcf9"
+                },
+                {
+                  "id": "1ea82094-6ef9-408d-9283-e3aba75f9c53",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:document-id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":document-id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "document-id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:12:24.000Z",
+                  "updatedAt": "2026-06-05T15:12:24.000Z",
+                  "uid": "35240-1ea82094-6ef9-408d-9283-e3aba75f9c53"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-3f59c09f-1901-407a-8082-e72626b4e0a7"
+            }
+          ],
+          "id": "c6cd43ce-6d22-4a7b-a9f7-a30f20c816f1",
+          "createdAt": "2026-06-05T15:12:24.000Z",
+          "updatedAt": "2026-06-05T15:12:24.000Z",
+          "uid": "35240-c6cd43ce-6d22-4a7b-a9f7-a30f20c816f1"
+        },
+        {
+          "name": "Microsoft Word Create Document",
+          "id": "35bea8e0-4d5f-42a1-afe3-6567c5abd0bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"base64File\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/documents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "documents"
+              ]
+            },
+            "description": "Create a new blank Word document."
+          },
+          "response": [
+            {
+              "id": "22ed3530-2ca5-4cba-b502-b74b06d0b2e7",
+              "name": "Successfully created a new document.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"base64File\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"saved\": \"<boolean>\",\n  \"changeTrackingMode\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-22ed3530-2ca5-4cba-b502-b74b06d0b2e7"
+            },
+            {
+              "id": "9af08fa6-c772-41e0-94d0-5ce4ae9b048b",
+              "name": "Authentication required.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"base64File\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:12:24.000Z",
+              "updatedAt": "2026-06-05T15:12:24.000Z",
+              "uid": "35240-9af08fa6-c772-41e0-94d0-5ce4ae9b048b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:12:24.000Z",
+          "updatedAt": "2026-06-05T15:12:24.000Z",
+          "uid": "35240-35bea8e0-4d5f-42a1-afe3-6567c5abd0bf"
+        }
+      ],
+      "id": "503bf14c-07ff-44d3-9ce9-8792ce0da633",
+      "createdAt": "2026-06-05T15:12:24.000Z",
+      "updatedAt": "2026-06-05T15:12:24.000Z",
+      "uid": "35240-503bf14c-07ff-44d3-9ce9-8792ce0da633"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.ReadWrite",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://word.officeapps.live.com/api/v1"
+    }
+  ]
+}
