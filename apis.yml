@@ -231,6 +231,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-word-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-word/overview
   - type: Arazzo

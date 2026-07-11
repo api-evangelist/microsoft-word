@@ -1,0 +1,44 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-word-graph-api.yaml, openapi/microsoft-word-javascript-api.yaml
+schemes:
+- name: oauth2
+  source: openapi/microsoft-word-graph-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+- name: oauth2
+  source: openapi/microsoft-word-javascript-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 via Microsoft Identity Platform for Office Add-ins.
+scopes:
+- scope: Files.Read
+  description: Read user files
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-word-graph-api.yaml
+- scope: Files.Read.All
+  description: Read all files the user can access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-word-graph-api.yaml
+- scope: Files.ReadWrite
+  description: Read and write user files
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-word-graph-api.yaml
+  - openapi/microsoft-word-javascript-api.yaml
+- scope: Files.ReadWrite.All
+  description: Read and write all files the user can access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-word-graph-api.yaml
