@@ -231,6 +231,12 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-word-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-word-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-word-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-word-scopes.yml
   - type: PostmanWorkspace
