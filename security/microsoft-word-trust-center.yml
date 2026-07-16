@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+probe: false
+url: https://servicetrust.microsoft.com/
+also:
+- https://www.microsoft.com/en-us/trust-center
+- https://learn.microsoft.com/en-us/compliance/regulatory/offering-home
+certifications:
+- SOC 1 Type 2
+- SOC 2 Type 2
+- SOC 3
+- ISO 27001
+- ISO 27017
+- ISO 27018
+- FedRAMP
+- FIPS 140-2
+- HIPAA
+notes: >-
+  Microsoft 365 (which hosts the Word document surface via Microsoft Graph, OneDrive,
+  and SharePoint) is covered by the Microsoft Service Trust Portal. Office 365 undergoes
+  annual SOC 1 Type 2 and SOC 2 Type 2 examinations by an independent AICPA-accredited
+  CPA firm; audit reports and certificates are downloadable from the Service Trust Portal.
+evidence:
+- source: https://servicetrust.microsoft.com/
+  keywords: [soc 2, iso 27001, fedramp, audit reports, compliance, trust portal]
+- source: https://learn.microsoft.com/en-us/compliance/regulatory/offering-soc-2
+  keywords: [soc 2 type 2, office 365, attestation]

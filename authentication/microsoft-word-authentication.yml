@@ -1,11 +1,16 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/microsoft-word-graph-api.yaml, openapi/microsoft-word-javascript-api.yaml
+docs: https://learn.microsoft.com/en-us/graph/auth/
 summary:
   types:
   - oauth2
   oauth2_flows:
   - authorizationCode
+  - clientCredentials
+  identity_platform: Microsoft Entra / Microsoft Identity Platform (v2.0 endpoint)
+  token_type: OAuth 2.0 bearer (JWT)
+  consent: delegated permissions (user consent) and application permissions (admin consent)
 schemes:
 - name: oauth2
   type: oauth2
@@ -14,7 +19,22 @@ schemes:
     authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
     tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
     scopes: 4
-  description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+  description: OAuth 2.0 authorization code flow with Microsoft Identity Platform (delegated).
   sources:
   - openapi/microsoft-word-graph-api.yaml
   - openapi/microsoft-word-javascript-api.yaml
+- name: oauth2-client-credentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  description: >-
+    App-only (daemon) access using application permissions and the .default scope
+    (https://graph.microsoft.com/.default). Documented for server-side automation such as
+    Word Automation Services and unattended document processing.
+  sources:
+  - docs
+discovery:
+  openid_configuration: https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
+  see: well-known/microsoft-word-well-known.yml
+scopes_artifact: scopes/microsoft-word-scopes.yml

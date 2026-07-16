@@ -1,0 +1,42 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/cli/overview + https://github.com/microsoftgraph/msgraph-cli
+cli:
+  name: Microsoft Graph CLI
+  binary: mgc
+  status: generally-available
+  repo: https://github.com/microsoftgraph/msgraph-cli
+  package: Microsoft.Graph.Cli
+  beta_binary: mgc-beta
+  beta_repo: https://github.com/microsoftgraph/msgraph-beta-cli
+install:
+- method: dotnet-tool
+  command: dotnet tool install --global Microsoft.Graph.Cli
+- method: archive
+  command: Download msgraph-cli-win-x64 / -linux-x64 / -osx-x64 zip from GitHub Releases, extract, add mgc to PATH
+  url: https://github.com/microsoftgraph/msgraph-cli/releases
+auth:
+  strategies: [delegated, app-only]
+  default: device-code
+  login_example: mgc login --client-id <id> --tenant-id <id> --scopes Files.ReadWrite --scopes User.Read
+  logout: mgc logout
+command_groups:
+- group: mgc drives
+  description: Manage drives (OneDrive / SharePoint document libraries) that hold Word documents.
+- group: mgc drives items
+  description: Get, update, delete, copy, move DriveItem resources; upload and download content.
+- group: mgc me drive
+  description: Operate on the signed-in user's drive and its Word document items.
+- group: mgc users
+  description: Manage users whose drives contain documents.
+- group: mgc groups
+  description: Manage groups and their SharePoint document libraries.
+- group: mgc sites
+  description: Access SharePoint sites and document libraries.
+key_flows:
+- name: Upload a Word document
+  command: mgc drives items content put --drive-id <id> --drive-item-id <path> --file report.docx
+- name: Download document content
+  command: mgc drives items content get --drive-id <id> --drive-item-id <id> --output-file report.docx
+- name: List a folder's children
+  command: mgc drives items children list --drive-id <id> --drive-item-id <id>

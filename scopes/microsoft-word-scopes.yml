@@ -1,6 +1,13 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/microsoft-word-graph-api.yaml, openapi/microsoft-word-javascript-api.yaml
+docs: https://learn.microsoft.com/en-us/graph/permissions-reference
+notes: >-
+  Microsoft Graph permissions (scopes) for the Word document surface are the Files.*
+  and Sites.* permission families. Each exists as a delegated and an application
+  permission; .All variants and Sites.* permissions typically require admin consent.
+  Scopes below extend the four declared in the OpenAPI with the additional documented
+  file/site permissions that Word-in-OneDrive/SharePoint operations use.
 schemes:
 - name: oauth2
   source: openapi/microsoft-word-graph-api.yaml
@@ -18,27 +25,34 @@ schemes:
   description: OAuth 2.0 via Microsoft Identity Platform for Office Add-ins.
 scopes:
 - scope: Files.Read
-  description: Read user files
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/microsoft-word-graph-api.yaml
+  description: Read the signed-in user's files.
+  flows: [authorizationCode]
+  sources: [openapi/microsoft-word-graph-api.yaml]
 - scope: Files.Read.All
-  description: Read all files the user can access
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/microsoft-word-graph-api.yaml
+  description: Read all files the signed-in user can access.
+  flows: [authorizationCode]
+  sources: [openapi/microsoft-word-graph-api.yaml]
 - scope: Files.ReadWrite
-  description: Read and write user files
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/microsoft-word-graph-api.yaml
-  - openapi/microsoft-word-javascript-api.yaml
+  description: Read and write the signed-in user's files.
+  flows: [authorizationCode]
+  sources: [openapi/microsoft-word-graph-api.yaml, openapi/microsoft-word-javascript-api.yaml]
 - scope: Files.ReadWrite.All
-  description: Read and write all files the user can access
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/microsoft-word-graph-api.yaml
+  description: Read and write all files the signed-in user can access.
+  flows: [authorizationCode]
+  sources: [openapi/microsoft-word-graph-api.yaml]
+- scope: Files.ReadWrite.AppFolder
+  description: Read and write files in the application's dedicated folder.
+  flows: [authorizationCode]
+  sources: [docs]
+- scope: Sites.Read.All
+  description: Read items in all SharePoint site collections the user can access (SharePoint document libraries).
+  flows: [authorizationCode]
+  sources: [docs]
+- scope: Sites.ReadWrite.All
+  description: Read and write items in all SharePoint site collections (admin consent typically required).
+  flows: [authorizationCode]
+  sources: [docs]
+- scope: User.Read
+  description: Sign in and read the signed-in user's profile (baseline scope requested at login).
+  flows: [authorizationCode]
+  sources: [docs]

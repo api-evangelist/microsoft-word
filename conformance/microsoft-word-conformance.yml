@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/microsoft-word-graph-api.yaml, openapi/microsoft-word-javascript-api.yaml, docs claims
+standards:
+- id: oauth2
+  conforms: true
+  evidence: openapi securitySchemes type oauth2 (authorizationCode) via Microsoft Identity Platform
+- id: oidc
+  conforms: true
+  evidence: login.microsoftonline.com/common/v2.0/.well-known/openid-configuration returns 200 (see well-known/)
+- id: odata-v4
+  conforms: true
+  evidence: Microsoft Graph is an OData 4.0 service; responses carry @odata.nextLink and support $select/$expand/$filter/$top
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use the Microsoft Graph error envelope (error.code/message/innerError), not application/problem+json
+- id: pagination
+  conforms: true
+  evidence: OData server-driven paging via @odata.nextLink continuation tokens
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: OAuth 2.0 bearer access tokens in the Authorization header
+- id: fhir-r4
+  conforms: false
+- id: scim2
+  conforms: false
+  evidence: SCIM exists elsewhere in Microsoft Entra but not on this Word document surface
+- id: fapi
+  conforms: false
+- id: json-api
+  conforms: false

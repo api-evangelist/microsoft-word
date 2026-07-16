@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.microsoft.com/en-us/microsoft-365/dev-program + https://developer.microsoft.com/en-us/graph/graph-explorer
+sandbox:
+  model: developer-tenant
+  note: >-
+    Microsoft does not use test-vs-live API keys. Instead it provides a free, isolated
+    Microsoft 365 developer tenant pre-provisioned with sample users, mail, files, and
+    SharePoint content, plus a browser console (Graph Explorer) with a shared sample
+    tenant for zero-setup calls.
+developer_program:
+  name: Microsoft 365 Developer Program
+  url: https://developer.microsoft.com/en-us/microsoft-365/dev-program
+  provides:
+  - A free, renewable Microsoft 365 E5 developer subscription (sandbox tenant).
+  - Option to auto-provision sample data (users, groups, mail, Word/Excel/PowerPoint files, SharePoint sites).
+  - Up to 25 user licenses for building and testing.
+console:
+  name: Graph Explorer
+  url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  provides:
+  - Sign in with your own tenant OR use the built-in sample data tenant (no sign-in) to run read requests.
+  - Pre-populated sample queries including OneDrive/SharePoint DriveItem calls.
+  - Access-token inspection, permission consent UI, and code snippets in C#/JS/Java/Go/PHP/PowerShell.
+addins_testing:
+  note: >-
+    Word add-ins built on the Office JavaScript API are sideloaded for local testing;
+    the Yeoman generator scaffolds a project that runs against a local dev server before
+    publishing to AppSource.
+  docs: https://learn.microsoft.com/en-us/office/dev/add-ins/testing/test-debug-office-add-ins
+test_values: none-published

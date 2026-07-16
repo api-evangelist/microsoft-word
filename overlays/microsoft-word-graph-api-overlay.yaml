@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Microsoft Graph Word API
+  version: 1.0.0
+extends: openapi/microsoft-word-graph-api.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: microsoft-word
+    x-apievangelist-provider: Microsoft
+    x-apievangelist-standards: [oauth2, oidc, odata-v4]
+    x-apievangelist-artifacts:
+      authentication: authentication/microsoft-word-authentication.yml
+      scopes: scopes/microsoft-word-scopes.yml
+      conventions: conventions/microsoft-word-conventions.yml
+      errors: errors/microsoft-word-problem-types.yml
+      lifecycle: lifecycle/microsoft-word-lifecycle.yml
+      data_model: data-model/microsoft-word-data-model.yml
+- target: $.info
+  update:
+    x-apievangelist-error-format: microsoft-graph-error
+    x-apievangelist-pagination: odata-nextlink

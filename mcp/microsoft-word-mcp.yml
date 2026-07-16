@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: https://learn.microsoft.com/en-us/graph/mcp-server/overview
+server:
+  name: Microsoft MCP Server for Enterprise
+  transport: http
+  url: https://mcp.svc.cloud.microsoft/enterprise
+  release: preview
+  app_id: e8c77dc2-69b3-43f4-bc51-3213c9d915b4
+  auth: OAuth 2.0 / Microsoft Entra (honors delegated user roles and granted Graph scopes)
+  scope_note: >-
+    Official Microsoft-hosted MCP server that translates natural-language requests into
+    Microsoft Graph API calls. Current public preview focuses on Microsoft Entra identity
+    and directory READ-ONLY scenarios; it fronts the same Graph endpoint used by the Word
+    DriveItem operations, subject to standard Graph throttling limits (100 calls/min/user).
+tools:
+- name: microsoft_graph_suggest_queries
+  description: Uses retrieval-augmented generation (RAG) to search a curated catalog of Microsoft Graph API examples aligned with the user's intent.
+- name: microsoft_graph_get
+  description: Runs read-only Microsoft Graph API calls while honoring user roles, granted scopes, and Graph throttling limits.
+- name: microsoft_graph_list_properties
+  description: Retrieves the schema for Microsoft Graph entities so the model understands available properties and relationships before constructing requests.
+related:
+- name: Microsoft MCP (official catalog)
+  url: https://github.com/microsoft/mcp
+candidate_tools_note: >-
+  For Word document workflows specifically (create/read/update DriveItem, content upload,
+  permissions, versions, checkout), the Graph Word OpenAPI operations in
+  openapi/microsoft-word-graph-api.yaml can be surfaced as MCP tools one-per-operationId;
+  Microsoft's hosted server does not yet expose these write operations.

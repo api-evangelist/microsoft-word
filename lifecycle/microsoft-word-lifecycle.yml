@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/versioning-and-support
+versioning:
+  scheme: uri-path
+  current: v1.0
+  preview: beta
+  endpoints:
+    v1.0: https://graph.microsoft.com/v1.0
+    beta: https://graph.microsoft.com/beta
+  docs: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  note: >-
+    APIs debut in beta and graduate to v1.0. Breaking changes and deprecations are
+    expected in beta and beta is not supported for production use.
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  notice_period: 24 months
+  note: >-
+    A GA (v1.0) API is declared deprecated at least 24 months before removal.
+    Incrementing the major version immediately deprecates the prior version with a
+    24-month support tail.
+  sunset_header: false
+sla:
+  url: https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services
+  uptime_target: "99.9%"
+  note: Covered under the Microsoft Online Services SLA / Microsoft 365 service level commitments.
+status_page: https://status.office.com/
+support: https://developer.microsoft.com/graph/support
+deprecated_operations: []

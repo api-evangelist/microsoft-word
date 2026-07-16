@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/microsoft-word-graph-api.yaml (4xx/5xx responses + ErrorResponse schema)
+format: microsoft-graph-error
+envelope:
+  shape: '{ "error": { "code": string, "message": string, "innerError": { "request-id": string, "date": date-time } } }'
+  media_type: application/json
+  note: >-
+    Microsoft Graph does not use RFC 9457 application/problem+json. Errors are returned
+    as a JSON object with a top-level "error" containing a machine-readable "code", a
+    human "message", and an "innerError" carrying request-id and date for support.
+  docs: https://learn.microsoft.com/en-us/graph/errors
+problems:
+- status: 400
+  code: badRequest / invalidRequest
+  title: Bad request
+  remediation: The request is malformed or has invalid parameters; correct the payload or query options.
+- status: 401
+  code: unauthenticated / InvalidAuthenticationToken
+  title: Authentication required or token expired
+  remediation: Acquire a valid OAuth 2.0 access token from the Microsoft Identity Platform and retry.
+- status: 403
+  code: accessDenied / authorizationRequestDenied
+  title: Insufficient permissions
+  remediation: The caller lacks the required Graph permission/scope; request the appropriate delegated or application permission and consent.
+- status: 404
+  code: itemNotFound
+  title: Resource not found
+  remediation: The driveItem, permission, or version does not exist or the path/ID is wrong.
+- status: 409
+  code: nameAlreadyExists / resourceModified
+  title: Conflict
+  remediation: A resource with that name already exists or the item changed since read; resolve the conflict (rename, or re-read the ETag) and retry.
+- status: 429
+  code: activityLimitReached
+  title: Too many requests (throttling)
+  remediation: Microsoft Graph throttled the request; honor the Retry-After header and back off. (Documented behavior; not enumerated in the OpenAPI.)
+  source: docs
+- status: 503
+  code: serviceNotAvailable
+  title: Service unavailable
+  remediation: Transient service error; retry with exponential backoff and honor Retry-After. (Documented behavior; not enumerated in the OpenAPI.)
+  source: docs

@@ -1,0 +1,117 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yaml schema $ref graph + id-reference fields
+apis:
+- api: Microsoft Graph Word API
+  spec: openapi/microsoft-word-graph-api.yaml
+  entities:
+  - name: DriveItem
+    description: A file or folder in a drive (OneDrive / SharePoint document library); the Word .docx lives here.
+    facets: [FileFacet, FolderFacet, SharedFacet, ItemReference, IdentitySet]
+    relationships:
+    - kind: has_many
+      target: DriveItem
+      via: children
+    - kind: has_many
+      target: Permission
+      via: permissions
+    - kind: has_many
+      target: DriveItemVersion
+      via: versions
+    - kind: has_many
+      target: ThumbnailSet
+      via: thumbnails
+    - kind: belongs_to
+      target: DriveItem
+      via: parentReference (ItemReference)
+  - name: Permission
+    description: A sharing grant on a DriveItem.
+    relationships:
+    - kind: belongs_to
+      target: DriveItem
+      via: item-id
+  - name: DriveItemVersion
+    description: A historical version of a DriveItem's content.
+    relationships:
+    - kind: belongs_to
+      target: DriveItem
+      via: item-id
+  - name: UploadSession
+    description: A resumable upload session for large document content.
+    relationships:
+    - kind: belongs_to
+      target: DriveItem
+      via: item path
+- api: Office JavaScript API for Word
+  spec: openapi/microsoft-word-javascript-api.yaml
+  entities:
+  - name: Document
+    relationships:
+    - kind: has_one
+      target: Body
+      via: body
+    - kind: has_many
+      target: Section
+      via: sections
+    - kind: has_one
+      target: DocumentProperties
+      via: properties
+  - name: Body
+    relationships:
+    - kind: has_many
+      target: Paragraph
+      via: paragraphs
+    - kind: has_many
+      target: ContentControl
+      via: contentControls
+    - kind: has_many
+      target: Table
+      via: tables
+  - name: Paragraph
+    relationships:
+    - kind: belongs_to
+      target: Body
+      via: body
+  - name: ContentControl
+    relationships:
+    - kind: belongs_to
+      target: Body
+      via: body
+  - name: Table
+    relationships:
+    - kind: belongs_to
+      target: Body
+      via: body
+  - name: Comment
+    relationships:
+    - kind: belongs_to
+      target: Range
+      via: range
+- api: Open XML SDK for Word
+  spec: openapi/microsoft-word-open-xml-sdk.yaml
+  entities:
+  - name: WordDocument
+    relationships:
+    - kind: has_one
+      target: DocumentBody
+      via: body
+    - kind: has_many
+      target: OpenXmlParagraph
+      via: paragraphs
+    - kind: has_many
+      target: OpenXmlTable
+      via: tables
+    - kind: has_many
+      target: ImageInfo
+      via: images
+    - kind: has_one
+      target: OpenXmlDocumentProperties
+      via: properties
+  - name: DocumentBody
+    relationships:
+    - kind: has_many
+      target: OpenXmlParagraph
+      via: paragraphs
+    - kind: has_many
+      target: OpenXmlTable
+      via: tables

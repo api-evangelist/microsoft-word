@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Office JavaScript API for Word
+  version: 1.0.0
+extends: openapi/microsoft-word-javascript-api.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: microsoft-word
+    x-apievangelist-provider: Microsoft
+    x-apievangelist-surface: client-side-addin
+    x-apievangelist-loader: https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    x-apievangelist-artifacts:
+      data_model: data-model/microsoft-word-data-model.yml
+      conventions: conventions/microsoft-word-conventions.yml
+      sandbox: sandbox/microsoft-word-sandbox.yml

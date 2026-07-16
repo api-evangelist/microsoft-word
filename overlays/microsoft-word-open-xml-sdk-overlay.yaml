@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Open XML SDK for Word
+  version: 1.0.0
+extends: openapi/microsoft-word-open-xml-sdk.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: microsoft-word
+    x-apievangelist-provider: Microsoft
+    x-apievangelist-surface: offline-library
+    x-apievangelist-standard: ecma-376-open-xml
+    x-apievangelist-package: DocumentFormat.OpenXml
+    x-apievangelist-repo: https://github.com/dotnet/Open-XML-SDK
+    x-apievangelist-artifacts:
+      data_model: data-model/microsoft-word-data-model.yml
+      packages: packages/microsoft-word-packages.yml

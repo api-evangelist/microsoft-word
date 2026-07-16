@@ -11,7 +11,7 @@ tags:
 - Productivity
 - Word Processing
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -241,6 +241,38 @@ common:
     url: authentication/microsoft-word-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-word-scopes.yml
+  - type: TrustCenter
+    url: security/microsoft-word-trust-center.yml
+  - type: Packages
+    url: packages/microsoft-word-packages.yml
+  - type: WellKnown
+    url: well-known/microsoft-word-well-known.yml
+  - type: MCPServer
+    url: mcp/microsoft-word-mcp.yml
+  - type: LLMsTxt
+    url: llms/microsoft-word-llms.txt
+  - type: Conformance
+    url: conformance/microsoft-word-conformance.yml
+  - type: ErrorCatalog
+    url: errors/microsoft-word-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/microsoft-word-lifecycle.yml
+  - type: Sandbox
+    url: sandbox/microsoft-word-sandbox.yml
+  - type: Conventions
+    url: conventions/microsoft-word-conventions.yml
+  - type: ChangeLog
+    url: changelog/microsoft-word-changelog.yml
+  - type: CLI
+    url: cli/microsoft-word-cli.yml
+  - type: DataModel
+    url: data-model/microsoft-word-data-model.yml
+  - type: Overlay
+    url: overlays/microsoft-word-graph-api-overlay.yaml
+  - type: Overlay
+    url: overlays/microsoft-word-javascript-api-overlay.yaml
+  - type: Overlay
+    url: overlays/microsoft-word-open-xml-sdk-overlay.yaml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-word/overview
   - type: Arazzo

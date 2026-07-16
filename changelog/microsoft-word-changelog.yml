@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.microsoft.com/en-us/graph/changelog
+scheme: dated-per-workload
+notes: >-
+  Microsoft Graph publishes a continuous dated changelog per workload rather than a
+  single semantic version. The Word document surface rides the Graph v1.0 endpoint;
+  DriveItem/Files changes appear under the Files & Sharing workload. Recent window
+  below is a representative sample of the live feed (not Word-specific only).
+current_version: v1.0
+beta_version: beta
+feed:
+  html: https://developer.microsoft.com/en-us/graph/changelog
+  rss: https://developer.microsoft.com/en-us/graph/changelog/rss
+recent_entries:
+- date: '2026-06-19'
+  workload: Tenants
+  type: addition
+  summary: Added the migrate method to the crossTenantMigrationJob resource.
+- date: '2026-06-19'
+  workload: Security
+  type: change
+  summary: Modified DLP actions; introduced policyTipAction resource replacing prior properties.
+- date: '2026-06-19'
+  workload: Tasks and Plans
+  type: addition
+  summary: New enumeration types and resources for task history tracking in plannerPlan.
+- date: '2026-06-19'
+  workload: Teamwork & Communications
+  type: addition
+  summary: Introduced cloudVideoInteropInfo resource for online meeting integration.
+- date: '2026-06-18'
+  workload: Identity & Access
+  type: addition
+  summary: Expanded access package suggestions with new resources and filtering methods.
+- date: '2026-06-18'
+  workload: Teamwork & Communications
+  type: addition
+  summary: Added meetingType property and onlineMeetingType enumeration for meetings.

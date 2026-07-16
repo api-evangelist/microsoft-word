@@ -1,0 +1,46 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/api/overview + OpenAPI derivation
+scope: Microsoft Graph Word API (graph.microsoft.com/v1.0)
+authentication:
+  style: OAuth 2.0 bearer (Microsoft Identity Platform)
+  header: 'Authorization: Bearer <token>'
+  see: authentication/microsoft-word-authentication.yml
+base_protocol:
+  standard: OData 4.0
+  docs: https://learn.microsoft.com/en-us/graph/query-parameters
+pagination:
+  style: server-driven (OData)
+  continuation: '@odata.nextLink'
+  params: ['$top', '$skip', '$skipToken']
+  response_fields: ['value', '@odata.nextLink', '@odata.count']
+  note: Follow @odata.nextLink until absent; do not construct next-page URLs manually.
+query_options:
+  select: '$select — return only named properties'
+  expand: '$expand — inline related entities (e.g. children, permissions)'
+  filter: '$filter — OData filter expressions'
+  orderby: '$orderby'
+  search: '$search — requires ConsistencyLevel: eventual header for directory queries'
+  count: '$count'
+concurrency:
+  etag: DriveItem responses carry an eTag/cTag; use If-Match / If-None-Match for optimistic concurrency on updates.
+metadata:
+  odata_context: '@odata.context describes the response entity type'
+  odata_type: '@odata.type disambiguates polymorphic resources'
+request_tracing:
+  request_id: request-id and client-request-id returned in error innerError and response headers
+  correlation: >-
+    Include a client-request-id header to correlate your logs with Microsoft Graph activity logs.
+versioning:
+  style: uri-path (v1.0 vs beta)
+  see: lifecycle/microsoft-word-lifecycle.yml
+error_envelope:
+  shape: error.code / error.message / error.innerError
+  see: errors/microsoft-word-problem-types.yml
+rate_limiting:
+  signaling: HTTP 429 with Retry-After (seconds); service-protection throttling per app+tenant
+  see: rate-limits/microsoft-word-rate-limits.yml
+  docs: https://learn.microsoft.com/en-us/graph/throttling
+large_uploads:
+  mechanism: resumable upload session (createUploadSession) with Content-Range chunking for files > 4 MB
+  see: arazzo/microsoft-word-resumable-upload-session-workflow.yml

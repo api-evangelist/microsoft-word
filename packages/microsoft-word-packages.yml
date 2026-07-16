@@ -1,0 +1,68 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview + apis.yml SDK links + package registries
+packages:
+- language: dotnet
+  registry: nuget
+  name: Microsoft.Graph
+  url: https://www.nuget.org/packages/Microsoft.Graph
+  install: dotnet add package Microsoft.Graph
+  official: true
+  api: Microsoft Graph Word API
+- language: python
+  registry: pypi
+  name: msgraph-sdk
+  url: https://pypi.org/project/msgraph-sdk/
+  install: pip install msgraph-sdk
+  official: true
+  api: Microsoft Graph Word API
+- language: javascript
+  registry: npm
+  name: "@microsoft/microsoft-graph-client"
+  url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  install: npm install @microsoft/microsoft-graph-client
+  official: true
+  api: Microsoft Graph Word API
+- language: java
+  registry: maven
+  name: com.microsoft.graph:microsoft-graph
+  url: https://central.sonatype.com/artifact/com.microsoft.graph/microsoft-graph
+  install: implementation 'com.microsoft.graph:microsoft-graph'
+  official: true
+  api: Microsoft Graph Word API
+- language: go
+  registry: pkg.go.dev
+  name: github.com/microsoftgraph/msgraph-sdk-go
+  url: https://pkg.go.dev/github.com/microsoftgraph/msgraph-sdk-go
+  install: go get github.com/microsoftgraph/msgraph-sdk-go
+  official: true
+  api: Microsoft Graph Word API
+- language: php
+  registry: packagist
+  name: microsoft/microsoft-graph
+  url: https://packagist.org/packages/microsoft/microsoft-graph
+  install: composer require microsoft/microsoft-graph
+  official: true
+  api: Microsoft Graph Word API
+- language: dotnet
+  registry: nuget
+  name: DocumentFormat.OpenXml
+  url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  install: dotnet add package DocumentFormat.OpenXml
+  official: true
+  api: Open XML SDK for Word
+  source_repo: https://github.com/dotnet/Open-XML-SDK
+- language: javascript
+  registry: cdn
+  name: office.js (Office JavaScript API)
+  url: https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+  install: <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  official: true
+  api: Office JavaScript API for Word
+- language: dotnet
+  registry: nuget
+  name: Microsoft.Graph.Cli
+  url: https://www.nuget.org/packages/Microsoft.Graph.Cli
+  install: dotnet tool install --global Microsoft.Graph.Cli
+  official: true
+  note: First-party Microsoft Graph command-line interface (mgc). Command surface in cli/.
