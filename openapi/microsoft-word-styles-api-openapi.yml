@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Styles API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Styles
+  description: Operations for managing document styles
+paths:
+  /documents/{document-id}/styles:
+    get:
+      operationId: listStyles
+      summary: Microsoft Word List Styles
+      description: Get the collection of style objects in the document.
+      tags:
+      - Styles
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved styles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StyleCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    Style:
+      type: object
+      description: Represents a document style.
+      properties:
+        name:
+          type: string
+          description: Name of the style.
+          example: Heading 1
+        type:
+          type: string
+          description: Style type (Character, Paragraph, Table, List).
+          example: Paragraph
+        builtIn:
+          type: boolean
+          description: Whether the style is a built-in style.
+          example: true
+    StyleCollection:
+      type: object
+      description: Collection of styles.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Style'
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

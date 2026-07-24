@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Headers And Footers API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Headers And Footers
+  description: Operations for managing headers and footers
+paths:
+  /documents/{document-id}/headers:
+    get:
+      operationId: listHeaders
+      summary: Microsoft Word List Headers
+      description: List all header parts in the document.
+      tags:
+      - Headers And Footers
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved headers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeaderFooterCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/footers:
+    get:
+      operationId: listFooters
+      summary: Microsoft Word List Footers
+      description: List all footer parts in the document.
+      tags:
+      - Headers And Footers
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved footers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeaderFooterCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HeaderFooterCollection:
+      type: object
+      description: Collection of header or footer parts.
+      properties:
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Header/footer type (Default, First, Even).
+                example: Default
+              content:
+                type: string
+                description: Text content.
+                example: Company Confidential
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

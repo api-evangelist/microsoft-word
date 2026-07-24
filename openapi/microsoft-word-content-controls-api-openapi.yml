@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Content Controls API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Content Controls
+  description: Operations for managing content controls
+paths:
+  /documents/{document-id}/contentControls:
+    get:
+      operationId: listContentControls
+      summary: Microsoft Word List Content Controls
+      description: Get the collection of content control objects in the document.
+      tags:
+      - Content Controls
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved content controls.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentControlCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/contentControls/{control-id}:
+    get:
+      operationId: getContentControl
+      summary: Microsoft Word Get Content Control
+      description: Get a specific content control by its ID.
+      tags:
+      - Content Controls
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      - name: control-id
+        in: path
+        required: true
+        description: The unique identifier of the content control.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successfully retrieved content control.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentControl'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    ContentControl:
+      type: object
+      description: Represents a content control in a document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the content control.
+          example: '500123'
+        tag:
+          type: string
+          description: Tag to identify the content control.
+          example: customer_name
+        title:
+          type: string
+          description: Title of the content control.
+          example: Customer Name
+        type:
+          type: string
+          description: Type of content control (RichText, PlainText, Picture, CheckBox, DropDownList, ComboBox, DatePicker).
+          example: RichText
+        text:
+          type: string
+          description: Text content of the content control.
+          example: Contoso Ltd.
+        appearance:
+          type: string
+          description: Visual appearance (BoundingBox, Tags, Hidden).
+          example: BoundingBox
+        cannotDelete:
+          type: boolean
+          description: Whether the content control can be deleted.
+          example: false
+        cannotEdit:
+          type: boolean
+          description: Whether the content control can be edited.
+          example: false
+    ContentControlCollection:
+      type: object
+      description: Collection of content controls.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentControl'
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

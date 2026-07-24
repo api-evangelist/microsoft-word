@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Comments API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Comments
+  description: Operations for managing comments and replies
+paths:
+  /documents/{document-id}/comments:
+    get:
+      operationId: listComments
+      summary: Microsoft Word List Comments
+      description: Get the collection of comments in the document.
+      tags:
+      - Comments
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved comments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    Comment:
+      type: object
+      description: Represents a comment in a Word document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the comment.
+          example: comment-500123
+        authorName:
+          type: string
+          description: Name of the comment author.
+          example: Jane Smith
+        authorEmail:
+          type: string
+          description: Email of the comment author.
+          example: jsmith@contoso.com
+        content:
+          type: string
+          description: Text content of the comment.
+          example: Please review this section.
+        createdDate:
+          type: string
+          format: date-time
+          description: When the comment was created.
+          example: '2025-03-15T14:30:00Z'
+        resolved:
+          type: boolean
+          description: Whether the comment has been resolved.
+          example: false
+    CommentCollection:
+      type: object
+      description: Collection of comments.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

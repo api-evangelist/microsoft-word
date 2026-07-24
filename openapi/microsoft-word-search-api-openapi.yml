@@ -1,0 +1,240 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Search API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Search
+  description: Operations for searching files and folders
+paths:
+  /me/drive/root/search(q='{search-text}'):
+    get:
+      operationId: searchDriveItems
+      summary: Microsoft Word Search Drive Items
+      description: Search the hierarchy of items for items matching a query string.
+      tags:
+      - Search
+      parameters:
+      - name: search-text
+        in: path
+        required: true
+        description: The search query text.
+        schema:
+          type: string
+        example: quarterly report.docx
+      responses:
+        '200':
+          description: Successfully returned search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriveItemCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    FolderFacet:
+      type: object
+      description: Folder metadata facet for a driveItem.
+      properties:
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
+    SharedFacet:
+      type: object
+      description: Indicates the item has been shared with others.
+      properties:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
+          type: string
+          description: Scope of sharing.
+          example: users
+    DriveItem:
+      type: object
+      description: Represents a file, folder, or other item stored in a drive.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the item within the drive.
+          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+        name:
+          type: string
+          description: The name of the item (filename and extension).
+          example: quarterly-report.docx
+        description:
+          type: string
+          description: A user-visible description of the item.
+          example: Q4 2025 financial report
+        size:
+          type: integer
+          format: int64
+          description: Size of the item in bytes.
+          example: 157286400
+        webUrl:
+          type: string
+          format: uri
+          description: URL that displays the resource in the browser.
+          example: https://contoso-my.sharepoint.com/personal/user/Documents/report.docx
+        webDavUrl:
+          type: string
+          format: uri
+          description: WebDAV compatible URL for the item.
+          example: https://contoso-my.sharepoint.com/personal/user/Documents/report.docx
+        createdDateTime:
+          type: string
+          format: date-time
+          description: Date and time of item creation.
+          example: '2025-03-21T20:01:37Z'
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          description: Date and time the item was last modified.
+          example: '2025-06-15T14:30:00Z'
+        eTag:
+          type: string
+          description: ETag for the entire item (metadata + content).
+          example: '"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},1"'
+        cTag:
+          type: string
+          description: ETag for the content of the item.
+          example: '"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},0"'
+        createdBy:
+          $ref: '#/components/schemas/IdentitySet'
+        lastModifiedBy:
+          $ref: '#/components/schemas/IdentitySet'
+        parentReference:
+          $ref: '#/components/schemas/ItemReference'
+        file:
+          $ref: '#/components/schemas/FileFacet'
+        folder:
+          $ref: '#/components/schemas/FolderFacet'
+        shared:
+          $ref: '#/components/schemas/SharedFacet'
+    ItemReference:
+      type: object
+      description: Reference to a drive item's parent.
+      properties:
+        driveId:
+          type: string
+          description: Identifier of the drive containing the item.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+        id:
+          type: string
+          description: Identifier of the item in the drive.
+          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+        path:
+          type: string
+          description: Path from the root to the item.
+          example: /drive/root:/Documents
+    FileFacet:
+      type: object
+      description: File metadata facet for a driveItem.
+      properties:
+        mimeType:
+          type: string
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
+    DriveItemCollection:
+      type: object
+      description: Collection of drive items.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriveItem'
+          description: Array of drive items.
+        '@odata.nextLink':
+          type: string
+          description: URL to get the next page of results.
+          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
+    IdentitySet:
+      type: object
+      description: Keyed collection of identity resources.
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
+  responses:
+    Unauthorized:
+      description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

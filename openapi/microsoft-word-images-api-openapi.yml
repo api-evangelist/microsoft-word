@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Images API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Images
+  description: Operations for managing images in documents
+paths:
+  /documents/{document-id}/images:
+    get:
+      operationId: listImages
+      summary: Microsoft Word List Images
+      description: List all images embedded in the document.
+      tags:
+      - Images
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved images.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addImage
+      summary: Microsoft Word Add Image
+      description: Add an image to the document.
+      tags:
+      - Images
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Image file to add.
+                width:
+                  type: integer
+                  description: Width of the image in EMUs.
+                  example: 914400
+                height:
+                  type: integer
+                  description: Height of the image in EMUs.
+                  example: 685800
+      responses:
+        '201':
+          description: Successfully added image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ImageInfo:
+      type: object
+      description: Information about an embedded image.
+      properties:
+        relationshipId:
+          type: string
+          description: Relationship ID of the image part.
+          example: rId4
+        contentType:
+          type: string
+          description: MIME type of the image.
+          example: image/png
+        width:
+          type: integer
+          description: Width in EMUs.
+          example: 914400
+        height:
+          type: integer
+          description: Height in EMUs.
+          example: 685800
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+    ImageCollection:
+      type: object
+      description: Collection of embedded images.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageInfo'
+        count:
+          type: integer
+          description: Total number of images.
+          example: 5
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

@@ -1,0 +1,242 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Documents API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Documents
+  description: Operations for creating, opening, and managing Word documents
+paths:
+  /documents:
+    post:
+      operationId: createDocument
+      summary: Microsoft Word Create Document
+      description: Create a new blank Word document.
+      tags:
+      - Documents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocumentRequest'
+      responses:
+        '201':
+          description: Successfully created a new document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}:
+    get:
+      operationId: getDocument
+      summary: Microsoft Word Get Document
+      description: Get the properties and metadata of a Word document.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteWordDocument
+      summary: Microsoft Word Delete Word Document
+      description: Delete a Word document from the processing store.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/documentId_2'
+      responses:
+        '204':
+          description: Successfully deleted document.
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/save:
+    post:
+      operationId: saveDocument
+      summary: Microsoft Word Save Document
+      description: Save the document. This persists the file using the Word file format.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '204':
+          description: Successfully saved the document.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/convert:
+    post:
+      operationId: convertDocument
+      summary: Microsoft Word Convert Document
+      description: Convert the document to a different format (PDF, HTML, plain text).
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/documentId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertRequest'
+      responses:
+        '200':
+          description: Successfully converted the document.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    Document:
+      type: object
+      description: Represents a Word document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the document.
+          example: doc-a1b2c3d4
+        saved:
+          type: boolean
+          description: Whether the document has been saved.
+          example: true
+        changeTrackingMode:
+          type: string
+          description: Change tracking mode (Off, TrackAll, TrackMineOnly).
+          example: 'Off'
+    ConvertRequest:
+      type: object
+      description: Request to convert a document to another format.
+      required:
+      - targetFormat
+      properties:
+        targetFormat:
+          type: string
+          description: Target format (pdf, html, txt, rtf).
+          example: pdf
+    CreateDocumentRequest:
+      type: object
+      description: Request to create a new document.
+      properties:
+        base64File:
+          type: string
+          description: Base64-encoded document content for the new document.
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+    Unauthorized:
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Thumbnails API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Thumbnails
+  description: Operations for retrieving file thumbnails
+paths:
+  /me/drive/items/{item-id}/thumbnails:
+    get:
+      operationId: listThumbnails
+      summary: Microsoft Word List Thumbnails
+      description: Retrieve a collection of ThumbnailSet resources for a DriveItem resource.
+      tags:
+      - Thumbnails
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Successfully retrieved thumbnails.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThumbnailSetCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    ThumbnailSet:
+      type: object
+      description: Set of thumbnails for a drive item.
+      properties:
+        id:
+          type: string
+          description: The ID within the item.
+          example: '0'
+        small:
+          $ref: '#/components/schemas/Thumbnail'
+        medium:
+          $ref: '#/components/schemas/Thumbnail'
+        large:
+          $ref: '#/components/schemas/Thumbnail'
+    Thumbnail:
+      type: object
+      description: A thumbnail image for a drive item.
+      properties:
+        width:
+          type: integer
+          description: Width of the thumbnail in pixels.
+          example: 176
+        height:
+          type: integer
+          description: Height of the thumbnail in pixels.
+          example: 248
+        url:
+          type: string
+          format: uri
+          description: URL to fetch the thumbnail content.
+          example: https://sn3302files.onedrive.live.com/thumbnails/abc
+    ThumbnailSetCollection:
+      type: object
+      description: Collection of thumbnail sets.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThumbnailSet'
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

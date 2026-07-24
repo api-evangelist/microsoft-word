@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Properties API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Properties
+  description: Operations for managing document properties
+paths:
+  /documents/{document-id}/properties:
+    get:
+      operationId: getDocumentProperties
+      summary: Microsoft Word Get Document Properties
+      description: Get the document properties including title, subject, author, and custom properties.
+      tags:
+      - Properties
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved document properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentProperties'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateDocumentProperties
+      summary: Microsoft Word Update Document Properties
+      description: Update the document properties such as title, subject, and author.
+      tags:
+      - Properties
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentPropertiesUpdate'
+      responses:
+        '200':
+          description: Successfully updated document properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentProperties'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    DocumentProperties:
+      type: object
+      description: Document properties and metadata.
+      properties:
+        title:
+          type: string
+          description: Title of the document.
+          example: Quarterly Report Q4 2025
+        subject:
+          type: string
+          description: Subject of the document.
+          example: Financial Reports
+        author:
+          type: string
+          description: Author of the document.
+          example: Jane Smith
+        manager:
+          type: string
+          description: Manager listed in the properties.
+          example: John Doe
+        company:
+          type: string
+          description: Company listed in the properties.
+          example: Contoso Ltd.
+        category:
+          type: string
+          description: Category of the document.
+          example: Reports
+        keywords:
+          type: string
+          description: Keywords associated with the document.
+          example: financial, quarterly, 2025
+        comments:
+          type: string
+          description: Comments metadata field.
+          example: Draft version
+        creationDate:
+          type: string
+          format: date-time
+          description: When the document was created.
+          example: '2025-01-15T10:00:00Z'
+        lastSaveTime:
+          type: string
+          format: date-time
+          description: When the document was last saved.
+          example: '2025-03-15T14:30:00Z'
+        revisionNumber:
+          type: string
+          description: Revision number of the document.
+          example: '12'
+    DocumentPropertiesUpdate:
+      type: object
+      description: Properties to update on a document.
+      properties:
+        title:
+          type: string
+          example: Updated Report Title
+        subject:
+          type: string
+          example: Updated Subject
+        author:
+          type: string
+          example: Jane Smith
+        keywords:
+          type: string
+          example: updated, keywords
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access

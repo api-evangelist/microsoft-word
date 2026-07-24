@@ -1,0 +1,297 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Word Body Paragraphs API
+  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  version: 1.0.0
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/graph/support
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+security:
+- oauth2: []
+tags:
+- name: Paragraphs
+  description: Operations for managing paragraphs in documents
+paths:
+  /documents/{document-id}/paragraphs:
+    get:
+      operationId: listParagraphs
+      summary: Microsoft Word List Paragraphs
+      description: Get the collection of paragraph objects in the document body.
+      tags:
+      - Paragraphs
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      responses:
+        '200':
+          description: Successfully retrieved paragraphs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParagraphCollection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addParagraph
+      summary: Microsoft Word Add Paragraph
+      description: Add a new paragraph to the document body.
+      tags:
+      - Paragraphs
+      parameters:
+      - $ref: '#/components/parameters/documentId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddParagraphRequest'
+      responses:
+        '201':
+          description: Successfully added paragraph.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenXmlParagraph'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /documents/{document-id}/paragraphs/{paragraph-id}:
+    get:
+      operationId: getParagraph
+      summary: Microsoft Word Get Paragraph
+      description: Get a specific paragraph by its ID.
+      tags:
+      - Paragraphs
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      - $ref: '#/components/parameters/paragraphId'
+      responses:
+        '200':
+          description: Successfully retrieved paragraph.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paragraph'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteParagraph
+      summary: Microsoft Word Delete Paragraph
+      description: Delete a paragraph from the document.
+      tags:
+      - Paragraphs
+      parameters:
+      - $ref: '#/components/parameters/documentId'
+      - $ref: '#/components/parameters/paragraphId'
+      responses:
+        '204':
+          description: Successfully deleted the paragraph.
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Paragraph:
+      type: object
+      description: Represents a single paragraph in a document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the paragraph.
+          example: para-500123
+        text:
+          type: string
+          description: Plain text content of the paragraph.
+          example: This is a sample paragraph.
+        style:
+          type: string
+          description: Style name applied to the paragraph.
+          example: Heading 1
+        alignment:
+          type: string
+          description: Text alignment (Left, Centered, Right, Justified).
+          example: Left
+        firstLineIndent:
+          type: number
+          description: First line indent value in points.
+          example: 36.0
+        lineSpacing:
+          type: number
+          description: Line spacing in points.
+          example: 15.0
+        outlineLevel:
+          type: integer
+          description: Outline level of the paragraph (1-9).
+          example: 1
+        isListItem:
+          type: boolean
+          description: Whether the paragraph is part of a list.
+          example: false
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    AddParagraphRequest:
+      type: object
+      description: Request to add a paragraph.
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Text content of the paragraph.
+          example: New paragraph content.
+        styleId:
+          type: string
+          description: Style ID to apply.
+          example: Normal
+        alignment:
+          type: string
+          description: Text alignment.
+          example: Left
+        bold:
+          type: boolean
+          description: Whether to bold the text.
+          example: false
+        italic:
+          type: boolean
+          description: Whether to italicize the text.
+          example: false
+        insertAfterIndex:
+          type: integer
+          description: Index after which to insert the paragraph.
+          example: 5
+    OpenXmlParagraph:
+      type: object
+      description: Represents a paragraph in the Open XML document.
+      properties:
+        index:
+          type: integer
+          description: Position index of the paragraph.
+          example: 0
+        text:
+          type: string
+          description: Plain text content of the paragraph.
+          example: This is a paragraph.
+        styleId:
+          type: string
+          description: Style ID applied to the paragraph.
+          example: Heading1
+        alignment:
+          type: string
+          description: Paragraph alignment (Left, Center, Right, Both).
+          example: Left
+        bold:
+          type: boolean
+          description: Whether the text is bold.
+          example: false
+        italic:
+          type: boolean
+          description: Whether the text is italic.
+          example: false
+        fontSize:
+          type: number
+          description: Font size in half-points.
+          example: 24.0
+    ParagraphCollection:
+      type: object
+      description: Collection of paragraphs.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Paragraph'
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+  parameters:
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    paragraphId:
+      name: paragraph-id
+      in: path
+      required: true
+      description: The unique identifier of the paragraph.
+      schema:
+        type: string
+      example: para-500123
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Files.Read: Read user files
+            Files.ReadWrite: Read and write user files
+            Files.Read.All: Read all files the user can access
+            Files.ReadWrite.All: Read and write all files the user can access
