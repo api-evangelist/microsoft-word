@@ -3,7 +3,20 @@ name: Microsoft Word
 description: APIs for Microsoft Word document creation, manipulation, and automation across Microsoft 365 cloud services,
   Office Add-ins, SharePoint, and Open XML document processing.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-word.png
 tags:
 - Documents
 - Microsoft 365
@@ -15,64 +28,64 @@ modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- name: Microsoft Graph Word API
-  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified
-    endpoint. Provides operations for file management, content access, sharing, permissions, and document metadata.
+- name: Word Automation Services (SharePoint)
+  description: >-
+    Server-side document conversion and automation service for SharePoint. Supports batch conversion of
+    Word documents to PDF, XPS, and other formats without user interaction.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+  tags:
+  - Conversion
+  - Enterprise
+  - Server-Side
+  - SharePoint
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+- aid: microsoft-word:microsoft-word-body-api
+  name: Microsoft Word Body API
+  description: Operations on the document body content
   humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
   baseURL: https://graph.microsoft.com/v1.0
   tags:
-  - Cloud
-  - Documents
-  - Microsoft Graph
-  - REST
+  - Body
   properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-body-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
-  - type: OpenAPI
-    url: openapi/microsoft-word-graph-api.yaml
   - type: Authentication
     url: https://learn.microsoft.com/en-us/graph/auth/
   - type: APIReference
     url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
   - type: SDKs
     url: https://www.nuget.org/packages/Microsoft.Graph
-    title: C# SDK
   - type: SDKs
     url: https://pypi.org/project/msgraph-sdk/
-    title: Python SDK
   - type: SDKs
     url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
-    title: JavaScript SDK
   - type: SDKs
     url: https://github.com/microsoftgraph/msgraph-sdk-java
-    title: Java SDK
   - type: SDKs
     url: https://github.com/microsoftgraph/msgraph-sdk-go
-    title: Go SDK
   - type: SDKs
     url: https://github.com/microsoftgraph/msgraph-sdk-php
-    title: PHP SDK
   - type: JSONSchema
     url: json-schema/graph-api-drive-item-schema.json
-    title: DriveItem Schema
   - type: JSONSchema
     url: json-schema/graph-api-permission-schema.json
-    title: Permission Schema
   - type: JSONStructure
     url: json-structure/graph-api-drive-item-structure.json
-    title: DriveItem Structure
   - type: JSONStructure
     url: json-structure/graph-api-permission-structure.json
-    title: Permission Structure
   - type: JSONLD
     url: json-ld/microsoft-word-graph-api-context.jsonld
   - type: Examples
     url: examples/graph-api-drive-item-example.json
-    title: DriveItem Example
   - type: Examples
     url: examples/graph-api-permission-example.json
-    title: Permission Example
   - type: X-NaftikoCapability
     url: capabilities/graph-checkout.yaml
   - type: X-NaftikoCapability
@@ -87,22 +100,8 @@ apis:
     url: capabilities/graph-thumbnails.yaml
   - type: X-NaftikoCapability
     url: capabilities/graph-versions.yaml
-- name: Office JavaScript API for Word
-  description: JavaScript API for building Word add-ins and automating Word tasks. Provides strongly-typed objects for document
-    manipulation, content controls, tables, formatting, comments, collaboration, and shapes.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview
-  baseURL: https://appsforoffice.microsoft.com/lib/1/hosted/office.js
-  tags:
-  - Add-Ins
-  - Automation
-  - Client-Side
-  - JavaScript
-  properties:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
-  - type: OpenAPI
-    url: openapi/microsoft-word-javascript-api.yaml
   - type: GettingStarted
     url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
   - type: CodeExamples
@@ -113,42 +112,30 @@ apis:
     url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
   - type: JSONSchema
     url: json-schema/javascript-api-paragraph-schema.json
-    title: Paragraph Schema
   - type: JSONSchema
     url: json-schema/javascript-api-content-control-schema.json
-    title: ContentControl Schema
   - type: JSONSchema
     url: json-schema/javascript-api-table-schema.json
-    title: Table Schema
   - type: JSONSchema
     url: json-schema/javascript-api-comment-schema.json
-    title: Comment Schema
   - type: JSONStructure
     url: json-structure/javascript-api-paragraph-structure.json
-    title: Paragraph Structure
   - type: JSONStructure
     url: json-structure/javascript-api-content-control-structure.json
-    title: ContentControl Structure
   - type: JSONStructure
     url: json-structure/javascript-api-table-structure.json
-    title: Table Structure
   - type: JSONStructure
     url: json-structure/javascript-api-comment-structure.json
-    title: Comment Structure
   - type: JSONLD
     url: json-ld/microsoft-word-javascript-api-context.jsonld
   - type: Examples
     url: examples/javascript-api-paragraph-example.json
-    title: Paragraph Example
   - type: Examples
     url: examples/javascript-api-content-control-example.json
-    title: ContentControl Example
   - type: Examples
     url: examples/javascript-api-table-example.json
-    title: Table Example
   - type: Examples
     url: examples/javascript-api-comment-example.json
-    title: Comment Example
   - type: X-NaftikoCapability
     url: capabilities/javascript-body.yaml
   - type: X-NaftikoCapability
@@ -167,50 +154,2400 @@ apis:
     url: capabilities/javascript-styles.yaml
   - type: X-NaftikoCapability
     url: capabilities/javascript-tables.yaml
-- name: Word Automation Services (SharePoint)
-  description: Server-side document conversion and automation service for SharePoint. Supports batch conversion of Word documents
-    to PDF, XPS, and other formats without user interaction.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
-  tags:
-  - Conversion
-  - Enterprise
-  - Server-Side
-  - SharePoint
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
-- name: Open XML SDK for Word
-  description: .NET library for programmatically creating and manipulating Word documents using the ECMA-376 Open XML standard.
-    Provides strongly-typed classes for document structure, styles, tables, images, and content manipulation.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
-  tags:
-  - Dotnet
-  - Library
-  - Offline
-  - OpenXML
-  properties:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
-  - type: OpenAPI
-    url: openapi/microsoft-word-open-xml-sdk.yaml
   - type: GitHubRepository
     url: https://github.com/OfficeDev/Open-XML-SDK
   - type: SDKs
     url: https://www.nuget.org/packages/DocumentFormat.OpenXml
-    title: .NET SDK
   - type: JSONSchema
     url: json-schema/open-xml-sdk-document-properties-schema.json
-    title: DocumentProperties Schema
   - type: JSONStructure
     url: json-structure/open-xml-sdk-document-properties-structure.json
-    title: DocumentProperties Structure
   - type: JSONLD
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-    title: DocumentProperties Example
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-checkout-api
+  name: Microsoft Word Checkout API
+  description: Operations for checking in and out files
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Checkout
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-checkout-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-comments-api
+  name: Microsoft Word Comments API
+  description: Operations for managing comments and replies
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-comments-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-content-api
+  name: Microsoft Word Content API
+  description: Operations for uploading and downloading file content
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-content-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-content-controls-api
+  name: Microsoft Word Content Controls API
+  description: Operations for managing content controls
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Content Controls
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-content-controls-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-documents-api
+  name: Microsoft Word Documents API
+  description: Operations for creating, opening, and managing Word documents
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-documents-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-drive-items-api
+  name: Microsoft Word Drive Items API
+  description: Operations for managing files and folders in OneDrive and SharePoint
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Drive Items
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-drive-items-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-headers-and-footers-api
+  name: Microsoft Word Headers And Footers API
+  description: Operations for managing headers and footers
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Headers And Footers
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-headers-and-footers-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-images-api
+  name: Microsoft Word Images API
+  description: Operations for managing images in documents
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-images-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-paragraphs-api
+  name: Microsoft Word Paragraphs API
+  description: Operations for managing paragraphs in documents
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Paragraphs
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-paragraphs-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-permissions-api
+  name: Microsoft Word Permissions API
+  description: Operations for managing sharing and permissions on drive items
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-properties-api
+  name: Microsoft Word Properties API
+  description: Operations for managing document properties
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-properties-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-search-api
+  name: Microsoft Word Search API
+  description: Operations for searching files and folders
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-search-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-sections-api
+  name: Microsoft Word Sections API
+  description: Operations for managing document sections
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Sections
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-sections-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-styles-api
+  name: Microsoft Word Styles API
+  description: Operations for managing document styles
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Styles
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-styles-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-tables-api
+  name: Microsoft Word Tables API
+  description: Operations for creating and managing tables
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-tables-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-thumbnails-api
+  name: Microsoft Word Thumbnails API
+  description: Operations for retrieving file thumbnails
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Thumbnails
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-thumbnails-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-headers-and-footers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-images.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/open-xml-sdk-tables.yaml
+- aid: microsoft-word:microsoft-word-versions-api
+  name: Microsoft Word Versions API
+  description: Operations for managing file version history
+  humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Versions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-word-versions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0
+  - type: SDKs
+    url: https://www.nuget.org/packages/Microsoft.Graph
+  - type: SDKs
+    url: https://pypi.org/project/msgraph-sdk/
+  - type: SDKs
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-java
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-go
+  - type: SDKs
+    url: https://github.com/microsoftgraph/msgraph-sdk-php
+  - type: JSONSchema
+    url: json-schema/graph-api-drive-item-schema.json
+  - type: JSONSchema
+    url: json-schema/graph-api-permission-schema.json
+  - type: JSONStructure
+    url: json-structure/graph-api-drive-item-structure.json
+  - type: JSONStructure
+    url: json-structure/graph-api-permission-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-graph-api-context.jsonld
+  - type: Examples
+    url: examples/graph-api-drive-item-example.json
+  - type: Examples
+    url: examples/graph-api-permission-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-checkout.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-content.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-drive-items.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-permissions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-thumbnails.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-versions.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview
+  - type: Tutorials
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial
+  - type: JSONSchema
+    url: json-schema/javascript-api-paragraph-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-content-control-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-table-schema.json
+  - type: JSONSchema
+    url: json-schema/javascript-api-comment-schema.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-paragraph-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-content-control-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-table-structure.json
+  - type: JSONStructure
+    url: json-structure/javascript-api-comment-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-javascript-api-context.jsonld
+  - type: Examples
+    url: examples/javascript-api-paragraph-example.json
+  - type: Examples
+    url: examples/javascript-api-content-control-example.json
+  - type: Examples
+    url: examples/javascript-api-table-example.json
+  - type: Examples
+    url: examples/javascript-api-comment-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-body.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-comments.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-content-controls.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-paragraphs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-properties.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-sections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-styles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/javascript-tables.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
+  - type: SDKs
+    url: https://www.nuget.org/packages/DocumentFormat.OpenXml
+  - type: JSONSchema
+    url: json-schema/open-xml-sdk-document-properties-schema.json
+  - type: JSONStructure
+    url: json-structure/open-xml-sdk-document-properties-structure.json
+  - type: JSONLD
+    url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
+  - type: Examples
+    url: examples/open-xml-sdk-document-properties-example.json
   - type: X-NaftikoCapability
     url: capabilities/open-xml-sdk-body.yaml
   - type: X-NaftikoCapability
