@@ -86,20 +86,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -136,24 +122,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -168,22 +136,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-checkout-api
   name: Microsoft Word Checkout API
   description: Operations for checking in and out files
@@ -226,20 +178,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -276,24 +214,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -308,22 +228,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-comments-api
   name: Microsoft Word Comments API
   description: Operations for managing comments and replies
@@ -366,20 +270,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -416,24 +306,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -448,22 +320,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-content-api
   name: Microsoft Word Content API
   description: Operations for uploading and downloading file content
@@ -506,20 +362,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -556,24 +398,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -588,22 +412,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-content-controls-api
   name: Microsoft Word Content Controls API
   description: Operations for managing content controls
@@ -646,20 +454,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -696,24 +490,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -728,22 +504,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-documents-api
   name: Microsoft Word Documents API
   description: Operations for creating, opening, and managing Word documents
@@ -786,20 +546,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -836,24 +582,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -868,22 +596,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-drive-items-api
   name: Microsoft Word Drive Items API
   description: Operations for managing files and folders in OneDrive and SharePoint
@@ -926,20 +638,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -976,24 +674,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1008,22 +688,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-headers-and-footers-api
   name: Microsoft Word Headers And Footers API
   description: Operations for managing headers and footers
@@ -1066,20 +730,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1116,24 +766,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1148,22 +780,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-images-api
   name: Microsoft Word Images API
   description: Operations for managing images in documents
@@ -1206,20 +822,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1256,24 +858,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1288,22 +872,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-paragraphs-api
   name: Microsoft Word Paragraphs API
   description: Operations for managing paragraphs in documents
@@ -1346,20 +914,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1396,24 +950,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1428,22 +964,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-permissions-api
   name: Microsoft Word Permissions API
   description: Operations for managing sharing and permissions on drive items
@@ -1486,20 +1006,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1536,24 +1042,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1568,22 +1056,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-properties-api
   name: Microsoft Word Properties API
   description: Operations for managing document properties
@@ -1626,20 +1098,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1676,24 +1134,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1708,22 +1148,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-search-api
   name: Microsoft Word Search API
   description: Operations for searching files and folders
@@ -1766,20 +1190,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1816,24 +1226,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1848,22 +1240,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-sections-api
   name: Microsoft Word Sections API
   description: Operations for managing document sections
@@ -1906,20 +1282,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -1956,24 +1318,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -1988,22 +1332,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-styles-api
   name: Microsoft Word Styles API
   description: Operations for managing document styles
@@ -2046,20 +1374,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -2096,24 +1410,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -2128,22 +1424,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-tables-api
   name: Microsoft Word Tables API
   description: Operations for creating and managing tables
@@ -2186,20 +1466,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -2236,24 +1502,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -2268,22 +1516,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-thumbnails-api
   name: Microsoft Word Thumbnails API
   description: Operations for retrieving file thumbnails
@@ -2326,20 +1558,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -2376,24 +1594,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -2408,22 +1608,6 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 - aid: microsoft-word:microsoft-word-versions-api
   name: Microsoft Word Versions API
   description: Operations for managing file version history
@@ -2466,20 +1650,6 @@ apis:
     url: examples/graph-api-drive-item-example.json
   - type: Examples
     url: examples/graph-api-permission-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-checkout.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-content.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-drive-items.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-permissions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-thumbnails.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-versions.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/javascript/api/word
   - type: GettingStarted
@@ -2516,24 +1686,6 @@ apis:
     url: examples/javascript-api-table-example.json
   - type: Examples
     url: examples/javascript-api-comment-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-comments.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-content-controls.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-sections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/javascript-tables.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   - type: GitHubRepository
@@ -2548,26 +1700,23 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-body.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-documents.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-headers-and-footers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-images.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-paragraphs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-properties.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-styles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/open-xml-sdk-tables.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+  - type: IssueTracker
+    url: https://github.com/OfficeDev/Open-XML-SDK/issues
+  - type: Releases
+    url: https://github.com/OfficeDev/Open-XML-SDK/releases
+  - type: SecurityPolicy
+    url: https://github.com/dotnet/Open-XML-SDK/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/dotnet/Open-XML-SDK/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/dotnet/Open-XML-SDK/blob/main/CONTRIBUTING.md
+  - type: License
+    name: MIT
+    url: https://github.com/OfficeDev/Open-XML-SDK/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/microsoft-word-agentic-access.yml
   - type: VulnerabilityDisclosure
