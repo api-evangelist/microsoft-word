@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "c47fef04-4dfc-48bd-ad4a-ca2b0163ceb2",
+      "name": "Versions",
+      "description": {
+        "content": "Operations for managing file version history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0929d7dd-87d5-40a0-b69d-1595eddb0ac1",
+          "name": "Microsoft Word List Versions",
+          "request": {
+            "name": "Microsoft Word List Versions",
+            "description": {
+              "content": "Retrieve the list of previous versions of a file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8a2b5f4-d3f1-4fd9-9a06-fcc54a97f594",
+              "name": "Successfully retrieved versions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"1.0\",\n      \"lastModifiedDateTime\": \"2025-03-21T20:01:37Z\",\n      \"lastModifiedBy\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      },\n      \"size\": 24576\n    },\n    {\n      \"id\": \"1.0\",\n      \"lastModifiedDateTime\": \"2025-03-21T20:01:37Z\",\n      \"lastModifiedBy\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      },\n      \"size\": 24576\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ebcee2b-b739-4545-99af-4d1982110c33",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cad409d5-7d2b-437b-872c-031b7d7925f6",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2883670-e391-46c9-a75c-6734876b75c1",
+    "name": "Microsoft Graph Word Body Versions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

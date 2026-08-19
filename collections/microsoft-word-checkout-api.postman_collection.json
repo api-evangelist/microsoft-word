@@ -1,0 +1,506 @@
+{
+  "item": [
+    {
+      "id": "8b093cb0-216d-443e-85b4-6b2b87e8a017",
+      "name": "Checkout",
+      "description": {
+        "content": "Operations for checking in and out files",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "953d1e57-47c8-48ee-b634-cfba37b8638d",
+          "name": "Microsoft Word Check in Drive Item",
+          "request": {
+            "name": "Microsoft Word Check in Drive Item",
+            "description": {
+              "content": "Check in a checked out driveItem resource, making the version available to others.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "checkin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "108c980f-efc8-4b94-9a3a-9064f46db928",
+              "name": "Successfully checked in the item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"Final review completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b553985-409c-4fcf-b63b-0264ebdc1370",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"Final review completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1af28dd3-0374-4a07-b414-a52fa9a8239c",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"Final review completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d13286b4-eb82-4a28-8a6f-d451a61427af",
+          "name": "Microsoft Word Check Out Drive Item",
+          "request": {
+            "name": "Microsoft Word Check Out Drive Item",
+            "description": {
+              "content": "Check out a driveItem resource to prevent others from editing the document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "checkout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d714522-f50f-4589-bdb1-3baedd944217",
+              "name": "Successfully checked out the item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33dd43eb-bffc-45cf-9923-e05bf0efa259",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f80b1b4a-0399-44a1-8a99-a531b9c2d80a",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1f4b1f85-1f15-4da2-89cb-b35f4e4c0edd",
+    "name": "Microsoft Graph Word Body Checkout API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

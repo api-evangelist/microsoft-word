@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Content Controls API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Controls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Content Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/contentControls",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ]
+          },
+          "docs": "Get the collection of content control objects in the document."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Get Content Control",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/contentControls/:control-id",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              },
+              {
+                "name": "control-id",
+                "value": "500123",
+                "type": "path",
+                "description": "The unique identifier of the content control."
+              }
+            ]
+          },
+          "docs": "Get a specific content control by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

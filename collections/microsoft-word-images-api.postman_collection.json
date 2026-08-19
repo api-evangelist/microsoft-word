@@ -1,0 +1,443 @@
+{
+  "item": [
+    {
+      "id": "e1b87298-2e1a-4b86-936e-31e9e52f618f",
+      "name": "Images",
+      "description": {
+        "content": "Operations for managing images in documents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0174e25b-a6d2-42da-bc36-eaf644a10535",
+          "name": "Microsoft Word List Images",
+          "request": {
+            "name": "Microsoft Word List Images",
+            "description": {
+              "content": "List all images embedded in the document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document-id",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document-id",
+                  "description": "(Required) The unique identifier of the document."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dbdf130-b603-4e8a-901f-29cbc5999bae",
+              "name": "Successfully retrieved images.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"relationshipId\": \"rId4\",\n      \"contentType\": \"image/png\",\n      \"width\": 914400,\n      \"height\": 685800\n    },\n    {\n      \"relationshipId\": \"rId4\",\n      \"contentType\": \"image/png\",\n      \"width\": 914400,\n      \"height\": 685800\n    }\n  ],\n  \"count\": 5\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eef1f0d5-1390-4b04-9474-cc37f9d08650",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"DocumentNotFound\",\n    \"message\": \"The specified document could not be found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d95194e1-449b-45f9-8fdf-26cbaa40a3c5",
+          "name": "Microsoft Word Add Image",
+          "request": {
+            "name": "Microsoft Word Add Image",
+            "description": {
+              "content": "Add an image to the document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document-id",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document-id",
+                  "description": "(Required) The unique identifier of the document."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "Image file to add."
+                },
+                {
+                  "key": "width",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Width of the image in EMUs."
+                },
+                {
+                  "key": "height",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Height of the image in EMUs."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59e5657d-142b-4aca-bac7-352b985ed33d",
+              "name": "Successfully added image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Image file to add.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Width of the image in EMUs.",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "914400",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Height of the image in EMUs.",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "685800",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"relationshipId\": \"rId4\",\n  \"contentType\": \"image/png\",\n  \"width\": 914400,\n  \"height\": 685800\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d4c8f82-2e5d-4110-b93a-1c017ae99efa",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Image file to add.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Width of the image in EMUs.",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "914400",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Height of the image in EMUs.",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "685800",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"DocumentNotFound\",\n    \"message\": \"The specified document could not be found.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eadc1649-5b3f-47d7-9d1f-c28e7c0cfed8",
+    "name": "Microsoft Graph Word Body Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

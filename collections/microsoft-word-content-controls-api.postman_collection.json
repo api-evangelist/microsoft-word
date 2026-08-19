@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "101ccfe0-fb69-4cc3-8816-118b5e90de0a",
+      "name": "Content Controls",
+      "description": {
+        "content": "Operations for managing content controls",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9157611-91c9-4706-9404-691d100ff795",
+          "name": "Microsoft Word List Content Controls",
+          "request": {
+            "name": "Microsoft Word List Content Controls",
+            "description": {
+              "content": "Get the collection of content control objects in the document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document-id",
+                "contentControls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document-id",
+                  "description": "(Required) The unique identifier of the Word document."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e8f7e35-2433-434a-87b9-d1efa96e3de5",
+              "name": "Successfully retrieved content controls.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "contentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the Word document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"500123\",\n      \"tag\": \"customer_name\",\n      \"title\": \"Customer Name\",\n      \"type\": \"RichText\",\n      \"text\": \"Contoso Ltd.\",\n      \"appearance\": \"BoundingBox\",\n      \"cannotDelete\": false,\n      \"cannotEdit\": false\n    },\n    {\n      \"id\": \"500123\",\n      \"tag\": \"customer_name\",\n      \"title\": \"Customer Name\",\n      \"type\": \"RichText\",\n      \"text\": \"Contoso Ltd.\",\n      \"appearance\": \"BoundingBox\",\n      \"cannotDelete\": false,\n      \"cannotEdit\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63f466be-b25f-4a6b-8a9d-91480c7db06e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "contentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the Word document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"InvalidArgument\",\n    \"message\": \"The argument is invalid or missing.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1d9a6aa-f83f-4347-b3fd-4ad17d14729f",
+          "name": "Microsoft Word Get Content Control",
+          "request": {
+            "name": "Microsoft Word Get Content Control",
+            "description": {
+              "content": "Get a specific content control by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document-id",
+                "contentControls",
+                ":control-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document-id",
+                  "description": "(Required) The unique identifier of the Word document."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "control-id",
+                  "description": "(Required) The unique identifier of the content control."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0885a2a5-c334-4372-b1f6-fad921e8c8ba",
+              "name": "Successfully retrieved content control.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "contentControls",
+                    ":control-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the Word document."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "control-id",
+                      "description": "(Required) The unique identifier of the content control."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"tag\": \"customer_name\",\n  \"title\": \"Customer Name\",\n  \"type\": \"RichText\",\n  \"text\": \"Contoso Ltd.\",\n  \"appearance\": \"BoundingBox\",\n  \"cannotDelete\": false,\n  \"cannotEdit\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8311b69d-45f8-4ae2-827d-987461d9412e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document-id",
+                    "contentControls",
+                    ":control-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document-id",
+                      "description": "(Required) The unique identifier of the Word document."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "control-id",
+                      "description": "(Required) The unique identifier of the content control."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"InvalidArgument\",\n    \"message\": \"The argument is invalid or missing.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5805b8d7-bee5-48d2-b1ed-69f74f36b95d",
+    "name": "Microsoft Graph Word Body Content Controls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

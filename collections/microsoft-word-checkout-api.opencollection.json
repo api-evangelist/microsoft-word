@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Checkout API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word Check in Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/checkin",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check in a checked out driveItem resource, making the version available to others."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Check Out Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/checkout",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ]
+          },
+          "docs": "Check out a driveItem resource to prevent others from editing the document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

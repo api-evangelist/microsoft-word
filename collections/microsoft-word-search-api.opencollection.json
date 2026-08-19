@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Search API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word Search Drive Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/root/search(q=':search-text')",
+            "params": [
+              {
+                "name": "search-text",
+                "value": "quarterly report.docx",
+                "type": "path",
+                "description": "The search query text."
+              }
+            ]
+          },
+          "docs": "Search the hierarchy of items for items matching a query string."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

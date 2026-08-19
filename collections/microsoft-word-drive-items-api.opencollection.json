@@ -1,0 +1,263 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Drive Items API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drive Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word Get Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              },
+              {
+                "name": "$select",
+                "value": "id,name,size,file",
+                "type": "query",
+                "description": "Select specific properties to return."
+              },
+              {
+                "name": "$expand",
+                "value": "children",
+                "type": "query",
+                "description": "Expand related entities inline."
+              }
+            ]
+          },
+          "docs": "Retrieve the metadata for a driveItem in a drive by file system path or ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Update Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the metadata for a driveItem by ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Delete Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ]
+          },
+          "docs": "Delete a driveItem by using its ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word List Children",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/children",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              },
+              {
+                "name": "$top",
+                "value": "25",
+                "type": "query",
+                "description": "The number of items to return in a result set."
+              },
+              {
+                "name": "$orderby",
+                "value": "name asc",
+                "type": "query",
+                "description": "Sort order for the result set."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Select specific properties to return."
+              },
+              {
+                "name": "$skipToken",
+                "value": "",
+                "type": "query",
+                "description": "Paging token for the next page of results."
+              }
+            ]
+          },
+          "docs": "Return a collection of DriveItems in the children relationship of a DriveItem."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Create Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/children",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new folder or DriveItem in a drive with a specified parent item or path."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Copy Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/copy",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Asynchronously create a copy of a driveItem, including any children, under a new parent item or with a new name."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Move Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/move",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a DriveItem to a new parent folder by updating the parentReference."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Preview Drive Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/preview",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Obtain short-lived embeddable URLs for an item to render a temporary preview."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Track Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/delta",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              },
+              {
+                "name": "$token",
+                "value": "",
+                "type": "query",
+                "description": "Delta token for tracking changes since last query."
+              }
+            ]
+          },
+          "docs": "Track changes to a driveItem and its children over time using delta queries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

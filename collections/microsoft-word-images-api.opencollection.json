@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Images API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/images",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ]
+          },
+          "docs": "List all images embedded in the document."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Add Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/images",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "width",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "height",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Add an image to the document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

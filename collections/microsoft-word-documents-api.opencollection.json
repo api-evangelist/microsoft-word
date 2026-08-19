@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Documents API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word Create Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new blank Word document."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Get Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ]
+          },
+          "docs": "Get the properties and metadata of a Word document."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Delete Word Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ]
+          },
+          "docs": "Delete a Word document from the processing store."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Save Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/save",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ]
+          },
+          "docs": "Save the document. This persists the file using the Word file format."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Convert Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/convert",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert the document to a different format (PDF, HTML, plain text)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

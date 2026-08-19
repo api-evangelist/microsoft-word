@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Tables API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/tables",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ]
+          },
+          "docs": "Get the collection of table objects in the document body."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Insert Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/tables",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert a table with the specified number of rows and columns."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

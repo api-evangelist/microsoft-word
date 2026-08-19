@@ -1,0 +1,700 @@
+{
+  "item": [
+    {
+      "id": "b01a3018-4046-4f72-80be-42250c980a21",
+      "name": "Permissions",
+      "description": {
+        "content": "Operations for managing sharing and permissions on drive items",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f62a88a-01ed-49d9-9afd-50b1c479e207",
+          "name": "Microsoft Word List Permissions",
+          "request": {
+            "name": "Microsoft Word List Permissions",
+            "description": {
+              "content": "List the effective sharing permissions on a driveItem.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1557d0d8-dbee-4be7-9213-a821bee26948",
+              "name": "Successfully retrieved permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"500123\",\n      \"roles\": [\n        \"write\"\n      ],\n      \"link\": {\n        \"type\": \"edit\",\n        \"webUrl\": \"https://contoso-my.sharepoint.com/:w:/p/user/abcdef\",\n        \"scope\": \"organization\"\n      },\n      \"grantedTo\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      }\n    },\n    {\n      \"id\": \"500123\",\n      \"roles\": [\n        \"write\"\n      ],\n      \"link\": {\n        \"type\": \"edit\",\n        \"webUrl\": \"https://contoso-my.sharepoint.com/:w:/p/user/abcdef\",\n        \"scope\": \"organization\"\n      },\n      \"grantedTo\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6d9db14-020c-4eb0-bd44-27af50fb2500",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b5a5cc3-a08f-48d7-b3d7-15b3c548efec",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "115c7182-a507-45c8-beef-9389fe8a075c",
+          "name": "Microsoft Word Add Permissions",
+          "request": {
+            "name": "Microsoft Word Add Permissions",
+            "description": {
+              "content": "Send a sharing invitation for a DriveItem to grant access to specified recipients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "invite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requireSignIn\": \"<boolean>\",\n  \"sendInvitation\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53a54114-a0bb-4f68-a78e-c32bfffa5bd4",
+              "name": "Successfully sent invitations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"colleague@contoso.com\"\n    },\n    {\n      \"email\": \"colleague@contoso.com\"\n    }\n  ],\n  \"roles\": [\n    \"write\"\n  ],\n  \"requireSignIn\": true,\n  \"sendInvitation\": true,\n  \"message\": \"Please review this document.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"500123\",\n      \"roles\": [\n        \"write\"\n      ],\n      \"link\": {\n        \"type\": \"edit\",\n        \"webUrl\": \"https://contoso-my.sharepoint.com/:w:/p/user/abcdef\",\n        \"scope\": \"organization\"\n      },\n      \"grantedTo\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      }\n    },\n    {\n      \"id\": \"500123\",\n      \"roles\": [\n        \"write\"\n      ],\n      \"link\": {\n        \"type\": \"edit\",\n        \"webUrl\": \"https://contoso-my.sharepoint.com/:w:/p/user/abcdef\",\n        \"scope\": \"organization\"\n      },\n      \"grantedTo\": {\n        \"user\": {\n          \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n          \"displayName\": \"Jane Smith\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19adc783-f2a3-49e7-a68f-80e0bfe1c6cd",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"colleague@contoso.com\"\n    },\n    {\n      \"email\": \"colleague@contoso.com\"\n    }\n  ],\n  \"roles\": [\n    \"write\"\n  ],\n  \"requireSignIn\": true,\n  \"sendInvitation\": true,\n  \"message\": \"Please review this document.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bed548e-eac8-4bac-b661-3f671d74e875",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipients\": [\n    {\n      \"email\": \"colleague@contoso.com\"\n    },\n    {\n      \"email\": \"colleague@contoso.com\"\n    }\n  ],\n  \"roles\": [\n    \"write\"\n  ],\n  \"requireSignIn\": true,\n  \"sendInvitation\": true,\n  \"message\": \"Please review this document.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81b38fd0-1bd0-4580-954c-e78bff5683a4",
+          "name": "Microsoft Word Create Sharing Link",
+          "request": {
+            "name": "Microsoft Word Create Sharing Link",
+            "description": {
+              "content": "Create a new sharing link for a DriveItem if the specified link type does not already exist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "createLink"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"expirationDateTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5316da41-2a4a-4df4-9c98-396c251d4e8a",
+              "name": "Successfully created a sharing link.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "createLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"edit\",\n  \"scope\": \"organization\",\n  \"expirationDateTime\": \"2025-12-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"roles\": [\n    \"write\"\n  ],\n  \"link\": {\n    \"type\": \"edit\",\n    \"webUrl\": \"https://contoso-my.sharepoint.com/:w:/p/user/abcdef\",\n    \"scope\": \"organization\"\n  },\n  \"grantedTo\": {\n    \"user\": {\n      \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n      \"displayName\": \"Jane Smith\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94f75039-93e7-4da1-8a16-f7233cef9a63",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "createLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"edit\",\n  \"scope\": \"organization\",\n  \"expirationDateTime\": \"2025-12-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b67ad9b-63a9-4451-9707-0005cbea585a",
+    "name": "Microsoft Graph Word Body Permissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

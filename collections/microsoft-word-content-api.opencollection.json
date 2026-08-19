@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Content API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word Download Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/content",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ]
+          },
+          "docs": "Download the contents of the primary stream (file) of a DriveItem."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Upload Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/content",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ]
+          },
+          "docs": "Upload the contents of a file. Supports files up to 4MB in size."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Create Upload Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/createUploadSession",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an upload session to allow uploading files up to the maximum file size in resumable chunks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

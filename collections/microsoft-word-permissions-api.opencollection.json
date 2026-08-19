@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Permissions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/permissions",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ]
+          },
+          "docs": "List the effective sharing permissions on a driveItem."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Add Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/invite",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a sharing invitation for a DriveItem to grant access to specified recipients."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Create Sharing Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/drive/items/:item-id/createLink",
+            "params": [
+              {
+                "name": "item-id",
+                "value": "01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK",
+                "type": "path",
+                "description": "The unique identifier of the drive item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new sharing link for a DriveItem if the specified link type does not already exist."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

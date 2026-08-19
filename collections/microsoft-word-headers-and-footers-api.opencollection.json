@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Headers And Footers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Headers And Footers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Headers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/headers",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ]
+          },
+          "docs": "List all header parts in the document."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word List Footers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/footers",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ]
+          },
+          "docs": "List all footer parts in the document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

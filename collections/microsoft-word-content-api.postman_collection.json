@@ -1,0 +1,727 @@
+{
+  "item": [
+    {
+      "id": "588876ea-bc0d-49ad-9705-d36e50652cc5",
+      "name": "Content",
+      "description": {
+        "content": "Operations for uploading and downloading file content",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2cf3efd-0f9d-4e80-a866-1f108e8fee42",
+          "name": "Microsoft Word Download Content",
+          "request": {
+            "name": "Microsoft Word Download Content",
+            "description": {
+              "content": "Download the contents of the primary stream (file) of a DriveItem.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a3804fd-89a4-43d5-8aa3-2ed56aeaece3",
+              "name": "Successfully retrieved the file content.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ec3a932-b509-4758-a755-897dac4a57cf",
+              "name": "Redirect to pre-authenticated download URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b544114e-f1bb-41c8-8856-22bd738176e5",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5b045a5-4542-4c7c-a3b3-edcea2476452",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f94fae7b-3a3c-4784-ac35-4769fac2c29b",
+          "name": "Microsoft Word Upload Content",
+          "request": {
+            "name": "Microsoft Word Upload Content",
+            "description": {
+              "content": "Upload the contents of a file. Supports files up to 4MB in size.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "file"
+            }
+          },
+          "response": [
+            {
+              "id": "fa981b32-c9fb-44df-9688-b09ad2bdcd34",
+              "name": "Successfully uploaded the file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK\",\n  \"name\": \"quarterly-report.docx\",\n  \"description\": \"Q4 2025 financial report\",\n  \"size\": 157286400,\n  \"webUrl\": \"https://contoso-my.sharepoint.com/personal/user/Documents/report.docx\",\n  \"webDavUrl\": \"https://contoso-my.sharepoint.com/personal/user/Documents/report.docx\",\n  \"createdDateTime\": \"2025-03-21T20:01:37Z\",\n  \"lastModifiedDateTime\": \"2025-06-15T14:30:00Z\",\n  \"eTag\": \"\\\"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},1\\\"\",\n  \"cTag\": \"\\\"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},0\\\"\",\n  \"createdBy\": {\n    \"user\": {\n      \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n      \"displayName\": \"Jane Smith\"\n    }\n  },\n  \"lastModifiedBy\": {\n    \"user\": {\n      \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n      \"displayName\": \"Jane Smith\"\n    }\n  },\n  \"parentReference\": {\n    \"driveId\": \"b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd\",\n    \"id\": \"01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK\",\n    \"path\": \"/drive/root:/Documents\"\n  },\n  \"file\": {\n    \"mimeType\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",\n    \"hashes\": {\n      \"sha1Hash\": \"aabbccdd1122334455\",\n      \"quickXorHash\": \"aabbccdd1122334455\"\n    }\n  },\n  \"folder\": {\n    \"childCount\": 120\n  },\n  \"shared\": {\n    \"owner\": {\n      \"user\": {\n        \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n        \"displayName\": \"Jane Smith\"\n      }\n    },\n    \"scope\": \"users\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98bccbb7-6205-4276-b2cc-8b330ce56550",
+              "name": "Successfully created a new file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK\",\n  \"name\": \"quarterly-report.docx\",\n  \"description\": \"Q4 2025 financial report\",\n  \"size\": 157286400,\n  \"webUrl\": \"https://contoso-my.sharepoint.com/personal/user/Documents/report.docx\",\n  \"webDavUrl\": \"https://contoso-my.sharepoint.com/personal/user/Documents/report.docx\",\n  \"createdDateTime\": \"2025-03-21T20:01:37Z\",\n  \"lastModifiedDateTime\": \"2025-06-15T14:30:00Z\",\n  \"eTag\": \"\\\"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},1\\\"\",\n  \"cTag\": \"\\\"{86EB4C8E-D20D-46B9-AD41-23B8868DDA8A},0\\\"\",\n  \"createdBy\": {\n    \"user\": {\n      \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n      \"displayName\": \"Jane Smith\"\n    }\n  },\n  \"lastModifiedBy\": {\n    \"user\": {\n      \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n      \"displayName\": \"Jane Smith\"\n    }\n  },\n  \"parentReference\": {\n    \"driveId\": \"b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd\",\n    \"id\": \"01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK\",\n    \"path\": \"/drive/root:/Documents\"\n  },\n  \"file\": {\n    \"mimeType\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",\n    \"hashes\": {\n      \"sha1Hash\": \"aabbccdd1122334455\",\n      \"quickXorHash\": \"aabbccdd1122334455\"\n    }\n  },\n  \"folder\": {\n    \"childCount\": 120\n  },\n  \"shared\": {\n    \"owner\": {\n      \"user\": {\n        \"id\": \"efee1b77-fb3b-4f65-99d6-274c11914d12\",\n        \"displayName\": \"Jane Smith\"\n      }\n    },\n    \"scope\": \"users\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d9659cb-30dd-4af0-b5ea-c48ee1d745dd",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e7b03a8-4c67-4116-ae53-861e0b906d73",
+          "name": "Microsoft Word Create Upload Session",
+          "request": {
+            "name": "Microsoft Word Create Upload Session",
+            "description": {
+              "content": "Create an upload session to allow uploading files up to the maximum file size in resumable chunks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "drive",
+                "items",
+                ":item-id",
+                "createUploadSession"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item-id",
+                  "description": "(Required) The unique identifier of the drive item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item\": {\n    \"@microsoft.graph.conflictBehavior\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cbb3f3e-bf08-4e3c-b99c-cd3adf831c83",
+              "name": "Successfully created upload session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "createUploadSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"item\": {\n    \"@microsoft.graph.conflictBehavior\": \"rename\",\n    \"name\": \"large-document.docx\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uploadUrl\": \"https://sn3302.up.1drv.com/up/abc123\",\n  \"expirationDateTime\": \"2025-03-22T20:01:37Z\",\n  \"nextExpectedRanges\": [\n    \"0-\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6800434-984d-41df-b84c-56a878fd5336",
+              "name": "Authentication required or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "drive",
+                    "items",
+                    ":item-id",
+                    "createUploadSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item-id",
+                      "description": "(Required) The unique identifier of the drive item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"item\": {\n    \"@microsoft.graph.conflictBehavior\": \"rename\",\n    \"name\": \"large-document.docx\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"itemNotFound\",\n    \"message\": \"The resource could not be found.\",\n    \"innerError\": {\n      \"request-id\": \"b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab\",\n      \"date\": \"2025-03-21T20:01:37Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b11249f-cff5-4d39-8f86-498d99d97c35",
+    "name": "Microsoft Graph Word Body Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

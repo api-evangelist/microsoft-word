@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Graph Word Body Paragraphs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Paragraphs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Word List Paragraphs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/paragraphs",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              }
+            ]
+          },
+          "docs": "Get the collection of paragraph objects in the document body."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Add Paragraph",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/paragraphs",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-openxml-a1b2c3",
+                "type": "path",
+                "description": "The unique identifier of the document."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new paragraph to the document body."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Get Paragraph",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/paragraphs/:paragraph-id",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              },
+              {
+                "name": "paragraph-id",
+                "value": "para-500123",
+                "type": "path",
+                "description": "The unique identifier of the paragraph."
+              }
+            ]
+          },
+          "docs": "Get a specific paragraph by its ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Word Delete Paragraph",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/documents/:document-id/paragraphs/:paragraph-id",
+            "params": [
+              {
+                "name": "document-id",
+                "value": "doc-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the Word document."
+              },
+              {
+                "name": "paragraph-id",
+                "value": "para-500123",
+                "type": "path",
+                "description": "The unique identifier of the paragraph."
+              }
+            ]
+          },
+          "docs": "Delete a paragraph from the document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
