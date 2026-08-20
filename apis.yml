@@ -19,6 +19,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-word.png
 tags:
 - Documents
+- Microsoft-365
+- Office
+- Productivity
+- Word Processing
+tags_raw:
+- Documents
 - Microsoft 365
 - Office
 - Productivity
@@ -602,6 +608,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - DriveItems
+  tags_raw:
   - Drive Items
   properties:
   - type: OpenAPI
@@ -786,6 +794,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
