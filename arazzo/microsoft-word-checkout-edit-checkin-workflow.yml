@@ -11,8 +11,11 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphApi
-  url: ../openapi/microsoft-word-graph-api.yaml
+- name: checkoutApi
+  url: ../openapi/microsoft-word-checkout-api-openapi.yml
+  type: openapi
+- name: contentApi
+  url: ../openapi/microsoft-word-content-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: checkout-edit-checkin

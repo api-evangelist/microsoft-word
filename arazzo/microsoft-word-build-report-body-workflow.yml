@@ -11,8 +11,17 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordJsApi
-  url: ../openapi/microsoft-word-javascript-api.yaml
+- name: bodyApi
+  url: ../openapi/microsoft-word-body-api-openapi.yml
+  type: openapi
+- name: documentsApi
+  url: ../openapi/microsoft-word-documents-api-openapi.yml
+  type: openapi
+- name: paragraphsApi
+  url: ../openapi/microsoft-word-paragraphs-api-openapi.yml
+  type: openapi
+- name: tablesApi
+  url: ../openapi/microsoft-word-tables-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: build-report-body

@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordJsApi
-  url: ../openapi/microsoft-word-javascript-api.yaml
+- name: bodyApi
+  url: ../openapi/microsoft-word-body-api-openapi.yml
+  type: openapi
+- name: documentsApi
+  url: ../openapi/microsoft-word-documents-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: author-document
