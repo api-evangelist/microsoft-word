@@ -3,6 +3,20 @@ name: Microsoft Word
 description: APIs for Microsoft Word document creation, manipulation, and automation across Microsoft 365 cloud services,
   Office Add-ins, SharePoint, and Open XML document processing.
 type: Index
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
