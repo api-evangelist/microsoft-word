@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Graph Word Body Sections API
-  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
+  title: Microsoft Word JavaScript Sections API
+  description: RESTful representation of the Office JavaScript API for Word add-ins. This API provides strongly-typed objects for document manipulation, content controls, tables, formatting, comments, collaboration, and shapes within Word documents through the Office Add-ins platform.
   version: 1.0.0
   contact:
-    name: Microsoft Graph Support
-    url: https://developer.microsoft.com/graph/support
+    name: Microsoft Office Add-ins Support
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/
   license:
     name: Microsoft API License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
   x-generated-from: documentation
   x-last-validated: '2026-04-18'
+  x-api-type: JavaScript
 servers:
-- url: https://graph.microsoft.com/v1.0
-  description: Microsoft Graph v1.0 production endpoint
+- url: https://word.officeapps.live.com/api/v1
+  description: Word JavaScript API conceptual endpoint
 security:
 - oauth2: []
 tags:
@@ -42,6 +43,13 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -58,14 +66,6 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
-    SectionCollection:
-      type: object
-      description: Collection of sections.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Section'
     Section:
       type: object
       description: Represents a section in a Word document.
@@ -74,13 +74,14 @@ components:
           type: string
           description: Unique identifier of the section.
           example: section-01
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    SectionCollection:
+      type: object
+      description: Collection of sections.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
   parameters:
     documentId:
       name: document-id
@@ -93,13 +94,10 @@ components:
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      description: OAuth 2.0 via Microsoft Identity Platform for Office Add-ins.
       flows:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
           scopes:
-            Files.Read: Read user files
-            Files.ReadWrite: Read and write user files
-            Files.Read.All: Read all files the user can access
-            Files.ReadWrite.All: Read and write all files the user can access
+            Files.ReadWrite: Read and write files

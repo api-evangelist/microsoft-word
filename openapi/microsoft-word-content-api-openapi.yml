@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Graph Word Body Content API
+  title: Microsoft Graph Word Content API
   description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
   version: 1.0.0
   contact:
@@ -106,6 +106,28 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -134,24 +156,46 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    FolderFacet:
+    FileFacet:
       type: object
-      description: Folder metadata facet for a driveItem.
+      description: File metadata facet for a driveItem.
       properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
-    SharedFacet:
-      type: object
-      description: Indicates the item has been shared with others.
-      properties:
-        owner:
-          $ref: '#/components/schemas/IdentitySet'
-        scope:
+        mimeType:
           type: string
-          description: Scope of sharing.
-          example: users
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
+    UploadSession:
+      type: object
+      description: Information about a resumable upload session.
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: URL to use for uploading file chunks.
+          example: https://sn3302.up.1drv.com/up/abc123
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: When the upload session expires.
+          example: '2025-03-22T20:01:37Z'
+        nextExpectedRanges:
+          type: array
+          items:
+            type: string
+          description: Byte ranges the server expects next.
+          example:
+          - 0-
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -213,6 +257,21 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
+    CreateUploadSessionRequest:
+      type: object
+      description: Request body for creating a resumable upload session.
+      properties:
+        item:
+          type: object
+          properties:
+            '@microsoft.graph.conflictBehavior':
+              type: string
+              description: Conflict resolution behavior.
+              example: rename
+            name:
+              type: string
+              description: Name of the file being uploaded.
+              example: large-document.docx
     ItemReference:
       type: object
       description: Reference to a drive item's parent.
@@ -229,25 +288,14 @@ components:
           type: string
           description: Path from the root to the item.
           example: /drive/root:/Documents
-    FileFacet:
+    FolderFacet:
       type: object
-      description: File metadata facet for a driveItem.
+      description: Folder metadata facet for a driveItem.
       properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
     IdentitySet:
       type: object
       description: Keyed collection of identity resources.
@@ -263,64 +311,16 @@ components:
               type: string
               description: Display name of the user.
               example: Jane Smith
-    UploadSession:
+    SharedFacet:
       type: object
-      description: Information about a resumable upload session.
+      description: Indicates the item has been shared with others.
       properties:
-        uploadUrl:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
           type: string
-          format: uri
-          description: URL to use for uploading file chunks.
-          example: https://sn3302.up.1drv.com/up/abc123
-        expirationDateTime:
-          type: string
-          format: date-time
-          description: When the upload session expires.
-          example: '2025-03-22T20:01:37Z'
-        nextExpectedRanges:
-          type: array
-          items:
-            type: string
-          description: Byte ranges the server expects next.
-          example:
-          - 0-
-    CreateUploadSessionRequest:
-      type: object
-      description: Request body for creating a resumable upload session.
-      properties:
-        item:
-          type: object
-          properties:
-            '@microsoft.graph.conflictBehavior':
-              type: string
-              description: Conflict resolution behavior.
-              example: rename
-            name:
-              type: string
-              description: Name of the file being uploaded.
-              example: large-document.docx
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+          description: Scope of sharing.
+          example: users
   securitySchemes:
     oauth2:
       type: oauth2

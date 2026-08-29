@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Graph Word Body Drive Items API
+  title: Microsoft Graph Word Drive Items API
   description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
   version: 1.0.0
   contact:
@@ -307,15 +307,24 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   responses:
-    Forbidden:
-      description: Insufficient permissions for this operation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    Forbidden:
+      description: Insufficient permissions for this operation.
       content:
         application/json:
           schema:
@@ -327,22 +336,25 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ItemPreviewInfo:
+    FileFacet:
       type: object
-      description: Embeddable preview information for a drive item.
+      description: File metadata facet for a driveItem.
       properties:
-        getUrl:
+        mimeType:
           type: string
-          format: uri
-          description: URL for embedding preview using HTTP GET.
-          example: https://onedrive.live.com/embed?resid=abc123
-        postParameters:
-          type: string
-          description: POST parameters for embedding preview.
-        postUrl:
-          type: string
-          format: uri
-          description: URL for embedding preview using HTTP POST.
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -370,24 +382,22 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    FolderFacet:
+    ItemReference:
       type: object
-      description: Folder metadata facet for a driveItem.
+      description: Reference to a drive item's parent.
       properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
-    SharedFacet:
-      type: object
-      description: Indicates the item has been shared with others.
-      properties:
-        owner:
-          $ref: '#/components/schemas/IdentitySet'
-        scope:
+        driveId:
           type: string
-          description: Scope of sharing.
-          example: users
+          description: Identifier of the drive containing the item.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+        id:
+          type: string
+          description: Identifier of the item in the drive.
+          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+        path:
+          type: string
+          description: Path from the root to the item.
+          example: /drive/root:/Documents
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -449,34 +459,86 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
-    ItemReference:
+    CopyRequest:
       type: object
-      description: Reference to a drive item's parent.
-      properties:
-        driveId:
-          type: string
-          description: Identifier of the drive containing the item.
-          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
-        id:
-          type: string
-          description: Identifier of the item in the drive.
-          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
-        path:
-          type: string
-          description: Path from the root to the item.
-          example: /drive/root:/Documents
-    DriveItemUpdate:
-      type: object
-      description: Properties to update on a drive item.
+      description: Request body for copying a drive item.
       properties:
         name:
           type: string
-          description: New name for the item.
-          example: updated-report.docx
-        description:
+          description: New name for the copy.
+          example: report-copy.docx
+        parentReference:
+          $ref: '#/components/schemas/ItemReference'
+    DriveItemCollection:
+      type: object
+      description: Collection of drive items.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriveItem'
+          description: Array of drive items.
+        '@odata.nextLink':
           type: string
-          description: Updated description for the item.
-          example: Updated quarterly report
+          description: URL to get the next page of results.
+          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
+    IdentitySet:
+      type: object
+      description: Keyed collection of identity resources.
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
+    SharedFacet:
+      type: object
+      description: Indicates the item has been shared with others.
+      properties:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
+          type: string
+          description: Scope of sharing.
+          example: users
+    FolderFacet:
+      type: object
+      description: Folder metadata facet for a driveItem.
+      properties:
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
+    ItemPreviewInfo:
+      type: object
+      description: Embeddable preview information for a drive item.
+      properties:
+        getUrl:
+          type: string
+          format: uri
+          description: URL for embedding preview using HTTP GET.
+          example: https://onedrive.live.com/embed?resid=abc123
+        postParameters:
+          type: string
+          description: POST parameters for embedding preview.
+        postUrl:
+          type: string
+          format: uri
+          description: URL for embedding preview using HTTP POST.
+    MoveRequest:
+      type: object
+      description: Request body for moving a drive item.
+      properties:
+        name:
+          type: string
+          description: New name for the item after moving.
+          example: report-moved.docx
         parentReference:
           $ref: '#/components/schemas/ItemReference'
     CreateFolderRequest:
@@ -497,82 +559,20 @@ components:
           type: string
           description: Conflict resolution behavior (fail, replace, rename).
           example: rename
-    FileFacet:
+    DriveItemUpdate:
       type: object
-      description: File metadata facet for a driveItem.
-      properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
-    DriveItemCollection:
-      type: object
-      description: Collection of drive items.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DriveItem'
-          description: Array of drive items.
-        '@odata.nextLink':
-          type: string
-          description: URL to get the next page of results.
-          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
-    CopyRequest:
-      type: object
-      description: Request body for copying a drive item.
+      description: Properties to update on a drive item.
       properties:
         name:
           type: string
-          description: New name for the copy.
-          example: report-copy.docx
-        parentReference:
-          $ref: '#/components/schemas/ItemReference'
-    MoveRequest:
-      type: object
-      description: Request body for moving a drive item.
-      properties:
-        name:
+          description: New name for the item.
+          example: updated-report.docx
+        description:
           type: string
-          description: New name for the item after moving.
-          example: report-moved.docx
+          description: Updated description for the item.
+          example: Updated quarterly report
         parentReference:
           $ref: '#/components/schemas/ItemReference'
-    IdentitySet:
-      type: object
-      description: Keyed collection of identity resources.
-      properties:
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the user.
-              example: efee1b77-fb3b-4f65-99d6-274c11914d12
-            displayName:
-              type: string
-              description: Display name of the user.
-              example: Jane Smith
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   securitySchemes:
     oauth2:
       type: oauth2

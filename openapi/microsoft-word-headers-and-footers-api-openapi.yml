@@ -1,21 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Graph Word Body Headers And Footers API
-  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
-  version: 1.0.0
+  title: Microsoft Word Open XML SDK Headers And Footers API
+  description: RESTful representation of the Open XML SDK operations for Word document processing. Provides programmatic access to create, read, and manipulate Word documents (.docx) using the ECMA-376 Open XML standard without requiring Microsoft Office installation.
+  version: 3.0.0
   contact:
-    name: Microsoft Graph Support
-    url: https://developer.microsoft.com/graph/support
+    name: Microsoft Office Open XML Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
   license:
-    name: Microsoft API License
-    url: https://www.microsoft.com/en-us/legal/terms-of-use
+    name: MIT License
+    url: https://github.com/OfficeDev/Open-XML-SDK/blob/main/LICENSE
   x-generated-from: documentation
   x-last-validated: '2026-04-18'
+  x-api-type: SDK
 servers:
-- url: https://graph.microsoft.com/v1.0
-  description: Microsoft Graph v1.0 production endpoint
-security:
-- oauth2: []
+- url: https://localhost:5000/api/v1
+  description: Local Open XML processing service
 tags:
 - name: Headers And Footers
   description: Operations for managing headers and footers
@@ -64,6 +63,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
     HeaderFooterCollection:
       type: object
       description: Collection of header or footer parts.
@@ -81,21 +95,13 @@ components:
                 type: string
                 description: Text content.
                 example: Company Confidential
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id
@@ -105,23 +111,3 @@ components:
       schema:
         type: string
       example: doc-openxml-a1b2c3
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
-      flows:
-        authorizationCode:
-          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
-          scopes:
-            Files.Read: Read user files
-            Files.ReadWrite: Read and write user files
-            Files.Read.All: Read all files the user can access
-            Files.ReadWrite.All: Read and write all files the user can access

@@ -1,21 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Graph Word Body Styles API
-  description: REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, versioning, and document metadata for DriveItem resources.
-  version: 1.0.0
-  contact:
-    name: Microsoft Graph Support
-    url: https://developer.microsoft.com/graph/support
-  license:
-    name: Microsoft API License
-    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  title: Microsoft Word Styles API
+  x-refined-note:
+  - x-api-type differs across the merged source definitions and was not carried
   x-generated-from: documentation
   x-last-validated: '2026-04-18'
+  version: '1.0'
+  description: 'Operations tagged Styles across 2 of this provider''s published API definitions: microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://graph.microsoft.com/v1.0
-  description: Microsoft Graph v1.0 production endpoint
-security:
-- oauth2: []
+- url: https://word.officeapps.live.com/api/v1
+  description: Word JavaScript API conceptual endpoint
+- url: https://localhost:5000/api/v1
+  description: Local Open XML processing service
 tags:
 - name: Styles
   description: Operations for managing document styles
@@ -41,7 +37,19 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://word.officeapps.live.com/api/v1
+      description: Word JavaScript API conceptual endpoint
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -58,6 +66,14 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
+    StyleCollection:
+      type: object
+      description: Collection of styles.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Style'
     Style:
       type: object
       description: Represents a document style.
@@ -74,21 +90,46 @@ components:
           type: boolean
           description: Whether the style is a built-in style.
           example: true
-    StyleCollection:
+    ErrorResponse_2:
       type: object
-      description: Collection of styles.
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+    OpenXmlStyleCollection:
+      type: object
+      description: Collection of document styles.
       properties:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Style'
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+            type: object
+            properties:
+              styleId:
+                type: string
+                description: Style identifier.
+                example: Heading1
+              name:
+                type: string
+                description: Display name of the style.
+                example: heading 1
+              type:
+                type: string
+                description: Style type (Paragraph, Character, Table).
+                example: Paragraph
+              basedOn:
+                type: string
+                description: Parent style this style inherits from.
+                example: Normal
   parameters:
     documentId:
       name: document-id
@@ -98,16 +139,24 @@ components:
       schema:
         type: string
       example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 authorization code flow with Microsoft Identity Platform.
+      description: OAuth 2.0 via Microsoft Identity Platform for Office Add-ins.
       flows:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
           scopes:
-            Files.Read: Read user files
-            Files.ReadWrite: Read and write user files
-            Files.Read.All: Read all files the user can access
-            Files.ReadWrite.All: Read and write all files the user can access
+            Files.ReadWrite: Read and write files
+x-refined-from:
+- microsoft-word-javascript-api.yaml
+- microsoft-word-open-xml-sdk.yaml
