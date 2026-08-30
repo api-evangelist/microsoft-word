@@ -11,8 +11,14 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: openXmlSdk
-  url: ../openapi/microsoft-word-open-xml-sdk.yaml
+- name: documentsApi
+  url: ../openapi/microsoft-word-documents-api-openapi.yml
+  type: openapi
+- name: paragraphsApi
+  url: ../openapi/microsoft-word-paragraphs-api-openapi.yml
+  type: openapi
+- name: propertiesApi
+  url: ../openapi/microsoft-word-properties-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inspect-and-export-html
@@ -41,7 +47,7 @@ workflows:
     description: >-
       Retrieve the document metadata and structure counts. The service returns
       200 with the document.
-    operationId: getWordDocument
+    operationId: getDocument
     parameters:
     - name: document-id
       in: path
@@ -56,7 +62,7 @@ workflows:
     description: >-
       Update the document title and keywords. The service returns 200 with the
       updated properties.
-    operationId: updateOpenXmlProperties
+    operationId: updateDocumentProperties
     parameters:
     - name: document-id
       in: path
@@ -74,7 +80,7 @@ workflows:
     description: >-
       List the document paragraphs to capture their text content before export.
       The service returns 200 with the paragraph collection.
-    operationId: listDocumentParagraphs
+    operationId: listParagraphs
     parameters:
     - name: document-id
       in: path
