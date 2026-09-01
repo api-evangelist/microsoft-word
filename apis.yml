@@ -622,7 +622,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
   baseURL: https://graph.microsoft.com/v1.0
   tags:
-  - Drive Items
+  - DriveItems
   tags_raw:
   - Drive Items
   properties:
