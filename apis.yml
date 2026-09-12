@@ -1,7 +1,6 @@
 aid: microsoft-word
 name: Microsoft Word
-description: APIs for Microsoft Word document creation, manipulation, and automation across Microsoft 365 cloud services,
-  Office Add-ins, SharePoint, and Open XML document processing.
+description: APIs for Microsoft Word document creation, manipulation, and automation across Microsoft 365 cloud services, Office Add-ins, SharePoint, and Open XML document processing.
 type: Index
 deliveryModel:
   model: open-core
@@ -45,16 +44,13 @@ tags_raw:
 - Word Processing
 created: '2024'
 modified: '2026-06-20'
-url: https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/apis.yml
+url: https://developer.microsoft.com/
 specificationVersion: '0.23'
 apis:
 - name: Word Automation Services (SharePoint)
-  description: >-
-    Server-side document conversion and automation service for SharePoint. Supports batch conversion of
-    Word documents to PDF, XPS, and other formats without user interaction.
+  description: Server-side document conversion and automation service for SharePoint. Supports batch conversion of Word documents to PDF, XPS, and other formats without user interaction.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: >-
-    https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+  humanURL: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
   tags:
   - Conversion
   - Enterprise
@@ -62,8 +58,7 @@ apis:
   - SharePoint
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint
 - aid: microsoft-word:microsoft-word-body-api
   name: Microsoft Word Body API
   description: Operations on the document body content
@@ -1724,191 +1719,226 @@ apis:
     url: json-ld/microsoft-word-open-xml-sdk-context.jsonld
   - type: Examples
     url: examples/open-xml-sdk-document-properties-example.json
+- name: Word JavaScript API
+  description: JavaScript API for building Word add-ins and interacting with Word document content.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview
+  tags:
+  - Add-Ins
+  - JavaScript
+  - Office-Js
+  tags_raw:
+  - Add-Ins
+  - Javascript
+  - Office-Js
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/javascript/api/word
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart
+  - type: CodeExamples
+    url: https://github.com/OfficeDev/Office-Add-in-samples
+- name: Office Open XML SDK
+  description: .NET SDK for programmatically creating and manipulating Word documents using Open XML format.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://learn.microsoft.com/en-us/office/open-xml/word-processing
+  tags:
+  - Dotnet
+  - Openxml
+  - SDK
+  tags_raw:
+  - Dotnet
+  - Openxml
+  - Sdk
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/open-xml/word/word-processing
+  - type: GitHubRepository
+    url: https://github.com/OfficeDev/Open-XML-SDK
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: IssueTracker
-    url: https://github.com/OfficeDev/Open-XML-SDK/issues
-  - type: Releases
-    url: https://github.com/OfficeDev/Open-XML-SDK/releases
-  - type: SecurityPolicy
-    url: https://github.com/dotnet/Open-XML-SDK/blob/main/SECURITY.md
-  - type: CodeOfConduct
-    url: https://github.com/dotnet/Open-XML-SDK/blob/main/CODE_OF_CONDUCT.md
-  - type: ContributionGuide
-    url: https://github.com/dotnet/Open-XML-SDK/blob/main/CONTRIBUTING.md
-  - type: License
-    name: MIT
-    url: https://github.com/OfficeDev/Open-XML-SDK/blob/main/LICENSE
-  - type: AgenticAccess
-    url: agentic-access/microsoft-word-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/microsoft-word-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/microsoft-word-domain-security.yml
-  - type: Authentication
-    url: authentication/microsoft-word-authentication.yml
-  - type: OAuthScopes
-    url: scopes/microsoft-word-scopes.yml
-  - type: TrustCenter
-    url: security/microsoft-word-trust-center.yml
-  - type: Packages
-    url: packages/microsoft-word-packages.yml
-  - type: WellKnown
-    url: well-known/microsoft-word-well-known.yml
-  - type: MCPServer
-    url: mcp/microsoft-word-mcp.yml
-  - type: LLMsTxt
-    url: llms/microsoft-word-llms.txt
-  - type: Conformance
-    url: conformance/microsoft-word-conformance.yml
-  - type: ErrorCatalog
-    url: errors/microsoft-word-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/microsoft-word-lifecycle.yml
-  - type: Sandbox
-    url: sandbox/microsoft-word-sandbox.yml
-  - type: Conventions
-    url: conventions/microsoft-word-conventions.yml
-  - type: ChangeLog
-    url: changelog/microsoft-word-changelog.yml
-  - type: CLI
-    url: cli/microsoft-word-cli.yml
-  - type: DataModel
-    url: data-model/microsoft-word-data-model.yml
-  - type: Overlay
-    url: overlays/microsoft-word-graph-api-overlay.yaml
-  - type: Overlay
-    url: overlays/microsoft-word-javascript-api-overlay.yaml
-  - type: Overlay
-    url: overlays/microsoft-word-open-xml-sdk-overlay.yaml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/microsoft-word/overview
-  - type: Arazzo
-    url: arazzo/microsoft-word-author-document-workflow.yml
-    name: Microsoft Word Author Document from HTML
-  - type: Arazzo
-    url: arazzo/microsoft-word-browse-and-copy-workflow.yml
-    name: Microsoft Word Browse Folder and Copy Document
-  - type: Arazzo
-    url: arazzo/microsoft-word-build-report-body-workflow.yml
-    name: Microsoft Word Build Report Body
-  - type: Arazzo
-    url: arazzo/microsoft-word-checkout-edit-checkin-workflow.yml
-    name: Microsoft Word Checkout Edit and Check In Document
-  - type: Arazzo
-    url: arazzo/microsoft-word-generate-and-convert-pdf-workflow.yml
-    name: Microsoft Word Generate Document and Convert to PDF
-  - type: Arazzo
-    url: arazzo/microsoft-word-inspect-and-export-html-workflow.yml
-    name: Microsoft Word Inspect Document and Export HTML
-  - type: Arazzo
-    url: arazzo/microsoft-word-organize-and-invite-workflow.yml
-    name: Microsoft Word Organize Folder and Invite Reviewers
-  - type: Arazzo
-    url: arazzo/microsoft-word-rename-move-and-audit-workflow.yml
-    name: Microsoft Word Rename Move and Audit Document
-  - type: Arazzo
-    url: arazzo/microsoft-word-resumable-upload-session-workflow.yml
-    name: Microsoft Word Resumable Upload Session
-  - type: Arazzo
-    url: arazzo/microsoft-word-search-and-download-workflow.yml
-    name: Microsoft Word Search and Download Document
-  - type: Arazzo
-    url: arazzo/microsoft-word-search-and-tag-workflow.yml
-    name: Microsoft Word Search Body and Tag Document
-  - type: Arazzo
-    url: arazzo/microsoft-word-upload-and-share-workflow.yml
-    name: Microsoft Word Upload and Share Document
-  - type: LinkedIn
-    url: https://www.linkedin.com/showcase/microsoft-word-online-training
-  - type: Portal
-    url: https://developer.microsoft.com/
-  - type: DeveloperPortal
-    url: https://developer.microsoft.com/en-us/graph
-  - type: Console
-    url: https://developer.microsoft.com/en-us/graph/graph-explorer
-  - type: Signup
-    url: https://developer.microsoft.com/en-us/microsoft-365/dev-program
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/graph/auth/
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/graph/get-started
-  - type: Blog
-    url: https://devblogs.microsoft.com/microsoft365dev/
-  - type: Support
-    url: https://developer.microsoft.com/graph/support
-  - type: StatusPage
-    url: https://status.office.com/
-  - type: ChangeLog
-    url: https://developer.microsoft.com/en-us/graph/changelog
-  - type: TermsOfService
-    url: https://www.microsoft.com/en-us/legal/terms-of-use
-  - type: PrivacyPolicy
-    url: https://privacy.microsoft.com/
-  - type: GitHubOrganization
-    url: https://github.com/OfficeDev
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/microsoft-graph
-  - type: X
-    url: https://twitter.com/MSGraphDev
-  - type: YouTube
-    url: https://www.youtube.com/@Microsoft365Developer
-  - type: Training
-    url: https://learn.microsoft.com/en-us/training/browse/?products=ms-graph
-  - type: SpectralRules
-    url: rules/microsoft-word-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/microsoft-word-vocabulary.yaml
-  - type: Features
-    data:
-    - name: Document Creation
-      description: Programmatically create Word documents from templates or scratch using REST APIs or JavaScript.
-    - name: Document Conversion
-      description: Convert Word documents to PDF, HTML, and other formats using server-side automation services.
-    - name: Content Manipulation
-      description: Insert, edit, and format text, paragraphs, tables, images, and content controls in Word documents.
-    - name: Collaboration
-      description: Track changes, manage comments, co-authoring sessions, and revision history through APIs.
-    - name: Template Processing
-      description: Mail merge, document assembly, and template-based document generation for enterprise workflows.
-    - name: Cloud Storage Integration
-      description: Access and manipulate Word documents stored in OneDrive, SharePoint, and Microsoft 365 cloud services.
-    - name: Add-In Extensibility
-      description: Build custom Word add-ins with JavaScript APIs for task panes, content insertion, and document automation.
-    - name: Open XML Processing
-      description: Low-level manipulation of Word document structure using the ECMA-376 Open XML standard.
-  - type: UseCases
-    data:
-    - name: Automated Report Generation
-      description: Generate standardized reports from data sources using templates and API-driven document creation.
-    - name: Contract and Legal Document Assembly
-      description: Assemble legal documents by merging clauses, terms, and client data into Word templates.
-    - name: Document Review Workflows
-      description: Automate review cycles with tracked changes, comments, and approval workflows via APIs.
-    - name: Bulk Document Processing
-      description: Process large volumes of Word documents for format conversion, content extraction, or metadata updates.
-    - name: Custom Business Add-Ins
-      description: Build task pane add-ins that connect Word to CRM, ERP, or other business systems for data insertion.
-    - name: Compliance Document Management
-      description: Ensure regulatory compliance by automating document formatting, metadata tagging, and archiving.
-  - type: Integrations
-    data:
-    - name: Microsoft SharePoint
-      description: Store, manage, and collaborate on Word documents through SharePoint document libraries and workflows.
-    - name: Microsoft OneDrive
-      description: Access and sync Word documents via OneDrive cloud storage through Microsoft Graph APIs.
-    - name: Microsoft Teams
-      description: Collaborate on Word documents directly within Teams channels and chat conversations.
-    - name: Microsoft Power Automate
-      description: Automate Word document workflows including creation, conversion, and approval routing with Power Automate
-        flows.
-    - name: Microsoft Copilot
-      description: AI-powered document creation, editing, and summarization through Copilot agents with add-in actions.
-    - name: Azure Active Directory
-      description: OAuth 2.0 authentication and authorization for secure API access through Microsoft Identity Platform.
-x-parent: microsoft
+- type: Website
+  url: https://www.microsoft.com/
+- type: IssueTracker
+  url: https://github.com/OfficeDev/Open-XML-SDK/issues
+- type: Releases
+  url: https://github.com/OfficeDev/Open-XML-SDK/releases
+- type: SecurityPolicy
+  url: https://github.com/dotnet/Open-XML-SDK/blob/main/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/dotnet/Open-XML-SDK/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/dotnet/Open-XML-SDK/blob/main/CONTRIBUTING.md
+- type: License
+  name: MIT
+  url: https://github.com/OfficeDev/Open-XML-SDK/blob/main/LICENSE
+- type: AgenticAccess
+  url: agentic-access/microsoft-word-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/microsoft-word-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/microsoft-word-domain-security.yml
+- type: Authentication
+  url: authentication/microsoft-word-authentication.yml
+- type: OAuthScopes
+  url: scopes/microsoft-word-scopes.yml
+- type: TrustCenter
+  url: security/microsoft-word-trust-center.yml
+- type: Packages
+  url: packages/microsoft-word-packages.yml
+- type: WellKnown
+  url: well-known/microsoft-word-well-known.yml
+- type: MCPServer
+  url: mcp/microsoft-word-mcp.yml
+- type: LLMsTxt
+  url: llms/microsoft-word-llms.txt
+- type: Conformance
+  url: conformance/microsoft-word-conformance.yml
+- type: ErrorCatalog
+  url: errors/microsoft-word-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/microsoft-word-lifecycle.yml
+- type: Sandbox
+  url: sandbox/microsoft-word-sandbox.yml
+- type: Conventions
+  url: conventions/microsoft-word-conventions.yml
+- type: ChangeLog
+  url: changelog/microsoft-word-changelog.yml
+- type: CLI
+  url: cli/microsoft-word-cli.yml
+- type: DataModel
+  url: data-model/microsoft-word-data-model.yml
+- type: Overlay
+  url: overlays/microsoft-word-graph-api-overlay.yaml
+- type: Overlay
+  url: overlays/microsoft-word-javascript-api-overlay.yaml
+- type: Overlay
+  url: overlays/microsoft-word-open-xml-sdk-overlay.yaml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/microsoft-word/overview
+- type: Arazzo
+  url: arazzo/microsoft-word-author-document-workflow.yml
+  name: Microsoft Word Author Document from HTML
+- type: Arazzo
+  url: arazzo/microsoft-word-browse-and-copy-workflow.yml
+  name: Microsoft Word Browse Folder and Copy Document
+- type: Arazzo
+  url: arazzo/microsoft-word-build-report-body-workflow.yml
+  name: Microsoft Word Build Report Body
+- type: Arazzo
+  url: arazzo/microsoft-word-checkout-edit-checkin-workflow.yml
+  name: Microsoft Word Checkout Edit and Check In Document
+- type: Arazzo
+  url: arazzo/microsoft-word-generate-and-convert-pdf-workflow.yml
+  name: Microsoft Word Generate Document and Convert to PDF
+- type: Arazzo
+  url: arazzo/microsoft-word-inspect-and-export-html-workflow.yml
+  name: Microsoft Word Inspect Document and Export HTML
+- type: Arazzo
+  url: arazzo/microsoft-word-organize-and-invite-workflow.yml
+  name: Microsoft Word Organize Folder and Invite Reviewers
+- type: Arazzo
+  url: arazzo/microsoft-word-rename-move-and-audit-workflow.yml
+  name: Microsoft Word Rename Move and Audit Document
+- type: Arazzo
+  url: arazzo/microsoft-word-resumable-upload-session-workflow.yml
+  name: Microsoft Word Resumable Upload Session
+- type: Arazzo
+  url: arazzo/microsoft-word-search-and-download-workflow.yml
+  name: Microsoft Word Search and Download Document
+- type: Arazzo
+  url: arazzo/microsoft-word-search-and-tag-workflow.yml
+  name: Microsoft Word Search Body and Tag Document
+- type: Arazzo
+  url: arazzo/microsoft-word-upload-and-share-workflow.yml
+  name: Microsoft Word Upload and Share Document
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/microsoft-word-online-training
+- type: Portal
+  url: https://developer.microsoft.com/
+- type: DeveloperPortal
+  url: https://developer.microsoft.com/en-us/graph
+- type: Console
+  url: https://developer.microsoft.com/en-us/graph/graph-explorer
+- type: Signup
+  url: https://developer.microsoft.com/en-us/microsoft-365/dev-program
+- type: Authentication
+  url: https://learn.microsoft.com/en-us/graph/auth/
+- type: GettingStarted
+  url: https://learn.microsoft.com/en-us/graph/get-started
+- type: Blog
+  url: https://devblogs.microsoft.com/microsoft365dev/
+- type: Support
+  url: https://developer.microsoft.com/graph/support
+- type: StatusPage
+  url: https://status.office.com/
+- type: ChangeLog
+  url: https://developer.microsoft.com/en-us/graph/changelog
+- type: TermsOfService
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/
+- type: GitHubOrganization
+  url: https://github.com/OfficeDev
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/microsoft-graph
+- type: X
+  url: https://twitter.com/MSGraphDev
+- type: YouTube
+  url: https://www.youtube.com/@Microsoft365Developer
+- type: Training
+  url: https://learn.microsoft.com/en-us/training/browse/?products=ms-graph
+- type: SpectralRules
+  url: rules/microsoft-word-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/microsoft-word-vocabulary.yaml
+- type: Features
+  data:
+  - name: Document Creation
+    description: Programmatically create Word documents from templates or scratch using REST APIs or JavaScript.
+  - name: Document Conversion
+    description: Convert Word documents to PDF, HTML, and other formats using server-side automation services.
+  - name: Content Manipulation
+    description: Insert, edit, and format text, paragraphs, tables, images, and content controls in Word documents.
+  - name: Collaboration
+    description: Track changes, manage comments, co-authoring sessions, and revision history through APIs.
+  - name: Template Processing
+    description: Mail merge, document assembly, and template-based document generation for enterprise workflows.
+  - name: Cloud Storage Integration
+    description: Access and manipulate Word documents stored in OneDrive, SharePoint, and Microsoft 365 cloud services.
+  - name: Add-In Extensibility
+    description: Build custom Word add-ins with JavaScript APIs for task panes, content insertion, and document automation.
+  - name: Open XML Processing
+    description: Low-level manipulation of Word document structure using the ECMA-376 Open XML standard.
+- type: UseCases
+  data:
+  - name: Automated Report Generation
+    description: Generate standardized reports from data sources using templates and API-driven document creation.
+  - name: Contract and Legal Document Assembly
+    description: Assemble legal documents by merging clauses, terms, and client data into Word templates.
+  - name: Document Review Workflows
+    description: Automate review cycles with tracked changes, comments, and approval workflows via APIs.
+  - name: Bulk Document Processing
+    description: Process large volumes of Word documents for format conversion, content extraction, or metadata updates.
+  - name: Custom Business Add-Ins
+    description: Build task pane add-ins that connect Word to CRM, ERP, or other business systems for data insertion.
+  - name: Compliance Document Management
+    description: Ensure regulatory compliance by automating document formatting, metadata tagging, and archiving.
+- type: Integrations
+  data:
+  - name: Microsoft SharePoint
+    description: Store, manage, and collaborate on Word documents through SharePoint document libraries and workflows.
+  - name: Microsoft OneDrive
+    description: Access and sync Word documents via OneDrive cloud storage through Microsoft Graph APIs.
+  - name: Microsoft Teams
+    description: Collaborate on Word documents directly within Teams channels and chat conversations.
+  - name: Microsoft Power Automate
+    description: Automate Word document workflows including creation, conversion, and approval routing with Power Automate flows.
+  - name: Microsoft Copilot
+    description: AI-powered document creation, editing, and summarization through Copilot agents with add-in actions.
+  - name: Azure Active Directory
+    description: OAuth 2.0 authentication and authorization for secure API access through Microsoft Identity Platform.
+x-parent: microsoft-365
 x-relationship: product
