@@ -1728,6 +1728,8 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: IssueTracker
     url: https://github.com/OfficeDev/Open-XML-SDK/issues
   - type: Releases
@@ -1908,3 +1910,5 @@ common:
       description: AI-powered document creation, editing, and summarization through Copilot agents with add-in actions.
     - name: Azure Active Directory
       description: OAuth 2.0 authentication and authorization for secure API access through Microsoft Identity Platform.
+x-parent: microsoft
+x-relationship: product
