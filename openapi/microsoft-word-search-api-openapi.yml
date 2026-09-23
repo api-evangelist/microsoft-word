@@ -49,52 +49,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: itemNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The resource could not be found.
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                  description: Request correlation ID.
-                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
-                date:
-                  type: string
-                  format: date-time
-                  description: Timestamp of the error.
-                  example: '2025-03-21T20:01:37Z'
-    FileFacet:
-      type: object
-      description: File metadata facet for a driveItem.
-      properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -185,6 +139,70 @@ components:
           type: string
           description: URL to get the next page of results.
           example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
+    FolderFacet:
+      type: object
+      description: Folder metadata facet for a driveItem.
+      properties:
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
+    FileFacet:
+      type: object
+      description: File metadata facet for a driveItem.
+      properties:
+        mimeType:
+          type: string
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    SharedFacet:
+      type: object
+      description: Indicates the item has been shared with others.
+      properties:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
+          type: string
+          description: Scope of sharing.
+          example: users
     IdentitySet:
       type: object
       description: Keyed collection of identity resources.
@@ -200,24 +218,6 @@ components:
               type: string
               description: Display name of the user.
               example: Jane Smith
-    SharedFacet:
-      type: object
-      description: Indicates the item has been shared with others.
-      properties:
-        owner:
-          $ref: '#/components/schemas/IdentitySet'
-        scope:
-          type: string
-          description: Scope of sharing.
-          example: users
-    FolderFacet:
-      type: object
-      description: Folder metadata facet for a driveItem.
-      properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
   responses:
     Unauthorized:
       description: Authentication required or token expired.

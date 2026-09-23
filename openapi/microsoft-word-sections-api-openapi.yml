@@ -43,14 +43,24 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
   schemas:
+    SectionCollection:
+      type: object
+      description: Collection of sections.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -74,23 +84,13 @@ components:
           type: string
           description: Unique identifier of the section.
           example: section-01
-    SectionCollection:
-      type: object
-      description: Collection of sections.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Section'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

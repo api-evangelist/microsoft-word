@@ -182,44 +182,6 @@ components:
         base64File:
           type: string
           description: Base64-encoded document content for the new document.
-    WordDocument:
-      type: object
-      description: Represents a Word document processed by the Open XML SDK.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the document.
-          example: doc-openxml-a1b2c3
-        filename:
-          type: string
-          description: Original filename of the document.
-          example: quarterly-report.docx
-        paragraphCount:
-          type: integer
-          description: Number of paragraphs in the document.
-          example: 42
-        tableCount:
-          type: integer
-          description: Number of tables in the document.
-          example: 3
-        imageCount:
-          type: integer
-          description: Number of images in the document.
-          example: 5
-        sectionCount:
-          type: integer
-          description: Number of sections in the document.
-          example: 2
-        createdDate:
-          type: string
-          format: date-time
-          description: When the document was created.
-          example: '2025-01-15T10:00:00Z'
-        modifiedDate:
-          type: string
-          format: date-time
-          description: When the document was last modified.
-          example: '2025-03-15T14:30:00Z'
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -265,6 +227,61 @@ components:
           type: string
           description: Target format (pdf, html, txt, rtf).
           example: pdf
+    WordDocument:
+      type: object
+      description: Represents a Word document processed by the Open XML SDK.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the document.
+          example: doc-openxml-a1b2c3
+        filename:
+          type: string
+          description: Original filename of the document.
+          example: quarterly-report.docx
+        paragraphCount:
+          type: integer
+          description: Number of paragraphs in the document.
+          example: 42
+        tableCount:
+          type: integer
+          description: Number of tables in the document.
+          example: 3
+        imageCount:
+          type: integer
+          description: Number of images in the document.
+          example: 5
+        sectionCount:
+          type: integer
+          description: Number of sections in the document.
+          example: 2
+        createdDate:
+          type: string
+          format: date-time
+          description: When the document was created.
+          example: '2025-01-15T10:00:00Z'
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the document was last modified.
+          example: '2025-03-15T14:30:00Z'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   responses:
     NotFound:
       description: Resource not found.
@@ -284,23 +301,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse_2'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2

@@ -71,6 +71,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
   responses:
     NotFound:
       description: Resource not found.
@@ -94,6 +103,14 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
+    ContentControlCollection:
+      type: object
+      description: Collection of content controls.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentControl'
     ContentControl:
       type: object
       description: Represents a content control in a document.
@@ -130,23 +147,6 @@ components:
           type: boolean
           description: Whether the content control can be edited.
           example: false
-    ContentControlCollection:
-      type: object
-      description: Collection of content controls.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentControl'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
   securitySchemes:
     oauth2:
       type: oauth2

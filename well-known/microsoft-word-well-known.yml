@@ -1,11 +1,9 @@
-generated: '2026-06-20'
+generated: '2026-09-19'
 method: searched
 source: live probes of Microsoft 365 / Microsoft Identity Platform hosts
-notes: >-
-  Microsoft Graph (graph.microsoft.com) returns 401 on /.well-known/* (auth
-  required). OAuth/OIDC discovery lives on the Microsoft Identity Platform host
-  login.microsoftonline.com, which the Graph and Office.js OpenAPI declare as
-  their authorization/token authority.
+notes: Microsoft Graph (graph.microsoft.com) returns 401 on /.well-known/* (auth required). OAuth/OIDC
+  discovery lives on the Microsoft Identity Platform host login.microsoftonline.com, which the Graph and
+  Office.js OpenAPI declare as their authorization/token authority.
 hosts:
 - host: https://login.microsoftonline.com
   documents:
@@ -35,3 +33,23 @@ hosts:
   - path: /.well-known/security.txt
     status: 200
     note: see security/microsoft-word-vulnerability-disclosure.yml (MSRC)
+- host: https://mcp.svc.cloud.microsoft
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: microsoft-word-mcp-oauth-protected-resource.json
+    bytes: 295
+  path_echo_control: passed
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.svc.cloud.microsoft
+    path: /.well-known/oauth-protected-resource
+    file: microsoft-word-mcp-oauth-protected-resource.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'

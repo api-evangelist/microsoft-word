@@ -44,15 +44,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   responses:
     NotFound:
       description: The requested resource was not found.
@@ -137,6 +128,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DriveItemVersion'
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   securitySchemes:
     oauth2:
       type: oauth2

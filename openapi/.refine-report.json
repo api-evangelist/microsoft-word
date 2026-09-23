@@ -1,9 +1,9 @@
 {
   "provider": "microsoft-word",
   "sources": [
-    "_original/microsoft-word-graph-api.yaml",
-    "_original/microsoft-word-javascript-api.yaml",
-    "_original/microsoft-word-open-xml-sdk.yaml"
+    "_ae-authored/microsoft-word-graph-api.yaml",
+    "_ae-authored/microsoft-word-javascript-api.yaml",
+    "_ae-authored/microsoft-word-open-xml-sdk.yaml"
   ],
   "outputs": [
     "microsoft-word-checkout-api-openapi.yml",
@@ -29,7 +29,7 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "microsoft-word-graph-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "microsoft-word-javascript-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "microsoft-word-open-xml-sdk.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
@@ -38,7 +38,8 @@
     "tag 'Paragraphs' spans 2 source specs (microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml): per-path servers applied",
     "tag 'Properties' spans 2 source specs (microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml): per-path servers applied",
     "tag 'Styles' spans 2 source specs (microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml): per-path servers applied",
-    "tag 'Tables' spans 2 source specs (microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml): per-path servers applied"
+    "tag 'Tables' spans 2 source specs (microsoft-word-javascript-api.yaml, microsoft-word-open-xml-sdk.yaml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "microsoft-word-body-api-openapi.yml: previously refined output, superseded by openapi/_original/",

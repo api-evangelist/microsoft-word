@@ -71,51 +71,37 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   responses:
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
-    DocumentPropertiesUpdate:
-      type: object
-      description: Properties to update on a document.
-      properties:
-        title:
-          type: string
-          example: Updated Report Title
-        subject:
-          type: string
-          example: Updated Subject
-        author:
-          type: string
-          example: Jane Smith
-        keywords:
-          type: string
-          example: updated, keywords
     DocumentProperties:
       type: object
       description: Document properties and metadata.
@@ -166,7 +152,7 @@ components:
           type: string
           description: Revision number of the document.
           example: '12'
-    ErrorResponse_2:
+    ErrorResponse:
       type: object
       description: Error response from the API.
       properties:
@@ -176,11 +162,27 @@ components:
             code:
               type: string
               description: Error code.
-              example: DocumentNotFound
+              example: InvalidArgument
             message:
               type: string
               description: Human-readable error message.
-              example: The specified document could not be found.
+              example: The argument is invalid or missing.
+    DocumentPropertiesUpdate:
+      type: object
+      description: Properties to update on a document.
+      properties:
+        title:
+          type: string
+          example: Updated Report Title
+        subject:
+          type: string
+          example: Updated Subject
+        author:
+          type: string
+          example: Jane Smith
+        keywords:
+          type: string
+          example: updated, keywords
     OpenXmlDocumentPropertiesUpdate:
       type: object
       description: Properties to update.
@@ -200,6 +202,21 @@ components:
         category:
           type: string
           example: Updated Category
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
     OpenXmlDocumentProperties:
       type: object
       description: Core and extended document properties.
@@ -262,23 +279,6 @@ components:
           type: integer
           description: Number of characters.
           example: 28765
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2

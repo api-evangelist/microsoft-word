@@ -80,15 +80,24 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   responses:
-    BadRequest:
-      description: Invalid request parameters.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
@@ -109,6 +118,18 @@ components:
               type: string
               description: Human-readable error message.
               example: The specified document could not be found.
+    ImageCollection:
+      type: object
+      description: Collection of embedded images.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageInfo'
+        count:
+          type: integer
+          description: Total number of images.
+          example: 5
     ImageInfo:
       type: object
       description: Information about an embedded image.
@@ -129,24 +150,3 @@ components:
           type: integer
           description: Height in EMUs.
           example: 685800
-    ImageCollection:
-      type: object
-      description: Collection of embedded images.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageInfo'
-        count:
-          type: integer
-          description: Total number of images.
-          example: 5
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3

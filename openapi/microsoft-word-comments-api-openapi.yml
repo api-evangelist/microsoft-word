@@ -43,6 +43,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
   responses:
     NotFound:
       description: Resource not found.
@@ -51,6 +60,29 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    CommentCollection:
+      type: object
+      description: Collection of comments.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
     Comment:
       type: object
       description: Represents a comment in a Word document.
@@ -80,38 +112,6 @@ components:
           type: boolean
           description: Whether the comment has been resolved.
           example: false
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
-    CommentCollection:
-      type: object
-      description: Collection of comments.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
   securitySchemes:
     oauth2:
       type: oauth2

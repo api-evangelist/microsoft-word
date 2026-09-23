@@ -71,28 +71,37 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   responses:
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    TableCollection:
-      type: object
-      description: Collection of tables.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -136,6 +145,14 @@ components:
           type: integer
           description: Number of header rows.
           example: 1
+    TableCollection:
+      type: object
+      description: Collection of tables.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
     InsertTableRequest:
       type: object
       description: Request to insert a table.
@@ -167,6 +184,59 @@ components:
             - Age
             - City
             - Country
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+    OpenXmlTableCollection:
+      type: object
+      description: Collection of tables.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenXmlTable'
+        count:
+          type: integer
+          description: Total number of tables.
+          example: 3
+    AddTableRequest:
+      type: object
+      description: Request to add a table.
+      required:
+      - rows
+      - columns
+      properties:
+        rows:
+          type: integer
+          description: Number of rows.
+          example: 3
+        columns:
+          type: integer
+          description: Number of columns.
+          example: 4
+        data:
+          type: array
+          description: 2D array of cell values.
+          items:
+            type: array
+            items:
+              type: string
+        styleId:
+          type: string
+          description: Table style ID.
+          example: TableGrid
     OpenXmlTable:
       type: object
       description: Represents a table in the Open XML document.
@@ -198,76 +268,6 @@ components:
                       type: string
                       description: Cell text content.
                       example: Cell value
-    ErrorResponse_2:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
-    AddTableRequest:
-      type: object
-      description: Request to add a table.
-      required:
-      - rows
-      - columns
-      properties:
-        rows:
-          type: integer
-          description: Number of rows.
-          example: 3
-        columns:
-          type: integer
-          description: Number of columns.
-          example: 4
-        data:
-          type: array
-          description: 2D array of cell values.
-          items:
-            type: array
-            items:
-              type: string
-        styleId:
-          type: string
-          description: Table style ID.
-          example: TableGrid
-    OpenXmlTableCollection:
-      type: object
-      description: Collection of tables.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpenXmlTable'
-        count:
-          type: integer
-          description: Total number of tables.
-          example: 3
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2

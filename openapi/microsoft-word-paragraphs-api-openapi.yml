@@ -117,43 +117,7 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
-    ParagraphCollection:
-      type: object
-      description: Collection of paragraphs.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Paragraph'
     Paragraph:
       type: object
       description: Represents a single paragraph in a document.
@@ -190,6 +154,29 @@ components:
           type: boolean
           description: Whether the paragraph is part of a list.
           example: false
+    ParagraphCollection:
+      type: object
+      description: Collection of paragraphs.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Paragraph'
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -304,6 +291,19 @@ components:
       schema:
         type: string
       example: doc-openxml-a1b2c3
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
   securitySchemes:
     oauth2:
       type: oauth2
