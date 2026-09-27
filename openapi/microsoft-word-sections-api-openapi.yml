@@ -53,14 +53,14 @@ components:
         type: string
       example: doc-a1b2c3d4
   schemas:
-    SectionCollection:
+    Section:
       type: object
-      description: Collection of sections.
+      description: Represents a section in a Word document.
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Section'
+        id:
+          type: string
+          description: Unique identifier of the section.
+          example: section-01
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -76,14 +76,14 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
-    Section:
+    SectionCollection:
       type: object
-      description: Represents a section in a Word document.
+      description: Collection of sections.
       properties:
-        id:
-          type: string
-          description: Unique identifier of the section.
-          example: section-01
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
   responses:
     NotFound:
       description: Resource not found.

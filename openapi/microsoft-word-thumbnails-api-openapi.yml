@@ -59,14 +59,23 @@ components:
           $ref: '#/components/schemas/Thumbnail'
         large:
           $ref: '#/components/schemas/Thumbnail'
-    ThumbnailSetCollection:
+    Thumbnail:
       type: object
-      description: Collection of thumbnail sets.
+      description: A thumbnail image for a drive item.
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThumbnailSet'
+        width:
+          type: integer
+          description: Width of the thumbnail in pixels.
+          example: 176
+        height:
+          type: integer
+          description: Height of the thumbnail in pixels.
+          example: 248
+        url:
+          type: string
+          format: uri
+          description: URL to fetch the thumbnail content.
+          example: https://sn3302files.onedrive.live.com/thumbnails/abc
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -94,32 +103,23 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    Thumbnail:
+    ThumbnailSetCollection:
       type: object
-      description: A thumbnail image for a drive item.
+      description: Collection of thumbnail sets.
       properties:
-        width:
-          type: integer
-          description: Width of the thumbnail in pixels.
-          example: 176
-        height:
-          type: integer
-          description: Height of the thumbnail in pixels.
-          example: 248
-        url:
-          type: string
-          format: uri
-          description: URL to fetch the thumbnail content.
-          example: https://sn3302files.onedrive.live.com/thumbnails/abc
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThumbnailSet'
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication required or token expired.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or token expired.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

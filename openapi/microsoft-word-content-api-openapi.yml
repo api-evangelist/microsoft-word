@@ -128,6 +128,30 @@ components:
           description: Byte ranges the server expects next.
           example:
           - 0-
+    ItemReference:
+      type: object
+      description: Reference to a drive item's parent.
+      properties:
+        driveId:
+          type: string
+          description: Identifier of the drive containing the item.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+        id:
+          type: string
+          description: Identifier of the item in the drive.
+          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+        path:
+          type: string
+          description: Path from the root to the item.
+          example: /drive/root:/Documents
+    FolderFacet:
+      type: object
+      description: Folder metadata facet for a driveItem.
+      properties:
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -189,22 +213,21 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
-    ItemReference:
+    IdentitySet:
       type: object
-      description: Reference to a drive item's parent.
+      description: Keyed collection of identity resources.
       properties:
-        driveId:
-          type: string
-          description: Identifier of the drive containing the item.
-          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
-        id:
-          type: string
-          description: Identifier of the item in the drive.
-          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
-        path:
-          type: string
-          description: Path from the root to the item.
-          example: /drive/root:/Documents
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
     FileFacet:
       type: object
       description: File metadata facet for a driveItem.
@@ -224,14 +247,6 @@ components:
               type: string
               description: QuickXor hash of the file content.
               example: aabbccdd1122334455
-    FolderFacet:
-      type: object
-      description: Folder metadata facet for a driveItem.
-      properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -259,31 +274,6 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    SharedFacet:
-      type: object
-      description: Indicates the item has been shared with others.
-      properties:
-        owner:
-          $ref: '#/components/schemas/IdentitySet'
-        scope:
-          type: string
-          description: Scope of sharing.
-          example: users
-    IdentitySet:
-      type: object
-      description: Keyed collection of identity resources.
-      properties:
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the user.
-              example: efee1b77-fb3b-4f65-99d6-274c11914d12
-            displayName:
-              type: string
-              description: Display name of the user.
-              example: Jane Smith
     CreateUploadSessionRequest:
       type: object
       description: Request body for creating a resumable upload session.
@@ -299,15 +289,25 @@ components:
               type: string
               description: Name of the file being uploaded.
               example: large-document.docx
+    SharedFacet:
+      type: object
+      description: Indicates the item has been shared with others.
+      properties:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
+          type: string
+          description: Scope of sharing.
+          example: users
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication required or token expired.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or token expired.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

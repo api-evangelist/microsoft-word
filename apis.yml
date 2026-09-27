@@ -32,7 +32,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-word.png
 tags:
 - Documents
-- Microsoft-365
+- Microsoft 365
 - Office
 - Productivity
 - Word Processing
@@ -42,6 +42,7 @@ tags_raw:
 - Office
 - Productivity
 - Word Processing
+- Microsoft-365
 created: '2024'
 modified: '2026-06-20'
 url: https://developer.microsoft.com/

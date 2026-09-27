@@ -89,34 +89,19 @@ components:
         type: string
       example: doc-openxml-a1b2c3
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
     Table:
       type: object
       description: Represents a table in a Word document.
@@ -145,6 +130,21 @@ components:
           type: integer
           description: Number of header rows.
           example: 1
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
     TableCollection:
       type: object
       description: Collection of tables.
@@ -184,59 +184,6 @@ components:
             - Age
             - City
             - Country
-    ErrorResponse_2:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
-    OpenXmlTableCollection:
-      type: object
-      description: Collection of tables.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpenXmlTable'
-        count:
-          type: integer
-          description: Total number of tables.
-          example: 3
-    AddTableRequest:
-      type: object
-      description: Request to add a table.
-      required:
-      - rows
-      - columns
-      properties:
-        rows:
-          type: integer
-          description: Number of rows.
-          example: 3
-        columns:
-          type: integer
-          description: Number of columns.
-          example: 4
-        data:
-          type: array
-          description: 2D array of cell values.
-          items:
-            type: array
-            items:
-              type: string
-        styleId:
-          type: string
-          description: Table style ID.
-          example: TableGrid
     OpenXmlTable:
       type: object
       description: Represents a table in the Open XML document.
@@ -268,6 +215,59 @@ components:
                       type: string
                       description: Cell text content.
                       example: Cell value
+    AddTableRequest:
+      type: object
+      description: Request to add a table.
+      required:
+      - rows
+      - columns
+      properties:
+        rows:
+          type: integer
+          description: Number of rows.
+          example: 3
+        columns:
+          type: integer
+          description: Number of columns.
+          example: 4
+        data:
+          type: array
+          description: 2D array of cell values.
+          items:
+            type: array
+            items:
+              type: string
+        styleId:
+          type: string
+          description: Table style ID.
+          example: TableGrid
+    OpenXmlTableCollection:
+      type: object
+      description: Collection of tables.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenXmlTable'
+        count:
+          type: integer
+          description: Total number of tables.
+          example: 3
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
   securitySchemes:
     oauth2:
       type: oauth2

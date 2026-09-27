@@ -43,30 +43,6 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     StyleCollection:
       type: object
@@ -147,6 +123,30 @@ components:
                 type: string
                 description: Parent style this style inherits from.
                 example: Normal
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

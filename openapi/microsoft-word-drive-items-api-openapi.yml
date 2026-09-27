@@ -308,6 +308,43 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MoveRequest:
+      type: object
+      description: Request body for moving a drive item.
+      properties:
+        name:
+          type: string
+          description: New name for the item after moving.
+          example: report-moved.docx
+        parentReference:
+          $ref: '#/components/schemas/ItemReference'
+    DriveItemCollection:
+      type: object
+      description: Collection of drive items.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriveItem'
+          description: Array of drive items.
+        '@odata.nextLink':
+          type: string
+          description: URL to get the next page of results.
+          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
+    DriveItemUpdate:
+      type: object
+      description: Properties to update on a drive item.
+      properties:
+        name:
+          type: string
+          description: New name for the item.
+          example: updated-report.docx
+        description:
+          type: string
+          description: Updated description for the item.
+          example: Updated quarterly report
+        parentReference:
+          $ref: '#/components/schemas/ItemReference'
     ItemReference:
       type: object
       description: Reference to a drive item's parent.
@@ -324,6 +361,129 @@ components:
           type: string
           description: Path from the root to the item.
           example: /drive/root:/Documents
+    FolderFacet:
+      type: object
+      description: Folder metadata facet for a driveItem.
+      properties:
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
+    ItemPreviewInfo:
+      type: object
+      description: Embeddable preview information for a drive item.
+      properties:
+        getUrl:
+          type: string
+          format: uri
+          description: URL for embedding preview using HTTP GET.
+          example: https://onedrive.live.com/embed?resid=abc123
+        postParameters:
+          type: string
+          description: POST parameters for embedding preview.
+        postUrl:
+          type: string
+          format: uri
+          description: URL for embedding preview using HTTP POST.
+    IdentitySet:
+      type: object
+      description: Keyed collection of identity resources.
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
+    CopyRequest:
+      type: object
+      description: Request body for copying a drive item.
+      properties:
+        name:
+          type: string
+          description: New name for the copy.
+          example: report-copy.docx
+        parentReference:
+          $ref: '#/components/schemas/ItemReference'
+    FileFacet:
+      type: object
+      description: File metadata facet for a driveItem.
+      properties:
+        mimeType:
+          type: string
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    CreateFolderRequest:
+      type: object
+      description: Request body for creating a new folder.
+      required:
+      - name
+      - folder
+      properties:
+        name:
+          type: string
+          description: Name of the new folder.
+          example: New Folder
+        folder:
+          type: object
+          description: Empty folder facet to indicate this is a folder.
+        '@microsoft.graph.conflictBehavior':
+          type: string
+          description: Conflict resolution behavior (fail, replace, rename).
+          example: rename
+    SharedFacet:
+      type: object
+      description: Indicates the item has been shared with others.
+      properties:
+        owner:
+          $ref: '#/components/schemas/IdentitySet'
+        scope:
+          type: string
+          description: Scope of sharing.
+          example: users
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -385,173 +545,7 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
-    DriveItemCollection:
-      type: object
-      description: Collection of drive items.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DriveItem'
-          description: Array of drive items.
-        '@odata.nextLink':
-          type: string
-          description: URL to get the next page of results.
-          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
-    FileFacet:
-      type: object
-      description: File metadata facet for a driveItem.
-      properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
-    MoveRequest:
-      type: object
-      description: Request body for moving a drive item.
-      properties:
-        name:
-          type: string
-          description: New name for the item after moving.
-          example: report-moved.docx
-        parentReference:
-          $ref: '#/components/schemas/ItemReference'
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: itemNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The resource could not be found.
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                  description: Request correlation ID.
-                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
-                date:
-                  type: string
-                  format: date-time
-                  description: Timestamp of the error.
-                  example: '2025-03-21T20:01:37Z'
-    FolderFacet:
-      type: object
-      description: Folder metadata facet for a driveItem.
-      properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
-    ItemPreviewInfo:
-      type: object
-      description: Embeddable preview information for a drive item.
-      properties:
-        getUrl:
-          type: string
-          format: uri
-          description: URL for embedding preview using HTTP GET.
-          example: https://onedrive.live.com/embed?resid=abc123
-        postParameters:
-          type: string
-          description: POST parameters for embedding preview.
-        postUrl:
-          type: string
-          format: uri
-          description: URL for embedding preview using HTTP POST.
-    SharedFacet:
-      type: object
-      description: Indicates the item has been shared with others.
-      properties:
-        owner:
-          $ref: '#/components/schemas/IdentitySet'
-        scope:
-          type: string
-          description: Scope of sharing.
-          example: users
-    CreateFolderRequest:
-      type: object
-      description: Request body for creating a new folder.
-      required:
-      - name
-      - folder
-      properties:
-        name:
-          type: string
-          description: Name of the new folder.
-          example: New Folder
-        folder:
-          type: object
-          description: Empty folder facet to indicate this is a folder.
-        '@microsoft.graph.conflictBehavior':
-          type: string
-          description: Conflict resolution behavior (fail, replace, rename).
-          example: rename
-    IdentitySet:
-      type: object
-      description: Keyed collection of identity resources.
-      properties:
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the user.
-              example: efee1b77-fb3b-4f65-99d6-274c11914d12
-            displayName:
-              type: string
-              description: Display name of the user.
-              example: Jane Smith
-    CopyRequest:
-      type: object
-      description: Request body for copying a drive item.
-      properties:
-        name:
-          type: string
-          description: New name for the copy.
-          example: report-copy.docx
-        parentReference:
-          $ref: '#/components/schemas/ItemReference'
-    DriveItemUpdate:
-      type: object
-      description: Properties to update on a drive item.
-      properties:
-        name:
-          type: string
-          description: New name for the item.
-          example: updated-report.docx
-        description:
-          type: string
-          description: Updated description for the item.
-          example: Updated quarterly report
-        parentReference:
-          $ref: '#/components/schemas/ItemReference'
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Forbidden:
       description: Insufficient permissions for this operation.
       content:
@@ -560,6 +554,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

@@ -101,25 +101,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateLinkRequest:
-      type: object
-      description: Request body for creating a sharing link.
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          description: Type of sharing link to create (view, edit, embed).
-          example: edit
-        scope:
-          type: string
-          description: Scope of the link (anonymous, organization).
-          example: organization
-        expirationDateTime:
-          type: string
-          format: date-time
-          description: Expiration date and time for the link.
-          example: '2025-12-31T23:59:59Z'
     PermissionCollection:
       type: object
       description: Collection of permissions.
@@ -161,33 +142,6 @@ components:
               example: organization
         grantedTo:
           $ref: '#/components/schemas/IdentitySet'
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: itemNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The resource could not be found.
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                  description: Request correlation ID.
-                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
-                date:
-                  type: string
-                  format: date-time
-                  description: Timestamp of the error.
-                  example: '2025-03-21T20:01:37Z'
     InviteRequest:
       type: object
       description: Request body for sending sharing invitations.
@@ -239,15 +193,61 @@ components:
               type: string
               description: Display name of the user.
               example: Jane Smith
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    CreateLinkRequest:
+      type: object
+      description: Request body for creating a sharing link.
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          description: Type of sharing link to create (view, edit, embed).
+          example: edit
+        scope:
+          type: string
+          description: Scope of the link (anonymous, organization).
+          example: organization
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: Expiration date and time for the link.
+          example: '2025-12-31T23:59:59Z'
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication required or token expired.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or token expired.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

@@ -154,14 +154,6 @@ components:
           type: boolean
           description: Whether the paragraph is part of a list.
           example: false
-    ParagraphCollection:
-      type: object
-      description: Collection of paragraphs.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Paragraph'
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -177,6 +169,56 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
+    ParagraphCollection:
+      type: object
+      description: Collection of paragraphs.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Paragraph'
+    OpenXmlParagraphCollection:
+      type: object
+      description: Collection of paragraphs.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenXmlParagraph'
+        count:
+          type: integer
+          description: Total number of paragraphs.
+          example: 42
+    AddParagraphRequest:
+      type: object
+      description: Request to add a paragraph.
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Text content of the paragraph.
+          example: New paragraph content.
+        styleId:
+          type: string
+          description: Style ID to apply.
+          example: Normal
+        alignment:
+          type: string
+          description: Text alignment.
+          example: Left
+        bold:
+          type: boolean
+          description: Whether to bold the text.
+          example: false
+        italic:
+          type: boolean
+          description: Whether to italicize the text.
+          example: false
+        insertAfterIndex:
+          type: integer
+          description: Index after which to insert the paragraph.
+          example: 5
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -224,48 +266,6 @@ components:
           type: number
           description: Font size in half-points.
           example: 24.0
-    AddParagraphRequest:
-      type: object
-      description: Request to add a paragraph.
-      required:
-      - text
-      properties:
-        text:
-          type: string
-          description: Text content of the paragraph.
-          example: New paragraph content.
-        styleId:
-          type: string
-          description: Style ID to apply.
-          example: Normal
-        alignment:
-          type: string
-          description: Text alignment.
-          example: Left
-        bold:
-          type: boolean
-          description: Whether to bold the text.
-          example: false
-        italic:
-          type: boolean
-          description: Whether to italicize the text.
-          example: false
-        insertAfterIndex:
-          type: integer
-          description: Index after which to insert the paragraph.
-          example: 5
-    OpenXmlParagraphCollection:
-      type: object
-      description: Collection of paragraphs.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpenXmlParagraph'
-        count:
-          type: integer
-          description: Total number of paragraphs.
-          example: 42
   parameters:
     documentId:
       name: document-id

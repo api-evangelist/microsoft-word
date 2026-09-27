@@ -140,22 +140,6 @@ paths:
       description: Word JavaScript API conceptual endpoint
 components:
   schemas:
-    Range:
-      type: object
-      description: Represents a contiguous area in a document.
-      properties:
-        text:
-          type: string
-          description: Text content of the range.
-          example: inserted text content
-        style:
-          type: string
-          description: Style applied to the range.
-          example: Normal
-        isEmpty:
-          type: boolean
-          description: Whether the range is empty.
-          example: false
     SearchRequest:
       type: object
       description: Request to search document content.
@@ -186,36 +170,6 @@ components:
           type: boolean
           description: Whether to use wildcard matching.
           example: false
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
-    InsertHtmlRequest:
-      type: object
-      description: Request to insert HTML content into the document.
-      required:
-      - html
-      - location
-      properties:
-        html:
-          type: string
-          description: The HTML content to insert.
-          example: <h1>Title</h1><p>Body paragraph</p>
-        location:
-          type: string
-          description: Location to insert HTML (Start, End, Before, After, Replace).
-          example: End
     InsertTextRequest:
       type: object
       description: Request to insert text into the document.
@@ -239,6 +193,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Range'
+    Range:
+      type: object
+      description: Represents a contiguous area in a document.
+      properties:
+        text:
+          type: string
+          description: Text content of the range.
+          example: inserted text content
+        style:
+          type: string
+          description: Style applied to the range.
+          example: Normal
+        isEmpty:
+          type: boolean
+          description: Whether the range is empty.
+          example: false
+    InsertHtmlRequest:
+      type: object
+      description: Request to insert HTML content into the document.
+      required:
+      - html
+      - location
+      properties:
+        html:
+          type: string
+          description: The HTML content to insert.
+          example: <h1>Title</h1><p>Body paragraph</p>
+        location:
+          type: string
+          description: Location to insert HTML (Start, End, Before, After, Replace).
+          example: End
     Body:
       type: object
       description: Represents the body of a document or section.
@@ -255,6 +240,21 @@ components:
           type: string
           description: Style name applied to the body.
           example: Normal
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -306,14 +306,14 @@ components:
         type: string
       example: doc-openxml-a1b2c3
   responses:
-    NotFound:
-      description: Resource not found.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
