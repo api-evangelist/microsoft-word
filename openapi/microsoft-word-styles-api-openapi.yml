@@ -44,14 +44,6 @@ paths:
       description: Word JavaScript API conceptual endpoint
 components:
   schemas:
-    StyleCollection:
-      type: object
-      description: Collection of styles.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Style'
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -67,6 +59,14 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
+    StyleCollection:
+      type: object
+      description: Collection of styles.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Style'
     Style:
       type: object
       description: Represents a document style.
@@ -83,21 +83,6 @@ components:
           type: boolean
           description: Whether the style is a built-in style.
           example: true
-    ErrorResponse_2:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
     OpenXmlStyleCollection:
       type: object
       description: Collection of document styles.
@@ -123,6 +108,28 @@ components:
                 type: string
                 description: Parent style this style inherits from.
                 example: Normal
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id
@@ -140,13 +147,6 @@ components:
       schema:
         type: string
       example: doc-openxml-a1b2c3
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

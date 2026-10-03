@@ -44,20 +44,51 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    DriveItemVersionCollection:
+      type: object
+      description: Collection of drive item versions.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriveItemVersion'
     IdentitySet:
       type: object
       description: Keyed collection of identity resources.
@@ -93,50 +124,19 @@ components:
           format: int64
           description: Size of the version in bytes.
           example: 24576
-    DriveItemVersionCollection:
-      type: object
-      description: Collection of drive item versions.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DriveItemVersion'
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: itemNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The resource could not be found.
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                  description: Request correlation ID.
-                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
-                date:
-                  type: string
-                  format: date-time
-                  description: Timestamp of the error.
-                  example: '2025-03-21T20:01:37Z'
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

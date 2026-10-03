@@ -107,51 +107,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UploadSession:
-      type: object
-      description: Information about a resumable upload session.
-      properties:
-        uploadUrl:
-          type: string
-          format: uri
-          description: URL to use for uploading file chunks.
-          example: https://sn3302.up.1drv.com/up/abc123
-        expirationDateTime:
-          type: string
-          format: date-time
-          description: When the upload session expires.
-          example: '2025-03-22T20:01:37Z'
-        nextExpectedRanges:
-          type: array
-          items:
-            type: string
-          description: Byte ranges the server expects next.
-          example:
-          - 0-
-    ItemReference:
-      type: object
-      description: Reference to a drive item's parent.
-      properties:
-        driveId:
-          type: string
-          description: Identifier of the drive containing the item.
-          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
-        id:
-          type: string
-          description: Identifier of the item in the drive.
-          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
-        path:
-          type: string
-          description: Path from the root to the item.
-          example: /drive/root:/Documents
-    FolderFacet:
-      type: object
-      description: Folder metadata facet for a driveItem.
-      properties:
-        childCount:
-          type: integer
-          description: Number of children in the folder.
-          example: 120
     DriveItem:
       type: object
       description: Represents a file, folder, or other item stored in a drive.
@@ -213,6 +168,70 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
+    ItemReference:
+      type: object
+      description: Reference to a drive item's parent.
+      properties:
+        driveId:
+          type: string
+          description: Identifier of the drive containing the item.
+          example: b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd
+        id:
+          type: string
+          description: Identifier of the item in the drive.
+          example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+        path:
+          type: string
+          description: Path from the root to the item.
+          example: /drive/root:/Documents
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: itemNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The resource could not be found.
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Request correlation ID.
+                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
+                date:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the error.
+                  example: '2025-03-21T20:01:37Z'
+    UploadSession:
+      type: object
+      description: Information about a resumable upload session.
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: URL to use for uploading file chunks.
+          example: https://sn3302.up.1drv.com/up/abc123
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: When the upload session expires.
+          example: '2025-03-22T20:01:37Z'
+        nextExpectedRanges:
+          type: array
+          items:
+            type: string
+          description: Byte ranges the server expects next.
+          example:
+          - 0-
     IdentitySet:
       type: object
       description: Keyed collection of identity resources.
@@ -247,33 +266,14 @@ components:
               type: string
               description: QuickXor hash of the file content.
               example: aabbccdd1122334455
-    ErrorResponse:
+    FolderFacet:
       type: object
-      description: Error response from the API.
+      description: Folder metadata facet for a driveItem.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: itemNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The resource could not be found.
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                  description: Request correlation ID.
-                  example: b0c6a5b0-4c0a-4c8e-9b0a-1234567890ab
-                date:
-                  type: string
-                  format: date-time
-                  description: Timestamp of the error.
-                  example: '2025-03-21T20:01:37Z'
+        childCount:
+          type: integer
+          description: Number of children in the folder.
+          example: 120
     CreateUploadSessionRequest:
       type: object
       description: Request body for creating a resumable upload session.
@@ -299,19 +299,6 @@ components:
           type: string
           description: Scope of sharing.
           example: users
-  responses:
-    Unauthorized:
-      description: Authentication required or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     itemId:
       name: item-id
@@ -321,6 +308,19 @@ components:
       schema:
         type: string
       example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

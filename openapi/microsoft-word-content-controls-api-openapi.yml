@@ -72,14 +72,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ContentControlCollection:
+    ErrorResponse:
       type: object
-      description: Collection of content controls.
+      description: Error response from the API.
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentControl'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
     ContentControl:
       type: object
       description: Represents a content control in a document.
@@ -116,21 +123,21 @@ components:
           type: boolean
           description: Whether the content control can be edited.
           example: false
-    ErrorResponse:
+    ContentControlCollection:
       type: object
-      description: Error response from the API.
+      description: Collection of content controls.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentControl'
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id
@@ -140,13 +147,6 @@ components:
       schema:
         type: string
       example: doc-a1b2c3d4
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

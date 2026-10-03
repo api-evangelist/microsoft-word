@@ -143,24 +143,23 @@ paths:
     - url: https://localhost:5000/api/v1
       description: Local Open XML processing service
 components:
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   schemas:
+    Document:
+      type: object
+      description: Represents a Word document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the document.
+          example: doc-a1b2c3d4
+        saved:
+          type: boolean
+          description: Whether the document has been saved.
+          example: true
+        changeTrackingMode:
+          type: string
+          description: Change tracking mode (Off, TrackAll, TrackMineOnly).
+          example: 'Off'
     CreateDocumentRequest:
       type: object
       description: Request to create a new document.
@@ -183,22 +182,6 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
-    Document:
-      type: object
-      description: Represents a Word document.
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the document.
-          example: doc-a1b2c3d4
-        saved:
-          type: boolean
-          description: Whether the document has been saved.
-          example: true
-        changeTrackingMode:
-          type: string
-          description: Change tracking mode (Off, TrackAll, TrackMineOnly).
-          example: 'Off'
     CreateDocumentRequest_2:
       type: object
       description: Request to create a new document.
@@ -283,14 +266,14 @@ components:
           description: Target format (pdf, html, txt, rtf).
           example: pdf
   responses:
-    Unauthorized:
-      description: Authentication required.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Authentication required.
       content:
         application/json:
           schema:
@@ -301,6 +284,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse_2'
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2

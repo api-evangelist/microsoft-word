@@ -72,22 +72,6 @@ paths:
       description: Word JavaScript API conceptual endpoint
 components:
   schemas:
-    DocumentPropertiesUpdate:
-      type: object
-      description: Properties to update on a document.
-      properties:
-        title:
-          type: string
-          example: Updated Report Title
-        subject:
-          type: string
-          example: Updated Subject
-        author:
-          type: string
-          example: Jane Smith
-        keywords:
-          type: string
-          example: updated, keywords
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -153,6 +137,22 @@ components:
           type: string
           description: Revision number of the document.
           example: '12'
+    DocumentPropertiesUpdate:
+      type: object
+      description: Properties to update on a document.
+      properties:
+        title:
+          type: string
+          example: Updated Report Title
+        subject:
+          type: string
+          example: Updated Subject
+        author:
+          type: string
+          example: Jane Smith
+        keywords:
+          type: string
+          example: updated, keywords
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -168,6 +168,25 @@ components:
               type: string
               description: Human-readable error message.
               example: The specified document could not be found.
+    OpenXmlDocumentPropertiesUpdate:
+      type: object
+      description: Properties to update.
+      properties:
+        title:
+          type: string
+          example: Updated Report Title
+        subject:
+          type: string
+          example: Updated Subject
+        creator:
+          type: string
+          example: Jane Smith
+        keywords:
+          type: string
+          example: updated, keywords
+        category:
+          type: string
+          example: Updated Category
     OpenXmlDocumentProperties:
       type: object
       description: Core and extended document properties.
@@ -230,25 +249,19 @@ components:
           type: integer
           description: Number of characters.
           example: 28765
-    OpenXmlDocumentPropertiesUpdate:
-      type: object
-      description: Properties to update.
-      properties:
-        title:
-          type: string
-          example: Updated Report Title
-        subject:
-          type: string
-          example: Updated Subject
-        creator:
-          type: string
-          example: Jane Smith
-        keywords:
-          type: string
-          example: updated, keywords
-        category:
-          type: string
-          example: Updated Category
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id
@@ -266,19 +279,6 @@ components:
       schema:
         type: string
       example: doc-openxml-a1b2c3
-  responses:
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2
