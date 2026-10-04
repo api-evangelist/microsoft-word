@@ -140,36 +140,6 @@ paths:
       description: Word JavaScript API conceptual endpoint
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
-    InsertTextRequest:
-      type: object
-      description: Request to insert text into the document.
-      required:
-      - text
-      - location
-      properties:
-        text:
-          type: string
-          description: The text to insert.
-          example: Hello, World!
-        location:
-          type: string
-          description: Location to insert text (Start, End, Before, After, Replace).
-          example: End
     SearchRequest:
       type: object
       description: Request to search document content.
@@ -200,45 +170,6 @@ components:
           type: boolean
           description: Whether to use wildcard matching.
           example: false
-    InsertHtmlRequest:
-      type: object
-      description: Request to insert HTML content into the document.
-      required:
-      - html
-      - location
-      properties:
-        html:
-          type: string
-          description: The HTML content to insert.
-          example: <h1>Title</h1><p>Body paragraph</p>
-        location:
-          type: string
-          description: Location to insert HTML (Start, End, Before, After, Replace).
-          example: End
-    RangeCollection:
-      type: object
-      description: Collection of ranges.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Range'
-    Body:
-      type: object
-      description: Represents the body of a document or section.
-      properties:
-        text:
-          type: string
-          description: Plain text content of the body.
-          example: This is the document body text.
-        type:
-          type: string
-          description: Type of the body (MainDoc, Section, Header, Footer, TableCell).
-          example: MainDoc
-        style:
-          type: string
-          description: Style name applied to the body.
-          example: Normal
     Range:
       type: object
       description: Represents a contiguous area in a document.
@@ -255,6 +186,75 @@ components:
           type: boolean
           description: Whether the range is empty.
           example: false
+    Body:
+      type: object
+      description: Represents the body of a document or section.
+      properties:
+        text:
+          type: string
+          description: Plain text content of the body.
+          example: This is the document body text.
+        type:
+          type: string
+          description: Type of the body (MainDoc, Section, Header, Footer, TableCell).
+          example: MainDoc
+        style:
+          type: string
+          description: Style name applied to the body.
+          example: Normal
+    InsertTextRequest:
+      type: object
+      description: Request to insert text into the document.
+      required:
+      - text
+      - location
+      properties:
+        text:
+          type: string
+          description: The text to insert.
+          example: Hello, World!
+        location:
+          type: string
+          description: Location to insert text (Start, End, Before, After, Replace).
+          example: End
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    RangeCollection:
+      type: object
+      description: Collection of ranges.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Range'
+    InsertHtmlRequest:
+      type: object
+      description: Request to insert HTML content into the document.
+      required:
+      - html
+      - location
+      properties:
+        html:
+          type: string
+          description: The HTML content to insert.
+          example: <h1>Title</h1><p>Body paragraph</p>
+        location:
+          type: string
+          description: Location to insert HTML (Start, End, Before, After, Replace).
+          example: End
     ErrorResponse_2:
       type: object
       description: Error response from the API.
@@ -289,14 +289,14 @@ components:
                 description: Position index in the body.
                 example: 0
   responses:
-    NotFound:
-      description: Resource not found.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:

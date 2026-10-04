@@ -110,6 +110,34 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
+    IdentitySet:
+      type: object
+      description: Keyed collection of identity resources.
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
+    DriveItemCollection:
+      type: object
+      description: Collection of drive items.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DriveItem'
+          description: Array of drive items.
+        '@odata.nextLink':
+          type: string
+          description: URL to get the next page of results.
+          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
     ItemReference:
       type: object
       description: Reference to a drive item's parent.
@@ -126,6 +154,25 @@ components:
           type: string
           description: Path from the root to the item.
           example: /drive/root:/Documents
+    FileFacet:
+      type: object
+      description: File metadata facet for a driveItem.
+      properties:
+        mimeType:
+          type: string
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -153,40 +200,6 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    IdentitySet:
-      type: object
-      description: Keyed collection of identity resources.
-      properties:
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the user.
-              example: efee1b77-fb3b-4f65-99d6-274c11914d12
-            displayName:
-              type: string
-              description: Display name of the user.
-              example: Jane Smith
-    FileFacet:
-      type: object
-      description: File metadata facet for a driveItem.
-      properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
     FolderFacet:
       type: object
       description: Folder metadata facet for a driveItem.
@@ -195,19 +208,6 @@ components:
           type: integer
           description: Number of children in the folder.
           example: 120
-    DriveItemCollection:
-      type: object
-      description: Collection of drive items.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DriveItem'
-          description: Array of drive items.
-        '@odata.nextLink':
-          type: string
-          description: URL to get the next page of results.
-          example: https://graph.microsoft.com/v1.0/me/drive/items/123/children?$skiptoken=abc
     SharedFacet:
       type: object
       description: Indicates the item has been shared with others.

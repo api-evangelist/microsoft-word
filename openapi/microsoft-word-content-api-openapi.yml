@@ -168,6 +168,61 @@ components:
           $ref: '#/components/schemas/FolderFacet'
         shared:
           $ref: '#/components/schemas/SharedFacet'
+    IdentitySet:
+      type: object
+      description: Keyed collection of identity resources.
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the user.
+              example: efee1b77-fb3b-4f65-99d6-274c11914d12
+            displayName:
+              type: string
+              description: Display name of the user.
+              example: Jane Smith
+    UploadSession:
+      type: object
+      description: Information about a resumable upload session.
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: URL to use for uploading file chunks.
+          example: https://sn3302.up.1drv.com/up/abc123
+        expirationDateTime:
+          type: string
+          format: date-time
+          description: When the upload session expires.
+          example: '2025-03-22T20:01:37Z'
+        nextExpectedRanges:
+          type: array
+          items:
+            type: string
+          description: Byte ranges the server expects next.
+          example:
+          - 0-
+    FileFacet:
+      type: object
+      description: File metadata facet for a driveItem.
+      properties:
+        mimeType:
+          type: string
+          description: MIME type of the file.
+          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        hashes:
+          type: object
+          properties:
+            sha1Hash:
+              type: string
+              description: SHA1 hash of the file content.
+              example: aabbccdd1122334455
+            quickXorHash:
+              type: string
+              description: QuickXor hash of the file content.
+              example: aabbccdd1122334455
     ItemReference:
       type: object
       description: Reference to a drive item's parent.
@@ -184,6 +239,21 @@ components:
           type: string
           description: Path from the root to the item.
           example: /drive/root:/Documents
+    CreateUploadSessionRequest:
+      type: object
+      description: Request body for creating a resumable upload session.
+      properties:
+        item:
+          type: object
+          properties:
+            '@microsoft.graph.conflictBehavior':
+              type: string
+              description: Conflict resolution behavior.
+              example: rename
+            name:
+              type: string
+              description: Name of the file being uploaded.
+              example: large-document.docx
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -211,61 +281,6 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    UploadSession:
-      type: object
-      description: Information about a resumable upload session.
-      properties:
-        uploadUrl:
-          type: string
-          format: uri
-          description: URL to use for uploading file chunks.
-          example: https://sn3302.up.1drv.com/up/abc123
-        expirationDateTime:
-          type: string
-          format: date-time
-          description: When the upload session expires.
-          example: '2025-03-22T20:01:37Z'
-        nextExpectedRanges:
-          type: array
-          items:
-            type: string
-          description: Byte ranges the server expects next.
-          example:
-          - 0-
-    IdentitySet:
-      type: object
-      description: Keyed collection of identity resources.
-      properties:
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the user.
-              example: efee1b77-fb3b-4f65-99d6-274c11914d12
-            displayName:
-              type: string
-              description: Display name of the user.
-              example: Jane Smith
-    FileFacet:
-      type: object
-      description: File metadata facet for a driveItem.
-      properties:
-        mimeType:
-          type: string
-          description: MIME type of the file.
-          example: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        hashes:
-          type: object
-          properties:
-            sha1Hash:
-              type: string
-              description: SHA1 hash of the file content.
-              example: aabbccdd1122334455
-            quickXorHash:
-              type: string
-              description: QuickXor hash of the file content.
-              example: aabbccdd1122334455
     FolderFacet:
       type: object
       description: Folder metadata facet for a driveItem.
@@ -274,21 +289,6 @@ components:
           type: integer
           description: Number of children in the folder.
           example: 120
-    CreateUploadSessionRequest:
-      type: object
-      description: Request body for creating a resumable upload session.
-      properties:
-        item:
-          type: object
-          properties:
-            '@microsoft.graph.conflictBehavior':
-              type: string
-              description: Conflict resolution behavior.
-              example: rename
-            name:
-              type: string
-              description: Name of the file being uploaded.
-              example: large-document.docx
     SharedFacet:
       type: object
       description: Indicates the item has been shared with others.
@@ -299,15 +299,6 @@ components:
           type: string
           description: Scope of sharing.
           example: users
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   responses:
     NotFound:
       description: The requested resource was not found.
@@ -321,6 +312,15 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   securitySchemes:
     oauth2:
       type: oauth2

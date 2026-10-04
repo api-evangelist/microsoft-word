@@ -202,21 +202,16 @@ components:
           type: string
           description: Initial text content for the document body.
           example: This is the initial content.
-    ErrorResponse_2:
+    ConvertRequest:
       type: object
-      description: Error response from the API.
+      description: Request to convert a document to another format.
+      required:
+      - targetFormat
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
+        targetFormat:
+          type: string
+          description: Target format (pdf, html, txt, rtf).
+          example: pdf
     WordDocument:
       type: object
       description: Represents a Word document processed by the Open XML SDK.
@@ -255,16 +250,21 @@ components:
           format: date-time
           description: When the document was last modified.
           example: '2025-03-15T14:30:00Z'
-    ConvertRequest:
+    ErrorResponse_2:
       type: object
-      description: Request to convert a document to another format.
-      required:
-      - targetFormat
+      description: Error response from the API.
       properties:
-        targetFormat:
-          type: string
-          description: Target format (pdf, html, txt, rtf).
-          example: pdf
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
   responses:
     NotFound:
       description: Resource not found.

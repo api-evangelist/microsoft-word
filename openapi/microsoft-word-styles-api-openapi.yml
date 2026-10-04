@@ -43,22 +43,24 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
     StyleCollection:
       type: object
       description: Collection of styles.
@@ -83,6 +85,36 @@ components:
           type: boolean
           description: Whether the style is a built-in style.
           example: true
+    ErrorResponse:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: InvalidArgument
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The argument is invalid or missing.
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
     OpenXmlStyleCollection:
       type: object
       description: Collection of document styles.
@@ -108,21 +140,6 @@ components:
                 type: string
                 description: Parent style this style inherits from.
                 example: Normal
-    ErrorResponse_2:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: DocumentNotFound
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The specified document could not be found.
   responses:
     NotFound:
       description: Resource not found.
@@ -130,23 +147,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   securitySchemes:
     oauth2:
       type: oauth2

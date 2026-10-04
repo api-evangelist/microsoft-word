@@ -64,16 +64,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    itemId:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the drive item.
-      schema:
-        type: string
-      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   schemas:
+    CheckinRequest:
+      type: object
+      description: Request body for checking in a drive item.
+      properties:
+        comment:
+          type: string
+          description: Check-in comment.
+          example: Final review completed
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -101,23 +100,24 @@ components:
                   format: date-time
                   description: Timestamp of the error.
                   example: '2025-03-21T20:01:37Z'
-    CheckinRequest:
-      type: object
-      description: Request body for checking in a drive item.
-      properties:
-        comment:
-          type: string
-          description: Check-in comment.
-          example: Final review completed
+  parameters:
+    itemId:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the drive item.
+      schema:
+        type: string
+      example: 01NKDM7HMOJTVYMDOSXFDK2QJDXCDI3WUK
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication required or token expired.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or token expired.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

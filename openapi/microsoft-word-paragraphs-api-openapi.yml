@@ -117,47 +117,7 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
-  parameters:
-    paragraphId:
-      name: paragraph-id
-      in: path
-      required: true
-      description: The unique identifier of the paragraph.
-      schema:
-        type: string
-      example: para-500123
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the Word document.
-      schema:
-        type: string
-      example: doc-a1b2c3d4
-    documentId_2:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-              example: InvalidArgument
-            message:
-              type: string
-              description: Human-readable error message.
-              example: The argument is invalid or missing.
     ParagraphCollection:
       type: object
       description: Collection of paragraphs.
@@ -202,7 +162,7 @@ components:
           type: boolean
           description: Whether the paragraph is part of a list.
           example: false
-    ErrorResponse_2:
+    ErrorResponse:
       type: object
       description: Error response from the API.
       properties:
@@ -212,11 +172,11 @@ components:
             code:
               type: string
               description: Error code.
-              example: DocumentNotFound
+              example: InvalidArgument
             message:
               type: string
               description: Human-readable error message.
-              example: The specified document could not be found.
+              example: The argument is invalid or missing.
     OpenXmlParagraphCollection:
       type: object
       description: Collection of paragraphs.
@@ -291,6 +251,46 @@ components:
           type: number
           description: Font size in half-points.
           example: 24.0
+    ErrorResponse_2:
+      type: object
+      description: Error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+              example: DocumentNotFound
+            message:
+              type: string
+              description: Human-readable error message.
+              example: The specified document could not be found.
+  parameters:
+    paragraphId:
+      name: paragraph-id
+      in: path
+      required: true
+      description: The unique identifier of the paragraph.
+      schema:
+        type: string
+      example: para-500123
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the Word document.
+      schema:
+        type: string
+      example: doc-a1b2c3d4
+    documentId_2:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   responses:
     NotFound:
       description: Resource not found.

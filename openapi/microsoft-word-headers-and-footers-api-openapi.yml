@@ -62,6 +62,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    documentId:
+      name: document-id
+      in: path
+      required: true
+      description: The unique identifier of the document.
+      schema:
+        type: string
+      example: doc-openxml-a1b2c3
   schemas:
     ErrorResponse:
       type: object
@@ -102,12 +111,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    documentId:
-      name: document-id
-      in: path
-      required: true
-      description: The unique identifier of the document.
-      schema:
-        type: string
-      example: doc-openxml-a1b2c3

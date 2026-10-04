@@ -71,7 +71,59 @@ paths:
     - url: https://word.officeapps.live.com/api/v1
       description: Word JavaScript API conceptual endpoint
 components:
+  responses:
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    InsertTableRequest:
+      type: object
+      description: Request to insert a table.
+      required:
+      - rowCount
+      - columnCount
+      properties:
+        rowCount:
+          type: integer
+          description: Number of rows for the new table.
+          example: 3
+        columnCount:
+          type: integer
+          description: Number of columns for the new table.
+          example: 4
+        insertLocation:
+          type: string
+          description: Where to insert the table (Start, End, Before, After).
+          example: End
+        values:
+          type: array
+          description: 2D array of cell values.
+          items:
+            type: array
+            items:
+              type: string
+          example:
+          - - Name
+            - Age
+            - City
+            - Country
+    TableCollection:
+      type: object
+      description: Collection of tables.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
     Table:
       type: object
       description: Represents a table in a Word document.
@@ -115,45 +167,32 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
-    TableCollection:
+    AddTableRequest:
       type: object
-      description: Collection of tables.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
-    InsertTableRequest:
-      type: object
-      description: Request to insert a table.
+      description: Request to add a table.
       required:
-      - rowCount
-      - columnCount
+      - rows
+      - columns
       properties:
-        rowCount:
+        rows:
           type: integer
-          description: Number of rows for the new table.
+          description: Number of rows.
           example: 3
-        columnCount:
+        columns:
           type: integer
-          description: Number of columns for the new table.
+          description: Number of columns.
           example: 4
-        insertLocation:
-          type: string
-          description: Where to insert the table (Start, End, Before, After).
-          example: End
-        values:
+        data:
           type: array
           description: 2D array of cell values.
           items:
             type: array
             items:
               type: string
-          example:
-          - - Name
-            - Age
-            - City
-            - Country
+        styleId:
+          type: string
+          description: Table style ID.
+          example: TableGrid
     OpenXmlTableCollection:
       type: object
       description: Collection of tables.
@@ -181,32 +220,6 @@ components:
               type: string
               description: Human-readable error message.
               example: The specified document could not be found.
-    AddTableRequest:
-      type: object
-      description: Request to add a table.
-      required:
-      - rows
-      - columns
-      properties:
-        rows:
-          type: integer
-          description: Number of rows.
-          example: 3
-        columns:
-          type: integer
-          description: Number of columns.
-          example: 4
-        data:
-          type: array
-          description: 2D array of cell values.
-          items:
-            type: array
-            items:
-              type: string
-        styleId:
-          type: string
-          description: Table style ID.
-          example: TableGrid
     OpenXmlTable:
       type: object
       description: Represents a table in the Open XML document.
@@ -238,19 +251,6 @@ components:
                       type: string
                       description: Cell text content.
                       example: Cell value
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id

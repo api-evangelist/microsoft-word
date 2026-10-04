@@ -44,6 +44,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SectionCollection:
+      type: object
+      description: Collection of sections.
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
+    Section:
+      type: object
+      description: Represents a section in a Word document.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the section.
+          example: section-01
     ErrorResponse:
       type: object
       description: Error response from the API.
@@ -59,29 +75,6 @@ components:
               type: string
               description: Human-readable error message.
               example: The argument is invalid or missing.
-    Section:
-      type: object
-      description: Represents a section in a Word document.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the section.
-          example: section-01
-    SectionCollection:
-      type: object
-      description: Collection of sections.
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Section'
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     documentId:
       name: document-id
@@ -91,6 +84,13 @@ components:
       schema:
         type: string
       example: doc-a1b2c3d4
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2
