@@ -220,3 +220,73 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - data
+  - seat
+  plans:
+  - name: Microsoft Word (Free Web)
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - data
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Personal
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Microsoft 365 Family
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Microsoft 365 Premium
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+    - year
+  - name: Microsoft 365 Apps for Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Business Standard
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Microsoft 365 Business Premium
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
