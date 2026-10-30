@@ -1,4 +1,4 @@
-# Microsoft Word (microsoft-word)
+# Microsoft Word
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,241 +66,258 @@
 
 APIs for Microsoft Word document creation, manipulation, and automation across Microsoft 365 cloud services, Office Add-ins, SharePoint, and Open XML document processing.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/microsoft-word/refs/heads/main/apis.yml)
+**Areas:** Documents · Microsoft 365 · Office · Productivity · Word Processing
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Microsoft Word on APIs.io
 
-## Tags:
+Everything profiled for Microsoft Word is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-word/](https://apis.io/providers/microsoft-word/)** — or go straight to one of the APIs or properties below.
 
- - Documents, Microsoft 365, Office, Productivity, Word Processing
+### APIs (21)
 
-## Timestamps
+- [Word Automation Services (SharePoint)](https://apis.io/apis/microsoft-word/word-automation-services-sharepoint/) — Server-side document conversion and automation service for SharePoint. Supports batch conversion of Word documents to PDF, XPS, and other formats without…
+- [Microsoft Word Body API](https://apis.io/apis/microsoft-word/microsoft-word-body-api/) — Operations on the document body content
+- [Microsoft Word Checkout API](https://apis.io/apis/microsoft-word/microsoft-word-checkout-api/) — Operations for checking in and out files
+- [Microsoft Word Comments API](https://apis.io/apis/microsoft-word/microsoft-word-comments-api/) — Operations for managing comments and replies
+- [Microsoft Word Content API](https://apis.io/apis/microsoft-word/microsoft-word-content-api/) — Operations for uploading and downloading file content
+- [Microsoft Word Content Controls API](https://apis.io/apis/microsoft-word/microsoft-word-content-controls-api/) — Operations for managing content controls
+- [Microsoft Word Documents API](https://apis.io/apis/microsoft-word/microsoft-word-documents-api/) — Operations for creating, opening, and managing Word documents
+- [Microsoft Word Drive Items API](https://apis.io/apis/microsoft-word/microsoft-word-drive-items-api/) — Operations for managing files and folders in OneDrive and SharePoint
+- [Microsoft Word Headers And Footers API](https://apis.io/apis/microsoft-word/microsoft-word-headers-and-footers-api/) — Operations for managing headers and footers
+- [Microsoft Word Images API](https://apis.io/apis/microsoft-word/microsoft-word-images-api/) — Operations for managing images in documents
+- [Microsoft Word Paragraphs API](https://apis.io/apis/microsoft-word/microsoft-word-paragraphs-api/) — Operations for managing paragraphs in documents
+- [Microsoft Word Permissions API](https://apis.io/apis/microsoft-word/microsoft-word-permissions-api/) — Operations for managing sharing and permissions on drive items
+- [Microsoft Word Properties API](https://apis.io/apis/microsoft-word/microsoft-word-properties-api/) — Operations for managing document properties
+- [Microsoft Word Search API](https://apis.io/apis/microsoft-word/microsoft-word-search-api/) — Operations for searching files and folders
+- [Microsoft Word Sections API](https://apis.io/apis/microsoft-word/microsoft-word-sections-api/) — Operations for managing document sections
+- [Microsoft Word Styles API](https://apis.io/apis/microsoft-word/microsoft-word-styles-api/) — Operations for managing document styles
+- [Microsoft Word Tables API](https://apis.io/apis/microsoft-word/microsoft-word-tables-api/) — Operations for creating and managing tables
+- [Microsoft Word Thumbnails API](https://apis.io/apis/microsoft-word/microsoft-word-thumbnails-api/) — Operations for retrieving file thumbnails
+- [Microsoft Word Versions API](https://apis.io/apis/microsoft-word/microsoft-word-versions-api/) — Operations for managing file version history
+- [Word JavaScript API](https://apis.io/apis/microsoft-word/word-javascript-api/) — JavaScript API for building Word add-ins and interacting with Word document content.
+- [Office Open XML SDK](https://apis.io/apis/microsoft-word/office-open-xml-sdk/) — .NET SDK for programmatically creating and manipulating Word documents using Open XML format.
 
-- **Created:** 2024
-- **Modified:** 2026-04-18
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Microsoft Graph Word API
-REST API for interacting with Word documents in Microsoft 365 and OneDrive via the Microsoft Graph unified endpoint. Provides operations for file management, content access, sharing, permissions, and document metadata.
+#### Arazzo workflows (12)
 
-**Human URL:** [https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0)
+Multi-step workflows that chain operations into a business task.
 
-#### Tags:
+- [Microsoft Word Author Document from HTML](https://apis.io/arazzos/microsoft-word/microsoft-word-author-document-workflow/)
+- [Microsoft Word Browse Folder and Copy Document](https://apis.io/arazzos/microsoft-word/microsoft-word-browse-and-copy-workflow/)
+- [Microsoft Word Build Report Body](https://apis.io/arazzos/microsoft-word/microsoft-word-build-report-body-workflow/)
+- [Microsoft Word Checkout Edit and Check In Document](https://apis.io/arazzos/microsoft-word/microsoft-word-checkout-edit-checkin-workflow/)
+- [Microsoft Word Generate Document and Convert to PDF](https://apis.io/arazzos/microsoft-word/microsoft-word-generate-and-convert-pdf-workflow/)
+- [Microsoft Word Inspect Document and Export HTML](https://apis.io/arazzos/microsoft-word/microsoft-word-inspect-and-export-html-workflow/)
+- [Microsoft Word Organize Folder and Invite Reviewers](https://apis.io/arazzos/microsoft-word/microsoft-word-organize-and-invite-workflow/)
+- [Microsoft Word Rename Move and Audit Document](https://apis.io/arazzos/microsoft-word/microsoft-word-rename-move-and-audit-workflow/)
+- [Microsoft Word Resumable Upload Session](https://apis.io/arazzos/microsoft-word/microsoft-word-resumable-upload-session-workflow/)
+- [Microsoft Word Search and Download Document](https://apis.io/arazzos/microsoft-word/microsoft-word-search-and-download-workflow/)
+- [Microsoft Word Search Body and Tag Document](https://apis.io/arazzos/microsoft-word/microsoft-word-search-and-tag-workflow/)
+- [Microsoft Word Upload and Share Document](https://apis.io/arazzos/microsoft-word/microsoft-word-upload-and-share-workflow/)
 
- - Cloud, Documents, Microsoft Graph, REST
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0)
-- [OpenAPI](openapi/microsoft-word-graph-api.yaml)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [APIReference](https://learn.microsoft.com/en-us/graph/api/resources/driveitem?view=graph-rest-1.0)
-- [C# SDK](https://www.nuget.org/packages/Microsoft.Graph)
-- [Python SDK](https://pypi.org/project/msgraph-sdk/)
-- [JavaScript SDK](https://www.npmjs.com/package/@microsoft/microsoft-graph-client)
-- [Java SDK](https://github.com/microsoftgraph/msgraph-sdk-java)
-- [Go SDK](https://github.com/microsoftgraph/msgraph-sdk-go)
-- [PHP SDK](https://github.com/microsoftgraph/msgraph-sdk-php)
-- [DriveItem Schema](json-schema/graph-api-drive-item-schema.json)
-- [Permission Schema](json-schema/graph-api-permission-schema.json)
-- [DriveItem Structure](json-structure/graph-api-drive-item-structure.json)
-- [Permission Structure](json-structure/graph-api-permission-structure.json)
-- [JSON-LD Context](json-ld/microsoft-word-graph-api-context.jsonld)
-- [DriveItem Example](examples/graph-api-drive-item-example.json)
-- [Permission Example](examples/graph-api-permission-example.json)
+- [Microsoft MCP Server for Enterprise](https://apis.io/servers/microsoft-word/microsoft-mcp-server-for-enterprise/)
 
-### Office JavaScript API for Word
-JavaScript API for building Word add-ins and automating Word tasks. Provides strongly-typed objects for document manipulation, content controls, tables, formatting, comments, collaboration, and shapes.
+#### Agentic access (1)
 
-**Human URL:** [https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Microsoft Word Agentic Access](https://apis.io/agentic-access/microsoft-word/microsoft-word-agentic-access/)
 
- - Add-Ins, Automation, Client-Side, JavaScript
+#### JSON Schema (7)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://learn.microsoft.com/en-us/javascript/api/word)
-- [OpenAPI](openapi/microsoft-word-javascript-api.yaml)
-- [GettingStarted](https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/word-quickstart)
-- [CodeExamples](https://github.com/OfficeDev/Office-Add-in-samples)
-- [APIReference](https://learn.microsoft.com/en-us/javascript/api/word?view=word-js-preview)
-- [Tutorials](https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial)
-- [Paragraph Schema](json-schema/javascript-api-paragraph-schema.json)
-- [ContentControl Schema](json-schema/javascript-api-content-control-schema.json)
-- [Table Schema](json-schema/javascript-api-table-schema.json)
-- [Comment Schema](json-schema/javascript-api-comment-schema.json)
-- [Paragraph Structure](json-structure/javascript-api-paragraph-structure.json)
-- [ContentControl Structure](json-structure/javascript-api-content-control-structure.json)
-- [Table Structure](json-structure/javascript-api-table-structure.json)
-- [Comment Structure](json-structure/javascript-api-comment-structure.json)
-- [JSON-LD Context](json-ld/microsoft-word-javascript-api-context.jsonld)
-- [Paragraph Example](examples/javascript-api-paragraph-example.json)
-- [ContentControl Example](examples/javascript-api-content-control-example.json)
-- [Table Example](examples/javascript-api-table-example.json)
-- [Comment Example](examples/javascript-api-comment-example.json)
+- [DriveItem](https://apis.io/schemas/microsoft-word/graph-api-drive-item/)
+- [Permission](https://apis.io/schemas/microsoft-word/graph-api-permission/)
+- [Comment](https://apis.io/schemas/microsoft-word/javascript-api-comment/)
+- [ContentControl](https://apis.io/schemas/microsoft-word/javascript-api-content-control/)
+- [Paragraph](https://apis.io/schemas/microsoft-word/javascript-api-paragraph/)
+- [Table](https://apis.io/schemas/microsoft-word/javascript-api-table/)
+- [OpenXmlDocumentProperties](https://apis.io/schemas/microsoft-word/open-xml-sdk-document-properties/)
 
-### Word Automation Services (SharePoint)
-Server-side document conversion and automation service for SharePoint. Supports batch conversion of Word documents to PDF, XPS, and other formats without user interaction.
+#### JSON Structure (7)
 
-**Human URL:** [https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint](https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint)
+Data models expressed in JSON Structure.
 
-#### Tags:
+- [Graph Api Drive Item Structure](https://apis.io/json-structure/microsoft-word/graph-api-drive-item-structure/)
+- [Graph Api Permission Structure](https://apis.io/json-structure/microsoft-word/graph-api-permission-structure/)
+- [Javascript Api Comment Structure](https://apis.io/json-structure/microsoft-word/javascript-api-comment-structure/)
+- [Javascript Api Content Control Structure](https://apis.io/json-structure/microsoft-word/javascript-api-content-control-structure/)
+- [Javascript Api Paragraph Structure](https://apis.io/json-structure/microsoft-word/javascript-api-paragraph-structure/)
+- [Javascript Api Table Structure](https://apis.io/json-structure/microsoft-word/javascript-api-table-structure/)
+- [Open Xml Sdk Document Properties Structure](https://apis.io/json-structure/microsoft-word/open-xml-sdk-document-properties-structure/)
 
- - Conversion, Enterprise, Server-Side, SharePoint
+#### JSON-LD (3)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://learn.microsoft.com/en-us/sharepoint/dev/general-development/word-automation-services-in-sharepoint)
+- [Microsoft Word Graph Api Context](https://apis.io/jsonld/microsoft-word/microsoft-word-graph-api-context/)
+- [Microsoft Word Javascript Api Context](https://apis.io/jsonld/microsoft-word/microsoft-word-javascript-api-context/)
+- [Microsoft Word Open Xml Sdk Context](https://apis.io/jsonld/microsoft-word/microsoft-word-open-xml-sdk-context/)
 
-### Open XML SDK for Word
-.NET library for programmatically creating and manipulating Word documents using the ECMA-376 Open XML standard. Provides strongly-typed classes for document structure, styles, tables, images, and content manipulation.
+#### Vocabulary (1)
 
-**Human URL:** [https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk](https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk)
+The provider's domain terms, defined.
 
-#### Tags:
+- [Microsoft Word Vocabulary](https://apis.io/vocabularies/microsoft-word/microsoft-word-vocabulary/)
 
- - Dotnet, Library, Offline, OpenXML
+#### Examples (7)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk)
-- [OpenAPI](openapi/microsoft-word-open-xml-sdk.yaml)
-- [GitHubRepository](https://github.com/OfficeDev/Open-XML-SDK)
-- [.NET SDK](https://www.nuget.org/packages/DocumentFormat.OpenXml)
-- [DocumentProperties Schema](json-schema/open-xml-sdk-document-properties-schema.json)
-- [DocumentProperties Structure](json-structure/open-xml-sdk-document-properties-structure.json)
-- [JSON-LD Context](json-ld/microsoft-word-open-xml-sdk-context.jsonld)
-- [DocumentProperties Example](examples/open-xml-sdk-document-properties-example.json)
+- [Graph Api Drive Item Example](https://apis.io/examples/microsoft-word/graph-api-drive-item-example/)
+- [Graph Api Permission Example](https://apis.io/examples/microsoft-word/graph-api-permission-example/)
+- [Javascript Api Comment Example](https://apis.io/examples/microsoft-word/javascript-api-comment-example/)
+- [Javascript Api Content Control Example](https://apis.io/examples/microsoft-word/javascript-api-content-control-example/)
+- [Javascript Api Paragraph Example](https://apis.io/examples/microsoft-word/javascript-api-paragraph-example/)
+- [Javascript Api Table Example](https://apis.io/examples/microsoft-word/javascript-api-table-example/)
+- [Open Xml Sdk Document Properties Example](https://apis.io/examples/microsoft-word/open-xml-sdk-document-properties-example/)
 
-## Common Properties
+#### Collections (21)
 
-- [Portal](https://developer.microsoft.com/)
-- [DeveloperPortal](https://developer.microsoft.com/en-us/graph)
-- [Console](https://developer.microsoft.com/en-us/graph/graph-explorer)
-- [SignUp](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [GettingStarted](https://learn.microsoft.com/en-us/graph/get-started)
-- [Blog](https://devblogs.microsoft.com/microsoft365dev/)
+Postman and Open Collection request collections.
+
+- [Microsoft Graph Word Body API](https://apis.io/collections/microsoft-word/open-microsoft-word-body-api/)
+- [Microsoft Graph Word Body Checkout API](https://apis.io/collections/microsoft-word/open-microsoft-word-checkout-api/)
+- [Microsoft Graph Word Body Comments API](https://apis.io/collections/microsoft-word/open-microsoft-word-comments-api/)
+- [Microsoft Graph Word Body Content API](https://apis.io/collections/microsoft-word/open-microsoft-word-content-api/)
+- [Microsoft Graph Word Body Content Controls API](https://apis.io/collections/microsoft-word/open-microsoft-word-content-controls-api/)
+- [Microsoft Graph Word Body Documents API](https://apis.io/collections/microsoft-word/open-microsoft-word-documents-api/)
+- [Microsoft Graph Word Body Drive Items API](https://apis.io/collections/microsoft-word/open-microsoft-word-drive-items-api/)
+- [Microsoft Graph Word Body Headers And Footers API](https://apis.io/collections/microsoft-word/open-microsoft-word-headers-and-footers-api/)
+- [Microsoft Graph Word Body Images API](https://apis.io/collections/microsoft-word/open-microsoft-word-images-api/)
+- [Microsoft Graph Word Body Paragraphs API](https://apis.io/collections/microsoft-word/open-microsoft-word-paragraphs-api/)
+- [Microsoft Graph Word Body Permissions API](https://apis.io/collections/microsoft-word/open-microsoft-word-permissions-api/)
+- [Microsoft Graph Word Body Properties API](https://apis.io/collections/microsoft-word/open-microsoft-word-properties-api/)
+- [Microsoft Graph Word Body Search API](https://apis.io/collections/microsoft-word/open-microsoft-word-search-api/)
+- [Microsoft Graph Word Body Sections API](https://apis.io/collections/microsoft-word/open-microsoft-word-sections-api/)
+- [Microsoft Graph Word Body Styles API](https://apis.io/collections/microsoft-word/open-microsoft-word-styles-api/)
+- [Microsoft Graph Word Body Tables API](https://apis.io/collections/microsoft-word/open-microsoft-word-tables-api/)
+- [Microsoft Graph Word Body Thumbnails API](https://apis.io/collections/microsoft-word/open-microsoft-word-thumbnails-api/)
+- [Microsoft Graph Word Body Versions API](https://apis.io/collections/microsoft-word/open-microsoft-word-versions-api/)
+- [Microsoft Graph Word API](https://apis.io/collections/microsoft-word/postman-microsoft-word-graph-api/)
+- [Microsoft Word JavaScript API](https://apis.io/collections/microsoft-word/postman-microsoft-word-javascript-api/)
+- [Microsoft Word Open XML SDK](https://apis.io/collections/microsoft-word/postman-microsoft-word-open-xml-sdk/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Microsoft Word Graph Api Overlay](https://apis.io/overlays/microsoft-word/microsoft-word-graph-api-overlay/)
+- [Microsoft Word Javascript Api Overlay](https://apis.io/overlays/microsoft-word/microsoft-word-javascript-api-overlay/)
+- [Microsoft Word Open Xml Sdk Overlay](https://apis.io/overlays/microsoft-word/microsoft-word-open-xml-sdk-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Microsoft Word — jsonschema rules](https://apis.io/rules/microsoft-word/microsoft-word-jsonschema-spectral-rules/)
+- [Microsoft Word API Rules](https://apis.io/rules/microsoft-word/microsoft-word-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Microsoft Word Authentication](https://apis.io/security/microsoft-word/microsoft-word-authentication/)
+- [Microsoft Word Domain Security](https://apis.io/security/microsoft-word/microsoft-word-domain-security/)
+- [Microsoft Word Trust Center](https://apis.io/security/microsoft-word/microsoft-word-trust-center/)
+- [Microsoft Word Vulnerability Disclosure](https://apis.io/security/microsoft-word/microsoft-word-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Microsoft Word Scopes](https://apis.io/scopes/microsoft-word/microsoft-word-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Microsoft Word Plans Pricing](https://apis.io/plans/microsoft-word/microsoft-word-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Microsoft Word Rate Limits](https://apis.io/rate-limits/microsoft-word/microsoft-word-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Microsoft Word Finops](https://apis.io/finops/microsoft-word/microsoft-word-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.microsoft.com/)
+- [Getting started](https://learn.microsoft.com/en-us/graph/get-started)
 - [Support](https://developer.microsoft.com/graph/support)
-- [StatusPage](https://status.office.com/)
-- [ChangeLog](https://developer.microsoft.com/en-us/graph/changelog)
-- [TermsOfService](https://www.microsoft.com/en-us/legal/terms-of-use)
-- [PrivacyPolicy](https://privacy.microsoft.com/)
-- [GitHubOrganization](https://github.com/OfficeDev)
-- [StackOverflow](https://stackoverflow.com/questions/tagged/microsoft-graph)
-- [X](https://twitter.com/MSGraphDev)
-- [YouTube](https://www.youtube.com/@Microsoft365Developer)
-- [Training](https://learn.microsoft.com/en-us/training/browse/?products=ms-graph)
+- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
+- [Blog](https://devblogs.microsoft.com/microsoft365dev/)
+- [Terms of service](https://www.microsoft.com/en-us/legal/terms-of-use)
+- [Privacy policy](https://privacy.microsoft.com/)
+- [GitHub](https://github.com/OfficeDev)
+- [Status](https://status.office.com/)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Document Creation | Programmatically create Word documents from templates or scratch using REST APIs or JavaScript. |
-| Document Conversion | Convert Word documents to PDF, HTML, and other formats using server-side automation services. |
-| Content Manipulation | Insert, edit, and format text, paragraphs, tables, images, and content controls in Word documents. |
-| Collaboration | Track changes, manage comments, co-authoring sessions, and revision history through APIs. |
-| Template Processing | Mail merge, document assembly, and template-based document generation for enterprise workflows. |
-| Cloud Storage Integration | Access and manipulate Word documents stored in OneDrive, SharePoint, and Microsoft 365 cloud services. |
-| Add-In Extensibility | Build custom Word add-ins with JavaScript APIs for task panes, content insertion, and document automation. |
-| Open XML Processing | Low-level manipulation of Word document structure using the ECMA-376 Open XML standard. |
+**Kin Score 61.8** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 63.3 |
+| Contract quality | 33.2 |
+| Contract governance | 31.8 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 89.3 |
+| Access clarity | 50.0 |
 
-| Name | Description |
-|------|-------------|
-| Automated Report Generation | Generate standardized reports from data sources using templates and API-driven document creation. |
-| Contract and Legal Document Assembly | Assemble legal documents by merging clauses, terms, and client data into Word templates. |
-| Document Review Workflows | Automate review cycles with tracked changes, comments, and approval workflows via APIs. |
-| Bulk Document Processing | Process large volumes of Word documents for format conversion, content extraction, or metadata updates. |
-| Custom Business Add-Ins | Build task pane add-ins that connect Word to CRM, ERP, or other business systems for data insertion. |
-| Compliance Document Management | Ensure regulatory compliance by automating document formatting, metadata tagging, and archiving. |
+**Agent readiness 40.8** — agent-ready (gated down from agent-native)
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Microsoft SharePoint | Store, manage, and collaborate on Word documents through SharePoint document libraries and workflows. |
-| Microsoft OneDrive | Access and sync Word documents via OneDrive cloud storage through Microsoft Graph APIs. |
-| Microsoft Teams | Collaborate on Word documents directly within Teams channels and chat conversations. |
-| Microsoft Power Automate | Automate Word document workflows including creation, conversion, and approval routing with Power Automate flows. |
-| Microsoft Copilot | AI-powered document creation, editing, and summarization through Copilot agents with add-in actions. |
-| Azure Active Directory | OAuth 2.0 authentication and authorization for secure API access through Microsoft Identity Platform. |
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-word/](https://apis.io/providers/microsoft-word/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Microsoft Graph Word API](openapi/microsoft-word-graph-api.yaml)
-- [Microsoft Word JavaScript API](openapi/microsoft-word-javascript-api.yaml)
-- [Microsoft Word Open XML SDK](openapi/microsoft-word-open-xml-sdk.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft Word: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [DriveItem Schema](json-schema/graph-api-drive-item-schema.json)
-- [Permission Schema](json-schema/graph-api-permission-schema.json)
-- [Paragraph Schema](json-schema/javascript-api-paragraph-schema.json)
-- [ContentControl Schema](json-schema/javascript-api-content-control-schema.json)
-- [Table Schema](json-schema/javascript-api-table-schema.json)
-- [Comment Schema](json-schema/javascript-api-comment-schema.json)
-- [DocumentProperties Schema](json-schema/open-xml-sdk-document-properties-schema.json)
-
-### JSON Structure
-
-- [DriveItem Structure](json-structure/graph-api-drive-item-structure.json)
-- [Permission Structure](json-structure/graph-api-permission-structure.json)
-- [Paragraph Structure](json-structure/javascript-api-paragraph-structure.json)
-- [ContentControl Structure](json-structure/javascript-api-content-control-structure.json)
-- [Table Structure](json-structure/javascript-api-table-structure.json)
-- [Comment Structure](json-structure/javascript-api-comment-structure.json)
-- [DocumentProperties Structure](json-structure/open-xml-sdk-document-properties-structure.json)
-
-### JSON-LD
-
-- [Graph API Context](json-ld/microsoft-word-graph-api-context.jsonld)
-- [JavaScript API Context](json-ld/microsoft-word-javascript-api-context.jsonld)
-- [Open XML SDK Context](json-ld/microsoft-word-open-xml-sdk-context.jsonld)
-
-### Examples
-
-- [DriveItem Example](examples/graph-api-drive-item-example.json)
-- [Permission Example](examples/graph-api-permission-example.json)
-- [Paragraph Example](examples/javascript-api-paragraph-example.json)
-- [ContentControl Example](examples/javascript-api-content-control-example.json)
-- [Table Example](examples/javascript-api-table-example.json)
-- [Comment Example](examples/javascript-api-comment-example.json)
-- [DocumentProperties Example](examples/open-xml-sdk-document-properties-example.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Microsoft Graph Word API](capabilities/shared/graph-api.yaml) -- 8 operations for cloud document management
-- [Office JavaScript API for Word](capabilities/shared/javascript-api.yaml) -- 9 operations for document content manipulation
-- [Open XML SDK for Word](capabilities/shared/open-xml-sdk.yaml) -- 6 operations for server-side document processing
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Document Management](capabilities/document-management.yaml) | Graph API + JavaScript API + Open XML SDK | 21 | Document Author, Content Manager, Automation Engineer |
-
-## Vocabulary
-
-- [Microsoft Word Vocabulary](vocabulary/microsoft-word-vocabulary.yaml) -- Unified taxonomy mapping 22 resources, 14 actions, 1 workflow, and 3 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Microsoft Word Spectral Rules](rules/microsoft-word-spectral-rules.yml) -- 35 rules across 12 categories enforcing Microsoft Word API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-word/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
